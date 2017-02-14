@@ -264,105 +264,6 @@
 
 
   
-    <article id="post-this" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/27/this/">this</a>
-    </h1>
-  
-
-        
-        <a href="/2016/09/27/this/" class="archive-article-date">
-  	<time datetime="2016-09-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="apply、call-有什么作用，什么区别"><a href="#apply、call-有什么作用，什么区别" class="headerlink" title="apply、call 有什么作用，什么区别"></a>apply、call 有什么作用，什么区别</h3><ul>
-<li>首先要引入<code>this</code>这个概念<br>由于运行期绑定的特性，<code>this</code>的含义非常多，既可以是全局对性爱那个，当前对象或任意对象，这取决于函数的调用方式，但总有一个原则，那就是<code>this</code>指的是调用函数的那个对象。</li>
-</ul>
-<ol>
-<li>作为函数调用：在函数直接调用时<code>this</code>绑定到全局对象，在浏览器中，<code>window</code>就是该全局对象。</li>
-<li>内部函数：函数嵌套产生的内部函数的<code>this</code>不是其父函数，仍是<strong>全局变量</strong>。</li>
-<li><code>setTimeout、setinterval</code>：这两个方法执行的函数<code>this</code>也是全局对象</li>
-<li>作为构造函数调用：所谓构造函数，就是通过这个函数生成一个新对象。这时，<code>this</code>就指这个新对象。<br> new 运算符接受一个函数 F 及其参数：new F(arguments…)。这一过程分为三步：<ol>
-<li>创建类的实例。这步是把一个空的对象的 <strong>proto</strong> 属性设置为 F.prototype 。</li>
-<li>初始化实例。函数 F 被传入参数并调用，关键字 this 被设定为该实例。</li>
-<li>返回实例。</li>
-</ol>
-</li>
-<li>作为对象方法调用：在JS中，函数也是对象，因此函数可以作为一个对象的属性，此时该函数被称为该对象的方法，在使用这种调用方法时，<code>this</code>被自然绑定到该对象。</li>
-<li>DOM对象绑定事件：在事件处理程序中<code>this</code>代表事件源DOM对象（低版本IE被指向了<code>window</code>）</li>
-</ol>
-<ul>
-<li><code>apply、call</code>的作用<br><code>apply、call</code>的作用是相同的，都是指定函数的this和参数来调用函数，使用<code>call</code>和<code>apply</code>可以使this的指向变得清晰。</li>
-<li><code>apply、call</code>的区别<br><code>apply</code>接受的是数组形式的参数，<code>call</code>接受的是多个参数。</li>
-</ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ol>
-<li>以下代码输出什么？<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;</div><div class="line">&#125;</div><div class="line">function func() &#123;</div><div class="line">  alert(this.firstName + &quot;: hi!&quot;)</div><div class="line">&#125;</div><div class="line">john.sayHi = func</div><div class="line">john.sayHi()</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>输出<strong>john：hi！</strong></p>
-<ol>
-<li>下面代码输出什么，为什么<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">func()</div><div class="line">function func() &#123;</div><div class="line">  alert(this)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>输出<strong>window</strong>，因为函数是全局作用域下调用的</p>
-<ol>
-<li><p>下面代码输出什么</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function fn0()&#123;</div><div class="line">    function fn()&#123;</div><div class="line">        console.log(this);</div><div class="line">    &#125;</div><div class="line">    fn();</div><div class="line">&#125;</div><div class="line">fn0(); //输出window</div><div class="line">document.addEventListener(&apos;click&apos;, function(e)&#123;</div><div class="line">    console.log(this); //输出document节点</div><div class="line">    setTimeout(function()&#123;</div><div class="line">        console.log(this); //输出window</div><div class="line">    &#125;, 200);</div><div class="line">&#125;, false);</div></pre></td></tr></table></figure>
-</li>
-<li><p>下面代码输出什么，why</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;</div><div class="line">&#125;</div><div class="line">function func() &#123;</div><div class="line">  alert( this.firstName )</div><div class="line">&#125;</div><div class="line">func.call(john)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>输出<strong>John</strong>，因为通过call把this指为了john对象</p>
-<ol>
-<li>代码输出？<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;,</div><div class="line">  surname: &quot;Smith&quot;</div><div class="line">&#125;</div><div class="line">function func(a, b) &#123;</div><div class="line">  alert( this[a] + &apos; &apos; + this[b] )</div><div class="line">&#125;</div><div class="line">func.call(john, &apos;firstName&apos;, &apos;surname&apos;)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>输出<strong>John Smith</strong></p>
-<ol>
-<li>以下代码有什么问题，如何修改<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var module= &#123;</div><div class="line">    bind: function()&#123;</div><div class="line">      var cur=this; //添加</div><div class="line">      $btn.on(&apos;click&apos;, function()&#123;</div><div class="line">        console.log(this) //this指什么</div><div class="line">        cur.showMsg();//改</div><div class="line">      &#125;)</div><div class="line">    &#125;,</div><div class="line">    showMsg: function()&#123;</div><div class="line">     console.log(&apos;饥人谷&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>在DOM绑定事件中this被指向了事件源DOM对象，所以<code>this.showMsg()</code>无法正常调用</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/27/this/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
     <article id="post-HTTP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -473,6 +374,105 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/09/27/HTTP/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-this" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/27/this/">this</a>
+    </h1>
+  
+
+        
+        <a href="/2016/09/27/this/" class="archive-article-date">
+  	<time datetime="2016-09-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="apply、call-有什么作用，什么区别"><a href="#apply、call-有什么作用，什么区别" class="headerlink" title="apply、call 有什么作用，什么区别"></a>apply、call 有什么作用，什么区别</h3><ul>
+<li>首先要引入<code>this</code>这个概念<br>由于运行期绑定的特性，<code>this</code>的含义非常多，既可以是全局对性爱那个，当前对象或任意对象，这取决于函数的调用方式，但总有一个原则，那就是<code>this</code>指的是调用函数的那个对象。</li>
+</ul>
+<ol>
+<li>作为函数调用：在函数直接调用时<code>this</code>绑定到全局对象，在浏览器中，<code>window</code>就是该全局对象。</li>
+<li>内部函数：函数嵌套产生的内部函数的<code>this</code>不是其父函数，仍是<strong>全局变量</strong>。</li>
+<li><code>setTimeout、setinterval</code>：这两个方法执行的函数<code>this</code>也是全局对象</li>
+<li>作为构造函数调用：所谓构造函数，就是通过这个函数生成一个新对象。这时，<code>this</code>就指这个新对象。<br> new 运算符接受一个函数 F 及其参数：new F(arguments…)。这一过程分为三步：<ol>
+<li>创建类的实例。这步是把一个空的对象的 <strong>proto</strong> 属性设置为 F.prototype 。</li>
+<li>初始化实例。函数 F 被传入参数并调用，关键字 this 被设定为该实例。</li>
+<li>返回实例。</li>
+</ol>
+</li>
+<li>作为对象方法调用：在JS中，函数也是对象，因此函数可以作为一个对象的属性，此时该函数被称为该对象的方法，在使用这种调用方法时，<code>this</code>被自然绑定到该对象。</li>
+<li>DOM对象绑定事件：在事件处理程序中<code>this</code>代表事件源DOM对象（低版本IE被指向了<code>window</code>）</li>
+</ol>
+<ul>
+<li><code>apply、call</code>的作用<br><code>apply、call</code>的作用是相同的，都是指定函数的this和参数来调用函数，使用<code>call</code>和<code>apply</code>可以使this的指向变得清晰。</li>
+<li><code>apply、call</code>的区别<br><code>apply</code>接受的是数组形式的参数，<code>call</code>接受的是多个参数。</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ol>
+<li>以下代码输出什么？<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;</div><div class="line">&#125;</div><div class="line">function func() &#123;</div><div class="line">  alert(this.firstName + &quot;: hi!&quot;)</div><div class="line">&#125;</div><div class="line">john.sayHi = func</div><div class="line">john.sayHi()</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出<strong>john：hi！</strong></p>
+<ol>
+<li>下面代码输出什么，为什么<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">func()</div><div class="line">function func() &#123;</div><div class="line">  alert(this)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出<strong>window</strong>，因为函数是全局作用域下调用的</p>
+<ol>
+<li><p>下面代码输出什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function fn0()&#123;</div><div class="line">    function fn()&#123;</div><div class="line">        console.log(this);</div><div class="line">    &#125;</div><div class="line">    fn();</div><div class="line">&#125;</div><div class="line">fn0(); //输出window</div><div class="line">document.addEventListener(&apos;click&apos;, function(e)&#123;</div><div class="line">    console.log(this); //输出document节点</div><div class="line">    setTimeout(function()&#123;</div><div class="line">        console.log(this); //输出window</div><div class="line">    &#125;, 200);</div><div class="line">&#125;, false);</div></pre></td></tr></table></figure>
+</li>
+<li><p>下面代码输出什么，why</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;</div><div class="line">&#125;</div><div class="line">function func() &#123;</div><div class="line">  alert( this.firstName )</div><div class="line">&#125;</div><div class="line">func.call(john)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出<strong>John</strong>，因为通过call把this指为了john对象</p>
+<ol>
+<li>代码输出？<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;,</div><div class="line">  surname: &quot;Smith&quot;</div><div class="line">&#125;</div><div class="line">function func(a, b) &#123;</div><div class="line">  alert( this[a] + &apos; &apos; + this[b] )</div><div class="line">&#125;</div><div class="line">func.call(john, &apos;firstName&apos;, &apos;surname&apos;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出<strong>John Smith</strong></p>
+<ol>
+<li>以下代码有什么问题，如何修改<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var module= &#123;</div><div class="line">    bind: function()&#123;</div><div class="line">      var cur=this; //添加</div><div class="line">      $btn.on(&apos;click&apos;, function()&#123;</div><div class="line">        console.log(this) //this指什么</div><div class="line">        cur.showMsg();//改</div><div class="line">      &#125;)</div><div class="line">    &#125;,</div><div class="line">    showMsg: function()&#123;</div><div class="line">     console.log(&apos;饥人谷&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>在DOM绑定事件中this被指向了事件源DOM对象，所以<code>this.showMsg()</code>无法正常调用</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/09/27/this/">展开全文 >></a>
         </p>
       
 
