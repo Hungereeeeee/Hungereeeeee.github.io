@@ -144,6 +144,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-浏览器兼容" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/22/浏览器兼容/">浏览器兼容</a>
+    </h1>
+  
+
+        
+        <a href="/2016/07/22/浏览器兼容/" class="archive-article-date">
+  	<time datetime="2016-07-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="如何调试-IE-浏览器"><a href="#如何调试-IE-浏览器" class="headerlink" title="如何调试 IE 浏览器"></a>如何调试 IE 浏览器</h3><p>F12调出开发者工具进行调试：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-1891983a5b334ebc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="开发者工具"><br>高版本浏览器可以模拟低版本浏览器：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-b755a48817b4c85c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="浏览器模拟"><br>但是对于更低版本的IE6和IE7因为不存在开发者工具，建议通过搭建虚拟器进行调试：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-1d696c21b1d19dc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="通过模拟器对IE进行调试"></p>
+<h3 id="什么是CSS-hack？在-CSS-和-HTML里如何写-hack？在-CSS-中-ie6、ie7的-hack-方式？"><a href="#什么是CSS-hack？在-CSS-和-HTML里如何写-hack？在-CSS-中-ie6、ie7的-hack-方式？" class="headerlink" title="什么是CSS hack？在 CSS 和 HTML里如何写 hack？在 CSS 中 ie6、ie7的 hack 方式？"></a>什么是CSS hack？在 CSS 和 HTML里如何写 hack？在 CSS 中 ie6、ie7的 hack 方式？</h3><p>由于不同厂商的浏览器，比如IE，Safari，Chrome等，或是同一浏览器的不同版本，对CSS的解析不同，因此会导致生成的页面效果不同，得不到想要的页面效果，这个时候就要针对不同的浏览器去写不同的CSS，让它同时兼容不同浏览器，能在不同的浏览器中也能得到我们想要的页面效果。简单说CSS hack目的就是使CSS代码兼容不同的浏览器。<br>CSS和HTML中写hack：<br>CSS hack大致有三种变现形式：CSS属性前缀法，选择器前缀法，以及IE条件注释法。</p>
+<ol>
+<li>属性前缀法<br>如，针对IE6的前缀hack：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.main &#123;</div><div class="line">   _color: black;</div><div class="line">   -color: black;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>针对IE7及以下的前缀hack：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">.main &#123;</div><div class="line">  !color: black;</div><div class="line">  $color: black;</div><div class="line">  &amp;color: black;</div><div class="line">  *color: black;</div><div class="line">   )color: black;</div><div class="line">  =color: black;</div><div class="line">  %color: black;</div><div class="line">  +color: black;</div><div class="line">  @color: black;</div><div class="line">  ,color: black;</div><div class="line">  .color: black;</div><div class="line">  /color: black;</div><div class="line">  `color: black;</div><div class="line">  ]color: black;</div><div class="line">   #color: black;</div><div class="line">  ~color: black;</div><div class="line">   ?color: black;</div><div class="line">  :color: black;</div><div class="line">  |color: black;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>针对IE6~8的前缀hack：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.main&#123;</div><div class="line">  color: black\9;</div><div class="line">  color/*\**/: black\9;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>选择器前缀法：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">* html .selector &#123;&#125;/*针对IE6*/</div><div class="line">*+html .selector &#123;&#125;/*针对IE7*/</div></pre></td></tr></table></figure>
+<p>3.IE条件注释法：<br>利用低版本IE无法识别注释的特性进行hack：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;!--[if IE 6]&gt;</div><div class="line">this is IE 6</div><div class="line">&lt;![end if]--&gt;</div><div class="line">&lt;!--[if IE 7]&gt;</div><div class="line">this is IE 7</div><div class="line">&lt;![end if]--&gt;</div><div class="line">&lt;!--[if IE 8]&gt;</div><div class="line">this is IE 8&lt;br/&gt;</div><div class="line">&lt;![end if]--&gt;</div><div class="line">&lt;!--[if IE 9]&gt;</div><div class="line">this is IE 9&lt;br/&gt;</div><div class="line">&lt;![end if]--&gt;</div><div class="line">&lt;!--[if !IE]--&gt;</div><div class="line">this is a good browser;</div><div class="line">&lt;!--&lt;![end if]--&gt;</div></pre></td></tr></table></figure>
+<p><a href="http://browserhacks.com/" target="_blank" rel="external">参考：Browserhacks</a></p>
+<h3 id="列举几种-浏览器兼容问题"><a href="#列举几种-浏览器兼容问题" class="headerlink" title="列举几种 浏览器兼容问题"></a>列举几种 浏览器兼容问题</h3><ol>
+<li><p><code>display:inline-block</code>的兼容问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.selector&#123;</div><div class="line">  display:inline-block;</div><div class="line">  *display:inline;</div><div class="line">  *zoom:1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>min-height</code>兼容问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.selector&#123;</div><div class="line">    min-height:100px;</div><div class="line">    height:auto !important;</div><div class="line">    height:100px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>透明度兼容问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.selector&#123;</div><div class="line">      filter:alpha(opacity=50);</div><div class="line">      -moz-opacity:0.5;</div><div class="line">      -khtml-opacity: 0.5;</div><div class="line">      opacity: 0.5;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="针对兼容、多浏览器覆盖有什么看法？渐进增强和优雅降级是什么意思？"><a href="#针对兼容、多浏览器覆盖有什么看法？渐进增强和优雅降级是什么意思？" class="headerlink" title="针对兼容、多浏览器覆盖有什么看法？渐进增强和优雅降级是什么意思？"></a>针对兼容、多浏览器覆盖有什么看法？<strong>渐进增强</strong>和<strong>优雅降级</strong>是什么意思？</h3><p>要对使用人群进行调研，如果一个浏览器的使用人群低于5%则可以忽略该浏览器，因为要在所有浏览器实现同一效果是不现实的，并且针对一些低版本浏览器本身也存在一些无法解决的兼容bug，对于需要过多投入而无法得到相应回报的事情应该放弃。<br>逐渐增强：对低版本浏览器进行设计，保证功能，然后在针对高浏览器进行效果等改进。<br>优雅降级：直接对高版本浏览器进行完整功能设计，然后再进行低版本兼容。</p>
+<h3 id="reset-css和normalize-css分别是做什么的？为什么推荐使用normalize-css"><a href="#reset-css和normalize-css分别是做什么的？为什么推荐使用normalize-css" class="headerlink" title="reset.css和normalize.css分别是做什么的？为什么推荐使用normalize.css?"></a><code>reset.css</code>和<code>normalize.css</code>分别是做什么的？为什么推荐使用<code>normalize.css</code>?</h3><p><code>reset.css</code>是样式重置，以暴力方式覆盖掉浏览器的所有默认样式，以保持浏览器渲染的一致性。<br><code>normalize.css</code>则是一冲<code>reset.css</code>的代替方案，注重荣泳方案，重置掉该重置的样式，保留有用的user agent样式，同时进行一些bug修复。<br><code>normalize.css</code>的优点：</p>
+<blockquote>
+<ol>
+<li>保护有用的浏览器默认样式，而不是完全去掉他们；</li>
+<li>一般化的样式：为大部分HTML元素提供；</li>
+<li>修复浏览器自身的bug，并保证个浏览器的一致性；</li>
+<li>优化CSS可用性；</li>
+<li>解释代码：用注释和详细的文档。</li>
+</ol>
+</blockquote>
+<p><a href="http://jerryzou.com/posts/aboutNormalizeCss/" target="_blank" rel="external">参考：来，让我们谈一谈Normalize</a></p>
+<h3 id="IE盒模型和标准盒模型有什么区别-怎样使-IE678使用标准盒模型-box-sizing-border-box有什么作用"><a href="#IE盒模型和标准盒模型有什么区别-怎样使-IE678使用标准盒模型-box-sizing-border-box有什么作用" class="headerlink" title="IE盒模型和标准盒模型有什么区别? 怎样使 IE678使用标准盒模型?box-sizing:border-box有什么作用"></a>IE盒模型和标准盒模型有什么区别? 怎样使 IE678使用标准盒模型?box-sizing:border-box有什么作用</h3><p>IE盒模型：宽度=边框+padding+内容宽度：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-480d9c60e056a7e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IE盒模型"><br>标准盒模型：宽度= 内容宽度：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-22fbb07a68b61b51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="标准盒模型"><br>添加<code>&lt;!DOCTYPE html&gt;</code>可以让IE678使用标准盒模型。<br><code>box-sizing:border-box</code>是CSS3新增属性，设置之后相当于以IE6模式解析盒模型<br><img src="http://upload-images.jianshu.io/upload_images/2331805-42a9e23629d75e4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="`box-sizing:border-box`"></p>
+<p>IE6,7,8下的盒模型，<code>display:inline-block</code>,<code>max-width</code></p>
+<ol>
+<li>盒模型：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-da0d65de7cbc573e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IE678盒模型"><br>改变 <code>padding</code>和<code>border</code>之后的盒模型：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-51a22b7824e58a6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IE678盒模型"></li>
+<li><code>display:inline-block</code>:<br>在IE8中，支持<code>display:inline-block</code><br><img src="http://upload-images.jianshu.io/upload_images/2331805-89504255560f36b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IE8"><br>在不添加<code>&lt;!DOCTYPE html&gt;</code>声明时，则不支持<code>display:inline-block</code>:<br><img src="http://upload-images.jianshu.io/upload_images/2331805-e346f5fceae7cc02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ie8怪异模式"><br>在IE7中，块级元素不支持<code>display:inline-block</code>,行内元素支持：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-26912e002fa96d33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ie7"><br>IE6和IE7相同：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-1d1878402874932f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IE6"></li>
+<li><code>max-width</code>：<br>IE8支持<code>max-width</code>属性：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-e17fd7b046b03230.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IE8"><br>IE8在怪异模式下不支持：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-00fd3f4c6ec9d24a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IE8怪异模式"><br>IE7支持<code>max-width</code>属性：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-a1d34a78e06bd9df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IE7"><br>在怪异模式下，IE7同样不支持该属性：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-17c082c4dfcd57aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IE7怪异模式"><br>IE6完全不支持该属性：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-239452eac09a9823.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IE6"></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/07/22/浏览器兼容/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-负边距、三栏布局" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -858,120 +953,9 @@
 
 
   
-    <article id="post-HTML（1）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/29/HTML（1）/">HTML1</a>
-    </h1>
-  
-
-        
-        <a href="/2016/06/29/HTML（1）/" class="archive-article-date">
-  	<time datetime="2016-06-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="网页乱码的问题是如何产生的？怎样解决"><a href="#网页乱码的问题是如何产生的？怎样解决" class="headerlink" title="网页乱码的问题是如何产生的？怎样解决"></a>网页乱码的问题是如何产生的？怎样解决</h3><p>有多种编码方式，如美国标准信息交换代码<strong>ASCII</strong>,以及为了将绝大多数语音用一种统一编码方式的<strong>UNICODE</strong>和万国码<strong>UTF-8</strong>，和中国自己制定的规则<strong>GBK</strong> 。<br>而当我们在保存自己编写的HTML文件时会自主选择一种编码方式保存(如<strong>GBK</strong>)，而当浏览器在打开网页时它并不知道这个文件的编码方式，于是会默认选择一种编码方式打开文件，而当这种默认方式和保存文件时的编码方式不统一时则有可能会造成乱码。<br>要解决乱码要清楚以那种方式保存，并添加相应声明。例：<br>1.当以<strong>UTF-8</strong>保存时，则在HTML的<code>&lt;head&gt;</code>中添加：<br><code>&lt;meta charset=&quot;utf-8&quot;&gt;</code><br>2.当以<strong>GBK</strong>保存时，则在HTML的<code>&lt;head&gt;</code>中添加：<br><code>&lt;meta charset=&quot;gbk&quot;&gt;</code></p>
-<h3 id="颜色有几种写法，-红色、-绿色、蓝色、白色、黑色如何表示？-透明黑色如何表示？-ccc的颜色，-eee的颜色？-333的颜色？"><a href="#颜色有几种写法，-红色、-绿色、蓝色、白色、黑色如何表示？-透明黑色如何表示？-ccc的颜色，-eee的颜色？-333的颜色？" class="headerlink" title="颜色有几种写法， 红色、 绿色、蓝色、白色、黑色如何表示？ 透明黑色如何表示？#ccc的颜色， #eee的颜色？ #333的颜色？"></a>颜色有几种写法， 红色、 绿色、蓝色、白色、黑色如何表示？ 透明黑色如何表示？#ccc的颜色， #eee的颜色？ #333的颜色？</h3><p>颜色的写法：<br>1.以英文单词表示，如black;<br>2.以16进制表示，如#ffffff；<br>3.以RGB表示，如rgb(0,0,0)；</p>
-<table>
-<thead>
-<tr>
-<th>颜色</th>
-<th style="text-align:center">英文单词表示</th>
-<th style="text-align:center">十六进制表示</th>
-<th>RGB表示</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>红色</td>
-<td style="text-align:center">Red</td>
-<td style="text-align:center">#ff0000</td>
-<td>rgb(255,0,0)</td>
-</tr>
-<tr>
-<td>绿色</td>
-<td style="text-align:center">Green</td>
-<td style="text-align:center">#008000</td>
-<td>rgb(0,255,0)</td>
-</tr>
-<tr>
-<td>蓝色</td>
-<td style="text-align:center">Blue</td>
-<td style="text-align:center">#0000ff</td>
-<td>rgb(0,0,255)</td>
-</tr>
-<tr>
-<td>白色</td>
-<td style="text-align:center">White</td>
-<td style="text-align:center">#ffffff</td>
-<td>rgb(255,255,255)</td>
-</tr>
-<tr>
-<td>黑色</td>
-<td style="text-align:center">Black</td>
-<td style="text-align:center">#000000</td>
-<td>rgb(0,0,0)</td>
-</tr>
-</tbody>
-</table>
-<p>透明黑色：rgba(0,0,0,0.5);<br>颜色：#ccc:灰色,#eee:浅灰，#333：深灰;</p>
-<h3 id="lt-doctype-html-gt-的作用是什么"><a href="#lt-doctype-html-gt-的作用是什么" class="headerlink" title="&lt;!doctype html&gt;的作用是什么"></a>&lt;!doctype html&gt;的作用是什么</h3><p>Web 世界中存在许多不同的文档。只有了解文档的类型，浏览器才能正确地显示文档。<br>HTML 也有多个不同的版本，只有完全明白页面中使用的确切 HTML 版本，浏览器才能完全正确地显示出 HTML 页面。这就是 &lt;!DOCTYPE&gt; 的用处。<br>&lt;!DOCTYPE&gt; 不是 HTML 标签。它为浏览器提供一项信息（声明），即 HTML 是用什么版本编写的。<br>而&lt;!doctype html&gt;则是W3C规定的html5文档类型。</p>
-<h3 id="严格模式和混杂模式指什么"><a href="#严格模式和混杂模式指什么" class="headerlink" title="严格模式和混杂模式指什么"></a>严格模式和混杂模式指什么</h3><p>严格模式是浏览器根据web标准去解析页面，是一种要求严格的DTD，不允许使用任何表现层的语法，如<code>&lt;br/&gt;</code>。<br>混杂模式就是浏览器为了兼容很早之前针对旧版本浏览器设计、并未严格遵循 W3C 标准的网页而产生的一种页面渲染模式。</p>
-<h3 id="meta有什么作用，常见的值有哪些"><a href="#meta有什么作用，常见的值有哪些" class="headerlink" title="meta有什么作用，常见的值有哪些"></a>meta有什么作用，常见的值有哪些</h3><p><code>&lt;meta&gt;</code> 标签规定页面的描述、关键词、文档的作者、最后修改时间的元数据,元数据可用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他 web 服务。<br>meta标签属性分别是http-equiv属性、name属性、charset属性、content属性。</p>
-<h3 id="有什么作用"><a href="#有什么作用" class="headerlink" title="有什么作用"></a><meta http-equiv="X-UA-compatible" content="IE=edge,chrome=1">有什么作用</h3><p>这样写可以达到的效果是如果安装了GCF，则使用GCF来渲染页面，如果未安装GCF，则使用最高版本的IE内核进行渲染。<br>GCF：Google Chrome Frame ，用于给 IE 带来 Chrome 的 open web 技巧以及快速的 JavaScript 引擎。</p>
-<h3 id="常见的浏览器有哪些，什么内核"><a href="#常见的浏览器有哪些，什么内核" class="headerlink" title="常见的浏览器有哪些，什么内核"></a>常见的浏览器有哪些，什么内核</h3><p>IE浏览器：Trident内核<br>Firefox浏览器：Gecko内核<br>Opera浏览器：Blink内核<br>Chrome，Safari浏览器：Webkit内核</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">html简介</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/06/29/HTML（1）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 

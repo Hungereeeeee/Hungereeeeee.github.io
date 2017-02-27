@@ -6,27 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>浏览器兼容 | 块垒的博客</title>
+  <title>异步执行 | 块垒的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前面内容我们可以看到，在不同的浏览器下，添加和移除事件处理程序方式不相同，要想写出跨浏览器的事件处理程序，首先我们要了解不同的浏览器下处理事件处理程序的区别
-在添加事件处理程序事addEventListener和attachEvent主要有几个区别
+  <meta name="description" content="JS的异步执行每一个任务分成两段，第一段代码包含对外部数据的请求，第二段代码被写成一个回调函数，包含了对外部数据的处理。第一段代码执行完，不是立刻执行第二段代码，而是将程序的执行权交给第二个任务。等到外部数据返回了，再由系统通知执行第二段代码。所以程序的执行顺序与任务的排列顺序是不一致的异步的。
 
-参数个数不相同，这个最直观，addEventListener有三个参数，attachEvent只有两个，attachEvent添加的事件处理程序只能">
+回调函数回调函数是异步编程最基本的方法
+  1234567function f1(callback)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浏览器兼容">
-<meta property="og:url" content="http://yoursite.com/2016/08/26/浏览器兼容-1/index.html">
+<meta property="og:title" content="异步执行">
+<meta property="og:url" content="http://yoursite.com/2017/02/27/异步执行/index.html">
 <meta property="og:site_name" content="块垒的博客">
-<meta property="og:description" content="前面内容我们可以看到，在不同的浏览器下，添加和移除事件处理程序方式不相同，要想写出跨浏览器的事件处理程序，首先我们要了解不同的浏览器下处理事件处理程序的区别
-在添加事件处理程序事addEventListener和attachEvent主要有几个区别
+<meta property="og:description" content="JS的异步执行每一个任务分成两段，第一段代码包含对外部数据的请求，第二段代码被写成一个回调函数，包含了对外部数据的处理。第一段代码执行完，不是立刻执行第二段代码，而是将程序的执行权交给第二个任务。等到外部数据返回了，再由系统通知执行第二段代码。所以程序的执行顺序与任务的排列顺序是不一致的异步的。
 
-参数个数不相同，这个最直观，addEventListener有三个参数，attachEvent只有两个，attachEvent添加的事件处理程序只能">
-<meta property="og:updated_time" content="2017-01-30T06:43:00.801Z">
+回调函数回调函数是异步编程最基本的方法
+  1234567function f1(callback)">
+<meta property="og:updated_time" content="2017-02-27T13:44:23.889Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浏览器兼容">
-<meta name="twitter:description" content="前面内容我们可以看到，在不同的浏览器下，添加和移除事件处理程序方式不相同，要想写出跨浏览器的事件处理程序，首先我们要了解不同的浏览器下处理事件处理程序的区别
-在添加事件处理程序事addEventListener和attachEvent主要有几个区别
+<meta name="twitter:title" content="异步执行">
+<meta name="twitter:description" content="JS的异步执行每一个任务分成两段，第一段代码包含对外部数据的请求，第二段代码被写成一个回调函数，包含了对外部数据的处理。第一段代码执行完，不是立刻执行第二段代码，而是将程序的执行权交给第二个任务。等到外部数据返回了，再由系统通知执行第二段代码。所以程序的执行顺序与任务的排列顺序是不一致的异步的。
 
-参数个数不相同，这个最直观，addEventListener有三个参数，attachEvent只有两个，attachEvent添加的事件处理程序只能">
+回调函数回调函数是异步编程最基本的方法
+  1234567function f1(callback)">
   
     <link rel="alternative" href="/atom.xml" title="块垒的博客" type="application/atom+xml">
   
@@ -152,43 +152,55 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-浏览器兼容-1" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-异步执行" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      浏览器兼容
+      异步执行
     </h1>
   
 
         
-        <a href="/2016/08/26/浏览器兼容-1/" class="archive-article-date">
-  	<time datetime="2016-08-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-26</time>
+        <a href="/2017/02/27/异步执行/" class="archive-article-date">
+  	<time datetime="2017-02-27T13:42:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>前面内容我们可以看到，在不同的浏览器下，添加和移除事件处理程序方式不相同，要想写出跨浏览器的事件处理程序，首先我们要了解不同的浏览器下处理事件处理程序的区别</p>
-<p>在添加事件处理程序事addEventListener和attachEvent主要有几个区别</p>
-<ol>
-<li>参数个数不相同，这个最直观，addEventListener有三个参数，attachEvent只有两个，attachEvent添加的事件处理程序只能发生在冒泡阶段，addEventListener第三个参数可以决定添加的事件处理程序是在捕获阶段还是冒泡阶段处理（我们一般为了浏览器兼容性都设置为冒泡阶段）</li>
-<li>第一个参数意义不同，addEventListener第一个参数是事件类型（比如click，load），而attachEvent第一个参数指明的是事件处理函数名称（onclick，onload）</li>
-<li>事件处理程序的作用域不相同，addEventListener的作用域是元素本身，this是指的触发元素，而attachEvent事件处理程序会在全局变量内运行，this是window，所以刚才例子才会返回undefined，而不是元素id</li>
-<li>为一个事件添加多个事件处理程序时，执行顺序不同，addEventListener添加会按照添加顺序执行，而attachEvent添加多个事件处理程序时顺序无规律(添加的方法少的时候大多是按添加顺序的反顺序执行的，但是添加的多了就无规律了)，所以添加多个的时候，不依赖执行顺序的还好，若是依赖于函数执行顺序，最好自己处理，不要指望浏览器</li>
-</ol>
-<p>了解了这四点区别后我们可以尝试写一个浏览器兼容性比较好的添加事件处理程序方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function addEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.addEventListener) &#123;</div><div class="line">        node.addEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.attachEvent) &#123;</div><div class="line">        node.attachEvent(&apos;on&apos; + type, handler, );</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这样，首先我们解决了第一个问题参数个数不同，现在三个参数，采用事件冒泡阶段触发</p>
-<p>第二个问题也得以解决，如果是IE，我们给type添加上on</p>
-<p>第四个问题目前还没有解决方案，需要用户自己注意，一般情况下，大家也不会添加很多事件处理程序</p>
-<p>试试这个方法感觉很不错，但是我们没有解决第三个问题，由于处理程序作用域不同，如果handler内有this之类操作，那么就会出错。在IE下，实际上大多数函数都会有this操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function addEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.addEventListener) &#123;</div><div class="line">        node.addEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.attachEvent) &#123;</div><div class="line">        node.attachEvent(&apos;on&apos; + type, function() &#123; handler.apply(node); &#125;);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这样处理就可以解决this的问题了，但是新的问题又来了，我们这样等于添加了一个匿名的事件处理程序，无法用detachEvent取消事件处理程序，有很多解决方案，我们可以借鉴大师的处理方式，jQuery创始人John Resig是这样做的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function addEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.addEventListener) &#123;</div><div class="line">        node.addEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.attachEvent) &#123;</div><div class="line">        node[&apos;e&apos; + type + handler] = handler;</div><div class="line">        node[type + handler] = function() &#123;</div><div class="line">            node[&apos;e&apos; + type + handler](window.event);</div><div class="line">        &#125;;</div><div class="line">        node.attachEvent(&apos;on&apos; + type, node[type + handler]);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在取消事件处理程序的时候<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function removeEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.removeEventListener) &#123;</div><div class="line">        node.removeEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.detachEvent) &#123;</div><div class="line">        node.detachEvent(&apos;on&apos; + type, node[type + handler]);</div><div class="line">        node[type + handler] = null;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>John Resig很巧妙地利用了闭包，看起来很不错。</p>
-<h3 id="完整兼容封装"><a href="#完整兼容封装" class="headerlink" title="完整兼容封装"></a>完整兼容封装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">function $$(el)&#123;</div><div class="line">	if(el.length &lt; 1)&#123;</div><div class="line">		return;</div><div class="line">	&#125;</div><div class="line">	var sub = el.substring(1);</div><div class="line">	if( el[0] === &apos;#&apos;)&#123;</div><div class="line">		return document.getElementById(sub);</div><div class="line">	&#125;else if(el[0] === &apos;.&apos;)&#123;</div><div class="line">		return document.getElementsByClassName(sub);</div><div class="line">	&#125;else&#123;</div><div class="line">		return document.getElementsByTagName(el);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">function addEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.addEventListener) &#123;</div><div class="line">        node.addEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.attachEvent) &#123;</div><div class="line">        node[&apos;e&apos; + type + handler] = handler;</div><div class="line">        node[type + handler] = function() &#123;</div><div class="line">            node[&apos;e&apos; + type + handler](window.event);</div><div class="line">        &#125;;</div><div class="line">        node.attachEvent(&apos;on&apos; + type, node[type + handler]);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function removeEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.removeEventListener) &#123;</div><div class="line">        node.removeEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.detachEvent) &#123;</div><div class="line">        node.detachEvent(&apos;on&apos; + type, node[type + handler]);</div><div class="line">        node[type + handler] = null;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function getEvent(e) &#123;</div><div class="line">    return e || window.event;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function getTarget(e) &#123;</div><div class="line">    return e.target || e.scrElement;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function preventDefault(e) &#123;</div><div class="line">    if (e.preventDefault)</div><div class="line">        e.preventDefault();</div><div class="line">    else</div><div class="line">        e.returnValue = false;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function stopPropagation(e) &#123;</div><div class="line">    if (e.stopPropagation)</div><div class="line">        e.stopPropagation();</div><div class="line">    else</div><div class="line">        e.cancelBubble = true;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h1 id="JS的异步执行"><a href="#JS的异步执行" class="headerlink" title="JS的异步执行"></a>JS的异步执行</h1><p>每一个任务分成两段，第一段代码包含对外部数据的请求，第二段代码被写成一个回调函数，包含了对外部数据的处理。第一段代码执行完，不是立刻执行第二段代码，而是将程序的执行权交给第二个任务。等到外部数据返回了，再由系统通知执行第二段代码。所以程序的执行顺序与任务的排列顺序是不一致的异步的。</p>
+<ul>
+<li><p>回调函数<br>回调函数是异步编程最基本的方法</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function f1(callback) &#123;</div><div class="line">  // f1 的代码</div><div class="line"></div><div class="line">  // f1 执行完成后，调用回调函数</div><div class="line">  callback();</div><div class="line">&#125;</div><div class="line">f1(f2);</div></pre></td></tr></table></figure>
+<p>  回调函数的优点是简单、容易理解和部署，缺点是不利于代码的阅读和维护，各个部分之间高度耦合（Coupling），使得程序结构混乱、流程难以追踪（尤其是回调函数嵌套的情况），而且每个任务只能指定一个回调函数。</p>
+</li>
+<li><p>事件监听<br>任务的执行不取决于代码的顺序，而取决于某个事件是否发生</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function f1()&#123;</div><div class="line">  setTimeout(function () &#123;</div><div class="line">    // f1的任务代码</div><div class="line">    f1.trigger(&apos;done&apos;);</div><div class="line">  &#125;, 1000);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>发布订阅模式</p>
+</li>
+</ul>
+<h1 id="异步操作流程"><a href="#异步操作流程" class="headerlink" title="异步操作流程"></a>异步操作流程</h1><p>一个异步代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function async(arg, callback) &#123;</div><div class="line">  console.log(&apos;参数为 &apos; + arg +&apos; , 1秒后返回结果&apos;);</div><div class="line">  setTimeout(function() &#123; callback(arg * 2); &#125;, 1000);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>一个完成后的执行函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function final(value) &#123;</div><div class="line">  console.log(&apos;完成: &apos;, value);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>串行执行<br>我们可以编写一个流程控制函数，让它来控制异步任务，一个任务完成之后，再执行另一个，这就叫串行执行</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var items = [ 1, 2, 3, 4, 5, 6 ];</div><div class="line">var results = [];</div><div class="line">function series(item) &#123;</div><div class="line">  if(item) &#123;</div><div class="line">    async( item, function(result) &#123;</div><div class="line">      results.push(result);</div><div class="line">      return series(items.shift());</div><div class="line">    &#125;);</div><div class="line">  &#125; else &#123;</div><div class="line">    return final(results);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">series(items.shift());</div></pre></td></tr></table></figure>
+<p>  上面代码中，函数series就是串行函数，它会依次执行异步任务，所有任务都完成后，才会执行final函数。items数组保存每一个异步任务的参数，results数组保存每一个异步任务的运行结果。</p>
+</li>
+<li><p>并行执行<br>流程控制函数也可以是并行执行，即所有异步任务同时执行，等到全部完成以后，才执行final函数。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var items = [1,2,3,4,5,6]</div><div class="line">var results=[];</div><div class="line"></div><div class="line">items.forEach(function(item)&#123;</div><div class="line">    async(item,function(result)&#123;</div><div class="line">        results.push(result);</div><div class="line">        if(results.length == items.length)&#123;</div><div class="line">            final(results)</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>  上面代码中，forEach方法会同时发起6个异步任务，等到它们全部完成以后，才会执行final函数。</p>
+<p>  并行执行的好处是效率较高，比起串行执行一次只能执行一个任务，较为节约时间。但是问题在于如果并行的任务较多，很容易耗尽系统资源，拖慢运行速度。因此有了第三种流程控制方式。</p>
+</li>
+<li><p>并行和串行结合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var items = [ 1, 2, 3, 4, 5, 6 ];</div><div class="line">var results = [];</div><div class="line">var running = 0;</div><div class="line">var limit = 2;</div><div class="line">function launcher() &#123;</div><div class="line">  while(running &lt; limit &amp;&amp; items.length &gt; 0) &#123;</div><div class="line">    var item = items.shift();</div><div class="line">    async(item, function(result) &#123;</div><div class="line">      results.push(result);</div><div class="line">      running--;</div><div class="line">      if(items.length &gt; 0) &#123;</div><div class="line">        launcher();</div><div class="line">      &#125; else if(running == 0) &#123;</div><div class="line">        final();</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">    running++;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">launcher();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
       
 
       
@@ -246,7 +258,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/08/26/浏览器兼容-1/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/27/异步执行/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -260,18 +272,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2016/08/26/DOM、事件/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          DOM、事件
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/08/24/正则表达式/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">正则表达式</div>
+    <a href="/2017/02/14/块级作用域/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">块级作用域</div>
       <i class="icon-circle-right"></i>
     </a>
   

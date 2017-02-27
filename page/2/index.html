@@ -144,6 +144,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-继承" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/09/继承/">继承</a>
+    </h1>
+  
+
+        
+        <a href="/2016/10/09/继承/" class="archive-article-date">
+  	<time datetime="2016-10-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="继承有什么作用"><a href="#继承有什么作用" class="headerlink" title="继承有什么作用?"></a>继承有什么作用?</h3><ul>
+<li>得到一个类的属性</li>
+<li>得到一个类的方法</li>
+</ul>
+<h3 id="有几种常见创建对象的方式-举例说明"><a href="#有几种常见创建对象的方式-举例说明" class="headerlink" title="有几种常见创建对象的方式? 举例说明?"></a>有几种常见创建对象的方式? 举例说明?</h3><ul>
+<li><p>直接赋值<br><code>var obj={};</code></p>
+</li>
+<li><p>工厂模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function createCake(name)&#123;</div><div class="line">  var obj=&#123;</div><div class="line">    name:name,</div><div class="line">    sayName:function()&#123;</div><div class="line">      console.log(&apos;我是:&apos;+name)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return obj;</div><div class="line">&#125;</div><div class="line">var cake1= createCake(&apos;草莓蛋糕&apos;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>缺点是无法得到对象类型</p>
+<ul>
+<li><p>构造函数模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function createCake(name)&#123;</div><div class="line">  this.name=name;</div><div class="line">  this.sayName=function()&#123;</div><div class="line">    console.log(&apos;我是：&apos;+this.name);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">var cake1= new createCake(&apos;草莓蛋糕&apos;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>原型方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function createCake(name)&#123;</div><div class="line">  this.name=name;</div><div class="line">&#125;</div><div class="line">createCake.prototype.sayName=function()&#123;</div><div class="line">    console.log(&apos;我是：&apos;+this.name);</div><div class="line">  &#125;</div><div class="line">var cake1= new createCake(&apos;草莓蛋糕&apos;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="下面两种写法有什么区别"><a href="#下面两种写法有什么区别" class="headerlink" title="下面两种写法有什么区别?"></a>下面两种写法有什么区别?</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function People(name, sex)&#123;</div><div class="line">    this.name = name;</div><div class="line">    this.sex = sex;</div><div class="line">    this.printName = function()&#123;</div><div class="line">        console.log(this.name);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var p1 = new People(&apos;饥人谷&apos;, 2)</div><div class="line"></div><div class="line">//方法2</div><div class="line">function Person(name, sex)&#123;</div><div class="line">    this.name = name;</div><div class="line">    this.sex = sex;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Person.prototype.printName = function()&#123;</div><div class="line">    console.log(this.name);</div><div class="line">&#125;</div><div class="line">var p1 = new Person(&apos;若愚&apos;, 27);</div></pre></td></tr></table></figure>
+<p>方法一是构造函数模式，方法二是原型模式。方法二算是方法一的一种改进，把共有的属性放在了原型当中，节省空间。</p>
+<h3 id="Object-create-有什么作用？兼容性如何？如何使用？"><a href="#Object-create-有什么作用？兼容性如何？如何使用？" class="headerlink" title="Object.create 有什么作用？兼容性如何？如何使用？"></a>Object.create 有什么作用？兼容性如何？如何使用？</h3><p><code>Object.create</code>创建一个拥有指定原型和若高个指定属性的对象<br>ES5新特性，需要IE9以上版本</p>
+<h3 id="hasOwnProperty有什么作用？-如何使用？"><a href="#hasOwnProperty有什么作用？-如何使用？" class="headerlink" title="hasOwnProperty有什么作用？ 如何使用？"></a>hasOwnProperty有什么作用？ 如何使用？</h3><p>可以判断一个对象是否包含自定义属性而不是原型链上的属性，<code>hasOwnProperty</code>是JS中唯一一个处理属性但是不查找原型链的函数。</p>
+<h3 id="实现Object-create的-polyfill-如：（ps-写个-函数create，实现-Object-create-的功能"><a href="#实现Object-create的-polyfill-如：（ps-写个-函数create，实现-Object-create-的功能" class="headerlink" title="实现Object.create的 polyfill,如：（ps: 写个 函数create，实现 Object.create 的功能)"></a>实现Object.create的 polyfill,如：（ps: 写个 函数create，实现 Object.create 的功能)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;a: 1, b:2&#125;;</div><div class="line">var obj2 = create(obj);</div><div class="line">console.log(obj2.a); //1</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">if (typeof Object.create != &apos;function&apos;)&#123;</div><div class="line">  Obj.create = (function()&#123;</div><div class="line">    function Temp() &#123;&#125;</div><div class="line">    var hasOwn = Object.prototype.hasOwnProperty;</div><div class="line">    return function(proto)&#123;</div><div class="line">      if (typeof proto != &apos;object&apos;)&#123;</div><div class="line">        throw TypeError(&apos;Object prototype may only be an Object or null&apos;);</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      Temp.prototype = proto;</div><div class="line">      var obj = new Temp();</div><div class="line">      Temp.prototype = null;</div><div class="line"></div><div class="line">      if (arguments.length &gt; 1)&#123;</div><div class="line">        var Properties = Object(arguments[1]);</div><div class="line">        for (var prop in Properties)&#123;</div><div class="line">          if (hasOwn.call(Properties, prop)) &#123;</div><div class="line">            obj[prop] = Properties[prop];</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      return obj;</div><div class="line">    &#125;;</div><div class="line">  &#125;)();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="如下代码中call的作用是什么"><a href="#如下代码中call的作用是什么" class="headerlink" title="如下代码中call的作用是什么?"></a>如下代码中call的作用是什么?</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function Person(name, sex)&#123;</div><div class="line">    this.name = name;</div><div class="line">    this.sex = sex;</div><div class="line">&#125;</div><div class="line">function Male(name, sex, age)&#123;</div><div class="line">    Person.call(this, name, sex);    //这里的 call 有什么作用</div><div class="line">    this.age = age;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>改变this的指向，把环境改变到Male的环境内，实现继承。</p>
+<h3 id="补全代码，实现继承"><a href="#补全代码，实现继承" class="headerlink" title="补全代码，实现继承"></a>补全代码，实现继承</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function Person(name, sex)&#123;</div><div class="line">    // todo ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">Person.prototype.getName = function()&#123;</div><div class="line">    // todo ...</div><div class="line">&#125;;</div><div class="line"></div><div class="line">function Male(name, sex, age)&#123;</div><div class="line">   //todo ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">//todo ...</div><div class="line">Male.prototype.getAge = function()&#123;</div><div class="line">    //todo ...</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var ruoyu = new Male(&apos;若愚&apos;, &apos;男&apos;, 27);</div><div class="line">ruoyu.printName();</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">      function inhert(superType,subType)&#123;</div><div class="line">	var _prototype = Object.create(superType.prototype);</div><div class="line">	_prototype.constructor=subType;</div><div class="line">	subType.prototype=_prototype;</div><div class="line">&#125;</div><div class="line">function Person(name,sex)&#123;</div><div class="line">	this.name=name;</div><div class="line">	this.sex=sex;</div><div class="line">&#125;</div><div class="line">Person.prototype.getName=function()&#123;</div><div class="line">	console.log(this.name);</div><div class="line">&#125;</div><div class="line">function Male(name,sex,age)&#123;</div><div class="line">	Person.call(name,sex);</div><div class="line">	this.age=age;</div><div class="line">&#125;</div><div class="line">inhert(Person,Male);</div><div class="line">Male.prototype.getAge=function()&#123;</div><div class="line">	console.log(this.age);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/10/09/继承/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-原型链" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -247,6 +326,105 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/09/28/对象、原型/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-this" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/27/this/">this</a>
+    </h1>
+  
+
+        
+        <a href="/2016/09/27/this/" class="archive-article-date">
+  	<time datetime="2016-09-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="apply、call-有什么作用，什么区别"><a href="#apply、call-有什么作用，什么区别" class="headerlink" title="apply、call 有什么作用，什么区别"></a>apply、call 有什么作用，什么区别</h3><ul>
+<li>首先要引入<code>this</code>这个概念<br>由于运行期绑定的特性，<code>this</code>的含义非常多，既可以是全局对性爱那个，当前对象或任意对象，这取决于函数的调用方式，但总有一个原则，那就是<code>this</code>指的是调用函数的那个对象。</li>
+</ul>
+<ol>
+<li>作为函数调用：在函数直接调用时<code>this</code>绑定到全局对象，在浏览器中，<code>window</code>就是该全局对象。</li>
+<li>内部函数：函数嵌套产生的内部函数的<code>this</code>不是其父函数，仍是<strong>全局变量</strong>。</li>
+<li><code>setTimeout、setinterval</code>：这两个方法执行的函数<code>this</code>也是全局对象</li>
+<li>作为构造函数调用：所谓构造函数，就是通过这个函数生成一个新对象。这时，<code>this</code>就指这个新对象。<br> new 运算符接受一个函数 F 及其参数：new F(arguments…)。这一过程分为三步：<ol>
+<li>创建类的实例。这步是把一个空的对象的 <strong>proto</strong> 属性设置为 F.prototype 。</li>
+<li>初始化实例。函数 F 被传入参数并调用，关键字 this 被设定为该实例。</li>
+<li>返回实例。</li>
+</ol>
+</li>
+<li>作为对象方法调用：在JS中，函数也是对象，因此函数可以作为一个对象的属性，此时该函数被称为该对象的方法，在使用这种调用方法时，<code>this</code>被自然绑定到该对象。</li>
+<li>DOM对象绑定事件：在事件处理程序中<code>this</code>代表事件源DOM对象（低版本IE被指向了<code>window</code>）</li>
+</ol>
+<ul>
+<li><code>apply、call</code>的作用<br><code>apply、call</code>的作用是相同的，都是指定函数的this和参数来调用函数，使用<code>call</code>和<code>apply</code>可以使this的指向变得清晰。</li>
+<li><code>apply、call</code>的区别<br><code>apply</code>接受的是数组形式的参数，<code>call</code>接受的是多个参数。</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ol>
+<li>以下代码输出什么？<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;</div><div class="line">&#125;</div><div class="line">function func() &#123;</div><div class="line">  alert(this.firstName + &quot;: hi!&quot;)</div><div class="line">&#125;</div><div class="line">john.sayHi = func</div><div class="line">john.sayHi()</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出<strong>john：hi！</strong></p>
+<ol>
+<li>下面代码输出什么，为什么<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">func()</div><div class="line">function func() &#123;</div><div class="line">  alert(this)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出<strong>window</strong>，因为函数是全局作用域下调用的</p>
+<ol>
+<li><p>下面代码输出什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function fn0()&#123;</div><div class="line">    function fn()&#123;</div><div class="line">        console.log(this);</div><div class="line">    &#125;</div><div class="line">    fn();</div><div class="line">&#125;</div><div class="line">fn0(); //输出window</div><div class="line">document.addEventListener(&apos;click&apos;, function(e)&#123;</div><div class="line">    console.log(this); //输出document节点</div><div class="line">    setTimeout(function()&#123;</div><div class="line">        console.log(this); //输出window</div><div class="line">    &#125;, 200);</div><div class="line">&#125;, false);</div></pre></td></tr></table></figure>
+</li>
+<li><p>下面代码输出什么，why</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;</div><div class="line">&#125;</div><div class="line">function func() &#123;</div><div class="line">  alert( this.firstName )</div><div class="line">&#125;</div><div class="line">func.call(john)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出<strong>John</strong>，因为通过call把this指为了john对象</p>
+<ol>
+<li>代码输出？<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;,</div><div class="line">  surname: &quot;Smith&quot;</div><div class="line">&#125;</div><div class="line">function func(a, b) &#123;</div><div class="line">  alert( this[a] + &apos; &apos; + this[b] )</div><div class="line">&#125;</div><div class="line">func.call(john, &apos;firstName&apos;, &apos;surname&apos;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出<strong>John Smith</strong></p>
+<ol>
+<li>以下代码有什么问题，如何修改<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var module= &#123;</div><div class="line">    bind: function()&#123;</div><div class="line">      var cur=this; //添加</div><div class="line">      $btn.on(&apos;click&apos;, function()&#123;</div><div class="line">        console.log(this) //this指什么</div><div class="line">        cur.showMsg();//改</div><div class="line">      &#125;)</div><div class="line">    &#125;,</div><div class="line">    showMsg: function()&#123;</div><div class="line">     console.log(&apos;饥人谷&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>在DOM绑定事件中this被指向了事件源DOM对象，所以<code>this.showMsg()</code>无法正常调用</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/09/27/this/">展开全文 >></a>
         </p>
       
 
@@ -391,105 +569,6 @@
 
 
   
-    <article id="post-this" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/27/this/">this</a>
-    </h1>
-  
-
-        
-        <a href="/2016/09/27/this/" class="archive-article-date">
-  	<time datetime="2016-09-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="apply、call-有什么作用，什么区别"><a href="#apply、call-有什么作用，什么区别" class="headerlink" title="apply、call 有什么作用，什么区别"></a>apply、call 有什么作用，什么区别</h3><ul>
-<li>首先要引入<code>this</code>这个概念<br>由于运行期绑定的特性，<code>this</code>的含义非常多，既可以是全局对性爱那个，当前对象或任意对象，这取决于函数的调用方式，但总有一个原则，那就是<code>this</code>指的是调用函数的那个对象。</li>
-</ul>
-<ol>
-<li>作为函数调用：在函数直接调用时<code>this</code>绑定到全局对象，在浏览器中，<code>window</code>就是该全局对象。</li>
-<li>内部函数：函数嵌套产生的内部函数的<code>this</code>不是其父函数，仍是<strong>全局变量</strong>。</li>
-<li><code>setTimeout、setinterval</code>：这两个方法执行的函数<code>this</code>也是全局对象</li>
-<li>作为构造函数调用：所谓构造函数，就是通过这个函数生成一个新对象。这时，<code>this</code>就指这个新对象。<br> new 运算符接受一个函数 F 及其参数：new F(arguments…)。这一过程分为三步：<ol>
-<li>创建类的实例。这步是把一个空的对象的 <strong>proto</strong> 属性设置为 F.prototype 。</li>
-<li>初始化实例。函数 F 被传入参数并调用，关键字 this 被设定为该实例。</li>
-<li>返回实例。</li>
-</ol>
-</li>
-<li>作为对象方法调用：在JS中，函数也是对象，因此函数可以作为一个对象的属性，此时该函数被称为该对象的方法，在使用这种调用方法时，<code>this</code>被自然绑定到该对象。</li>
-<li>DOM对象绑定事件：在事件处理程序中<code>this</code>代表事件源DOM对象（低版本IE被指向了<code>window</code>）</li>
-</ol>
-<ul>
-<li><code>apply、call</code>的作用<br><code>apply、call</code>的作用是相同的，都是指定函数的this和参数来调用函数，使用<code>call</code>和<code>apply</code>可以使this的指向变得清晰。</li>
-<li><code>apply、call</code>的区别<br><code>apply</code>接受的是数组形式的参数，<code>call</code>接受的是多个参数。</li>
-</ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ol>
-<li>以下代码输出什么？<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;</div><div class="line">&#125;</div><div class="line">function func() &#123;</div><div class="line">  alert(this.firstName + &quot;: hi!&quot;)</div><div class="line">&#125;</div><div class="line">john.sayHi = func</div><div class="line">john.sayHi()</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>输出<strong>john：hi！</strong></p>
-<ol>
-<li>下面代码输出什么，为什么<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">func()</div><div class="line">function func() &#123;</div><div class="line">  alert(this)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>输出<strong>window</strong>，因为函数是全局作用域下调用的</p>
-<ol>
-<li><p>下面代码输出什么</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function fn0()&#123;</div><div class="line">    function fn()&#123;</div><div class="line">        console.log(this);</div><div class="line">    &#125;</div><div class="line">    fn();</div><div class="line">&#125;</div><div class="line">fn0(); //输出window</div><div class="line">document.addEventListener(&apos;click&apos;, function(e)&#123;</div><div class="line">    console.log(this); //输出document节点</div><div class="line">    setTimeout(function()&#123;</div><div class="line">        console.log(this); //输出window</div><div class="line">    &#125;, 200);</div><div class="line">&#125;, false);</div></pre></td></tr></table></figure>
-</li>
-<li><p>下面代码输出什么，why</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;</div><div class="line">&#125;</div><div class="line">function func() &#123;</div><div class="line">  alert( this.firstName )</div><div class="line">&#125;</div><div class="line">func.call(john)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>输出<strong>John</strong>，因为通过call把this指为了john对象</p>
-<ol>
-<li>代码输出？<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;,</div><div class="line">  surname: &quot;Smith&quot;</div><div class="line">&#125;</div><div class="line">function func(a, b) &#123;</div><div class="line">  alert( this[a] + &apos; &apos; + this[b] )</div><div class="line">&#125;</div><div class="line">func.call(john, &apos;firstName&apos;, &apos;surname&apos;)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>输出<strong>John Smith</strong></p>
-<ol>
-<li>以下代码有什么问题，如何修改<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var module= &#123;</div><div class="line">    bind: function()&#123;</div><div class="line">      var cur=this; //添加</div><div class="line">      $btn.on(&apos;click&apos;, function()&#123;</div><div class="line">        console.log(this) //this指什么</div><div class="line">        cur.showMsg();//改</div><div class="line">      &#125;)</div><div class="line">    &#125;,</div><div class="line">    showMsg: function()&#123;</div><div class="line">     console.log(&apos;饥人谷&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>在DOM绑定事件中this被指向了事件源DOM对象，所以<code>this.showMsg()</code>无法正常调用</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/27/this/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
     <article id="post-同源策略、跨域、jsonp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -574,58 +653,6 @@
 
 
   
-    <article id="post-瀑布流布局" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/19/瀑布流布局/">瀑布流布局</a>
-    </h1>
-  
-
-        
-        <a href="/2016/09/19/瀑布流布局/" class="archive-article-date">
-  	<time datetime="2016-09-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>###瀑布流布局的原理是什么<br>元素的宽度统一固定，但是高度随机。<br>通过计算窗口的宽度确定每排最多可以并列几个元素。<br>然后先顺序插入一排元素，再之后每个元素插入的时候都找高度最小的那一列插入。<br>由于在使用过程中窗口的宽度可能会改变，则要将以上的过程中放在<code>window.onresize</code>事件当中。</p>
-<p>###瀑布流布局代码<br><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task30/task30-1.html" target="_blank" rel="external">在线预览</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/19/瀑布流布局/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
     <article id="post-jquery懒加载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -665,6 +692,58 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/09/19/jquery懒加载/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-瀑布流布局" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/19/瀑布流布局/">瀑布流布局</a>
+    </h1>
+  
+
+        
+        <a href="/2016/09/19/瀑布流布局/" class="archive-article-date">
+  	<time datetime="2016-09-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###瀑布流布局的原理是什么<br>元素的宽度统一固定，但是高度随机。<br>通过计算窗口的宽度确定每排最多可以并列几个元素。<br>然后先顺序插入一排元素，再之后每个元素插入的时候都找高度最小的那一列插入。<br>由于在使用过程中窗口的宽度可能会改变，则要将以上的过程中放在<code>window.onresize</code>事件当中。</p>
+<p>###瀑布流布局代码<br><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task30/task30-1.html" target="_blank" rel="external">在线预览</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/09/19/瀑布流布局/">展开全文 >></a>
         </p>
       
 
@@ -869,72 +948,9 @@
 
 
   
-    <article id="post-AJAX" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/31/AJAX/">AJAX</a>
-    </h1>
-  
-
-        
-        <a href="/2016/08/31/AJAX/" class="archive-article-date">
-  	<time datetime="2016-08-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="ajax-是什么？有什么作用？"><a href="#ajax-是什么？有什么作用？" class="headerlink" title="ajax 是什么？有什么作用？"></a>ajax 是什么？有什么作用？</h3><p>ajax通过原生的XMLHttpRequest对象发出HTTP请求，得到服务器返回的数据后，再进行处理。<br>ajax可以无需刷新整个网页，而是对部分网页进行刷新。</p>
-<p>###前后端开发联调需要注意哪些事情？后端接口完成前如何 mock 数据？<br>前后端进行开发前，要定义好接口以及数据形式等细节，已达到解耦效果。<br>后端接口完成前，前端可以通过MOCKJS等工具模拟数据。</p>
-<h3 id="点击按钮，使用-ajax-获取数据，如何在数据到来之前防止重复点击"><a href="#点击按钮，使用-ajax-获取数据，如何在数据到来之前防止重复点击" class="headerlink" title="点击按钮，使用 ajax 获取数据，如何在数据到来之前防止重复点击?"></a>点击按钮，使用 ajax 获取数据，如何在数据到来之前防止重复点击?</h3><p>通过设定标记<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var flag=false;</div><div class="line">tn.addEventListener(&apos;click&apos;, function(e) &#123;</div><div class="line">    //......</div><div class="line">    flag = true;</div><div class="line">    if(flag)&#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>在请求数据时，函数flag设为false,保证不重复点击</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ol>
-<li>封装一个 ajax 函数，能通过如下方式调用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function ajax(opts)&#123;</div><div class="line">    // todo ...</div><div class="line">&#125;</div><div class="line">document.querySelector(&apos;#btn&apos;).addEventListener(&apos;click&apos;, function()&#123;</div><div class="line">    ajax(&#123;</div><div class="line">        url: &apos;getData.php&apos;,   //接口地址</div><div class="line">        type: &apos;get&apos;,               // 类型， post 或者 get,</div><div class="line">        data: &#123;</div><div class="line">            username: &apos;xiaoming&apos;,</div><div class="line">            password: &apos;abcd1234&apos;</div><div class="line">        &#125;,</div><div class="line">        success: function(ret)&#123;</div><div class="line">            console.log(ret);       // &#123;status: 0&#125;</div><div class="line">        &#125;,</div><div class="line">        error: function()&#123;</div><div class="line">           console.log(&apos;出错了&apos;)</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">function ajax(opts)&#123;</div><div class="line">    var xmlhttp = new XMLHttpRequest();</div><div class="line">    xmlhttp.onreadystatechange = function()&#123;</div><div class="line">        if(xmlhttp.readyState == 4 &amp;&amp; xmlhttp.status == 200)&#123;</div><div class="line">            var ret = JSON.parse(xmlhttp.responseText);</div><div class="line">            opts.success(ret);</div><div class="line">        &#125;</div><div class="line">        if(xmlhttp.status == 404)&#123;</div><div class="line">            opts.error();</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    var dataStr = &apos;&apos;;</div><div class="line">    for(var key in opts.data)&#123;</div><div class="line">        dataStr += key + &apos;=&apos; + opts.data[key] + &apos;&amp;&apos;;</div><div class="line">    &#125;</div><div class="line">    dataStr = dataStr.substr(0,dataStr.length-1);</div><div class="line"></div><div class="line">    if(opts.type.toLowerCase() == &apos;post&apos;)&#123;</div><div class="line">        xmlhttp.open(opts.type,opts.url,true);</div><div class="line">        xmlhttp.setRequestHeader(&apos;Content-type&apos;, &apos;application/x-www-form-urlencoded&apos;);</div><div class="line">        xmlhttp.send(dataStr);</div><div class="line">    &#125;</div><div class="line">    if(opts.type.toLowerCase() == &apos;get&apos;)&#123;</div><div class="line">        xmlhttp.open(opts.type,opts.url+&apos;?&apos;+dataStr,true);</div><div class="line">        xmlhttp.send();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<ol>
-<li>实现如下加载更多的功能。效果如下： <a href="http://jrgzuoye.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS9-jqueryajax/1.html" target="_blank" rel="external">http://jrgzuoye.applinzi.com/作业安排/jscode/JS9-jqueryajax/1.html</a><br><a href="http://ycrtask.applinzi.com/loadmore/loadMore.html" target="_blank" rel="external">新浪云</a><br><a href="https://github.com/jirengu-inc/jrg-renwu5/tree/master/%E6%9D%A8%E6%89%BF%E6%B6%A6/task24/loadmore" target="_blank" rel="external">源码</a></li>
-<li>实现注册表单验证功能效果如下：<a href="http://jrgzuoye.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/3.html" target="_blank" rel="external">http://jrgzuoye.applinzi.com/作业安排/jscode/JS7-ajax/3.html</a><br><a href="http://ycrtask.applinzi.com/sign/sign.html" target="_blank" rel="external">新浪云</a><br><a href="https://github.com/jirengu-inc/jrg-renwu5/tree/master/%E6%9D%A8%E6%89%BF%E6%B6%A6/task24/sign" target="_blank" rel="external">源码</a></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/31/AJAX/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
