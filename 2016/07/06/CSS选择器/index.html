@@ -8,27 +8,151 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>CSS选择器 | 块垒的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="有序列表、无序列表、自定义列表如何使用？写个简单的例子。三者在语义上有什么区别？在哪些情况下使用哪种（重要）？ 如何嵌套？
-有序列表有顺序的列表，适用于有排列顺序的列表，如
-12345&amp;lt;ol class=&amp;quot;getup&amp;quot;&amp;gt;  &amp;lt;li&amp;gt;1.张开眼睛&amp;lt;/li&amp;gt;  &amp;lt;li&amp;gt;2.抬起身子&amp;lt;/li&amp;gt;  &amp;lt;li&amp;gt;3.穿衣">
+  <meta name="description" content="CSS选择器常见的有几种?1.基础选择器
+
+
+
+选择器
+含义
+
+
+
+
+*
+通用选择器，匹配页面所有元素，很少使用
+
+
+#id
+id选择器，匹配特定id的元素
+
+
+.class
+类选择器，匹配class包含特定类的元素
+
+
+element
+标签选择器，一般在reset时使用
+
+
+
+2.组合选择器
+
+
+
+选择器
+含义
+
+
+
+
+E,F
+分组选择器，同时匹配E,F两个元素
+
+
+E F
+后代选择器，同时匹配">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS选择器">
 <meta property="og:url" content="http://yoursite.com/2016/07/06/CSS选择器/index.html">
 <meta property="og:site_name" content="块垒的博客">
-<meta property="og:description" content="有序列表、无序列表、自定义列表如何使用？写个简单的例子。三者在语义上有什么区别？在哪些情况下使用哪种（重要）？ 如何嵌套？
-有序列表有顺序的列表，适用于有排列顺序的列表，如
-12345&amp;lt;ol class=&amp;quot;getup&amp;quot;&amp;gt;  &amp;lt;li&amp;gt;1.张开眼睛&amp;lt;/li&amp;gt;  &amp;lt;li&amp;gt;2.抬起身子&amp;lt;/li&amp;gt;  &amp;lt;li&amp;gt;3.穿衣">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2331805-d0593fc7607f713a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2331805-ff0a210ec8b6098d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2331805-60cbf07e10f0537c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2331805-d85c78688b978184.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-01-30T06:27:39.506Z">
+<meta property="og:description" content="CSS选择器常见的有几种?1.基础选择器
+
+
+
+选择器
+含义
+
+
+
+
+*
+通用选择器，匹配页面所有元素，很少使用
+
+
+#id
+id选择器，匹配特定id的元素
+
+
+.class
+类选择器，匹配class包含特定类的元素
+
+
+element
+标签选择器，一般在reset时使用
+
+
+
+2.组合选择器
+
+
+
+选择器
+含义
+
+
+
+
+E,F
+分组选择器，同时匹配E,F两个元素
+
+
+E F
+后代选择器，同时匹配">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2331805-8b10304af4f92d23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2331805-3e7b7951c0bfa3d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2331805-1a77eaf40a72dc7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2331805-88ae56c7eda76e0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2331805-9ab52f877c87e516.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2331805-511c17b435aa1b42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2331805-003b2fdb905e720a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2331805-38971f507027a7c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-02-28T11:02:48.032Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS选择器">
-<meta name="twitter:description" content="有序列表、无序列表、自定义列表如何使用？写个简单的例子。三者在语义上有什么区别？在哪些情况下使用哪种（重要）？ 如何嵌套？
-有序列表有顺序的列表，适用于有排列顺序的列表，如
-12345&amp;lt;ol class=&amp;quot;getup&amp;quot;&amp;gt;  &amp;lt;li&amp;gt;1.张开眼睛&amp;lt;/li&amp;gt;  &amp;lt;li&amp;gt;2.抬起身子&amp;lt;/li&amp;gt;  &amp;lt;li&amp;gt;3.穿衣">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2331805-d0593fc7607f713a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="CSS选择器常见的有几种?1.基础选择器
+
+
+
+选择器
+含义
+
+
+
+
+*
+通用选择器，匹配页面所有元素，很少使用
+
+
+#id
+id选择器，匹配特定id的元素
+
+
+.class
+类选择器，匹配class包含特定类的元素
+
+
+element
+标签选择器，一般在reset时使用
+
+
+
+2.组合选择器
+
+
+
+选择器
+含义
+
+
+
+
+E,F
+分组选择器，同时匹配E,F两个元素
+
+
+E F
+后代选择器，同时匹配">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2331805-8b10304af4f92d23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="块垒的博客" type="application/atom+xml">
   
@@ -174,54 +298,197 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="有序列表、无序列表、自定义列表如何使用？写个简单的例子。三者在语义上有什么区别？在哪些情况下使用哪种（重要）？-如何嵌套？"><a href="#有序列表、无序列表、自定义列表如何使用？写个简单的例子。三者在语义上有什么区别？在哪些情况下使用哪种（重要）？-如何嵌套？" class="headerlink" title="有序列表、无序列表、自定义列表如何使用？写个简单的例子。三者在语义上有什么区别？在哪些情况下使用哪种（重要）？ 如何嵌套？"></a>有序列表、无序列表、自定义列表如何使用？写个简单的例子。三者在语义上有什么区别？在哪些情况下使用哪种（重要）？ 如何嵌套？</h3><ol>
-<li><p>有序列表<br>有顺序的列表，适用于有排列顺序的列表，如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;ol class=&quot;getup&quot;&gt;</div><div class="line">  &lt;li&gt;1.张开眼睛&lt;/li&gt;</div><div class="line">  &lt;li&gt;2.抬起身子&lt;/li&gt;</div><div class="line">  &lt;li&gt;3.穿衣服&lt;/li&gt;</div><div class="line">&lt;/ol&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>无序列表<br>没有顺序的列表，也是最常使用的列表，如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;ul class=&quot;food&quot;&gt;</div><div class="line">  &lt;li&gt;包子&lt;/li&gt;</div><div class="line">  &lt;li&gt;饺子&lt;/li&gt;</div><div class="line">  &lt;li&gt;面条&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>自定义列表<br>自定义列表不仅仅是一列项目，也是项目及其注释的组合，如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;dl&gt;</div><div class="line">  &lt;dt&gt;包子&lt;/dt&gt;</div><div class="line">   &lt;dd&gt;蒸着吃&lt;/dd&gt;</div><div class="line">  &lt;dt&gt;饺子&lt;/dt&gt;</div><div class="line">    &lt;dd&gt;煮着吃&lt;/dd&gt;</div><div class="line">&lt;/dl&gt;</div></pre></td></tr></table></figure>
-</li>
+        <h3 id="CSS选择器常见的有几种"><a href="#CSS选择器常见的有几种" class="headerlink" title="CSS选择器常见的有几种?"></a>CSS选择器常见的有几种?</h3><p>1.基础选择器</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td style="text-align:center">通用选择器，匹配页面所有元素，很少使用</td>
+</tr>
+<tr>
+<td>#id</td>
+<td style="text-align:center">id选择器，匹配特定id的元素</td>
+</tr>
+<tr>
+<td>.class</td>
+<td style="text-align:center">类选择器，匹配class包含特定类的元素</td>
+</tr>
+<tr>
+<td>element</td>
+<td style="text-align:center">标签选择器，一般在reset时使用</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://upload-images.jianshu.io/upload_images/2331805-8b10304af4f92d23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="基础选择器.png"><br>2.组合选择器</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E,F</td>
+<td style="text-align:center">分组选择器，同时匹配E,F两个元素</td>
+</tr>
+<tr>
+<td>E F</td>
+<td style="text-align:center">后代选择器，同时匹配E的后代中的所有F元素</td>
+</tr>
+<tr>
+<td>E&gt;F</td>
+<td style="text-align:center">子元素选择器，匹配E元素的所有直接子元素</td>
+</tr>
+<tr>
+<td>E+F</td>
+<td style="text-align:center">直接相邻选择器，匹配E元素之后的相邻同级元素F</td>
+</tr>
+<tr>
+<td>E~F</td>
+<td style="text-align:center">普通相邻选择器，匹配到E元素之后的同级元素F</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://upload-images.jianshu.io/upload_images/2331805-3e7b7951c0bfa3d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="组合选择器.png"><br>3.属性选择器</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E[attr]</td>
+<td style="text-align:center">匹配所有具有属性attr的元素</td>
+</tr>
+<tr>
+<td>E[attr=value]</td>
+<td style="text-align:center">匹配属性attr值为value的元素</td>
+</tr>
+<tr>
+<td>E[attr~value]</td>
+<td style="text-align:center">匹配所有属性attr具有多个空格分隔、其中一个值等于value的元素</td>
+</tr>
+<tr>
+<td>E[attr^=value]</td>
+<td style="text-align:center">匹配属性attr的值以value<strong>开头</strong>的元素</td>
+</tr>
+<tr>
+<td>E[attr$=value]</td>
+<td style="text-align:center">匹配属性attr的值以value<strong>结尾</strong>的元素</td>
+</tr>
+<tr>
+<td>E[attr*=value]</td>
+<td style="text-align:center">匹配属性attr的值<strong>包含</strong>value的元素</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://upload-images.jianshu.io/upload_images/2331805-1a77eaf40a72dc7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="属性选择器.png"><br>4.伪类选择器</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E:first-child</td>
+<td style="text-align:center">匹配元素E的第一个子元素</td>
+</tr>
+<tr>
+<td>E:hover</td>
+<td style="text-align:center">匹配鼠标悬停其上的E元素</td>
+</tr>
+<tr>
+<td>E:nth-child(n)</td>
+<td style="text-align:center">匹配其父元素的第n个子元素</td>
+</tr>
+<tr>
+<td>E:last-child</td>
+<td style="text-align:center">匹配父元素的最后一个子元素</td>
+</tr>
+<tr>
+<td>E:first-of-type</td>
+<td style="text-align:center">从一组中选择第一个元素 同级 选择孩子里面的第一个</td>
+</tr>
+<tr>
+<td>E:[attr*=value]</td>
+<td style="text-align:center">从一组中选择最后一个</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://upload-images.jianshu.io/upload_images/2331805-88ae56c7eda76e0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="伪类选择器.png"></p>
+<p>5.伪元素选择器</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E::first-line</td>
+<td style="text-align:center">匹配E元素内容的第一行</td>
+</tr>
+<tr>
+<td>E::first-letter</td>
+<td style="text-align:center">匹配E元素内容的第一个字母</td>
+</tr>
+<tr>
+<td>E::before</td>
+<td style="text-align:center">在E元素之前插入生成的内容</td>
+</tr>
+<tr>
+<td>E::after</td>
+<td style="text-align:center">在E元素之后插入生成的内容</td>
+</tr>
+</tbody>
+</table>
+<p>结合各类选择器可以实现一个自己的小型组件库：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2331805-9ab52f877c87e516.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="小型组件库.png"></p>
+<h3 id="选择器的优先级是怎样的"><a href="#选择器的优先级是怎样的" class="headerlink" title="选择器的优先级是怎样的?"></a>选择器的优先级是怎样的?</h3><ol>
+<li>在属性后面使用<code>!important</code></li>
+<li>作为style属性卸载元素标签的内联样式</li>
+<li>id选择器</li>
+<li>类选择器</li>
+<li>伪类选择器</li>
+<li>属性选择器</li>
+<li>标签选择器</li>
+<li>通配符选择器</li>
+<li>浏览器自定义</li>
 </ol>
-<p>具体选用那种列表就要根据自己的需要来决定，顺序列表在展示一些不能次序错乱的选项时是一个最佳的选择，无序列表则更适合表达一些并列的关系，自定义列表则更简单语义化。<br>列表也可以嵌套使用，以达到更好的展示效果，如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;dl&gt;</div><div class="line">	&lt;dt&gt;必须干的事情&lt;/dt&gt;</div><div class="line">	&lt;dd&gt;</div><div class="line">		&lt;ol&gt;</div><div class="line">			&lt;li&gt;1.起床&lt;/li&gt;</div><div class="line">			&lt;li&gt;2.吃饭&lt;/li&gt;</div><div class="line">			&lt;li&gt;3.睡觉&lt;/li&gt;</div><div class="line">		&lt;/ol&gt;</div><div class="line">	&lt;/dd&gt;</div><div class="line">	&lt;dt&gt;选择要干的事情&lt;/dt&gt;</div><div class="line">	&lt;dd&gt;</div><div class="line">		&lt;ul&gt;</div><div class="line">			&lt;li&gt;学习&lt;/li&gt;</div><div class="line">			&lt;li&gt;运动&lt;/li&gt;</div><div class="line">			&lt;li&gt;娱乐&lt;/li&gt;</div><div class="line">		&lt;/ul&gt;</div><div class="line">	&lt;/dd&gt;</div><div class="line">&lt;/dl&gt;</div></pre></td></tr></table></figure></p>
-<h3 id="如何去除列表前面的点或者数字？"><a href="#如何去除列表前面的点或者数字？" class="headerlink" title="如何去除列表前面的点或者数字？"></a>如何去除列表前面的点或者数字？</h3><p>使用<code>list-style:none;</code>可以去除。</p>
-<h3 id="class-和-id-有什么区别？什么时候用-class-什么时候用-id？"><a href="#class-和-id-有什么区别？什么时候用-class-什么时候用-id？" class="headerlink" title="class 和 id 有什么区别？什么时候用 class 什么时候用 id？"></a>class 和 id 有什么区别？什么时候用 class 什么时候用 id？</h3><ul>
-<li>class和id的区别？<br>class代表的是类，具有普遍性，可以被多次引用，可以应用到任何结构和内容上。class在页面布局上先定义好一类样式，然后根据页面需要把类样式应用到不用的元素和内容上。<br>id具有唯一标识性，一般只在一个页面上使用一次，也可以重复定义，但是会被W3C认为不符合标准。id用于区分不同的内容和结构。id在页面布局上先确定结构和内容，再为它定义样式。</li>
-<li>什么时候用 class 什么时候用 id？<br>由于id的唯一性，一般用于定义单一的元素，或者需要程序JS控制的东西。class由于可以多次引用，一般在结构内部使用，用于定义重复使用的元素类别。</li>
-</ul>
-<h3 id="块级元素、行内元素是什么？有什么区别？分别对应哪些常用标签？"><a href="#块级元素、行内元素是什么？有什么区别？分别对应哪些常用标签？" class="headerlink" title="块级元素、行内元素是什么？有什么区别？分别对应哪些常用标签？"></a>块级元素、行内元素是什么？有什么区别？分别对应哪些常用标签？</h3><ul>
-<li>块级元素、行内元素是什么？<br>块级元素类似一个段落，是其他元素的容器。行内元素也叫内联元素或内嵌元素，只能容于文本内容或者其他行内元素。</li>
-<li>有什么区别？<br>1.块级元素会单独占据一整行，行内元素则只占用自身的内容宽度，可以并列显示。<br>2.块级元素可以手动设置宽高。行内元素设置宽高是无效的，设置<code>padding</code> <code>margin</code>等在垂直方向不占空间，左右<code>padding margin</code>是有效的，我们可以根据<code>line-height</code>的特性为行内元素设置高度。<br><img src="http://upload-images.jianshu.io/upload_images/2331805-d0593fc7607f713a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="行内元素.png"></li>
-<li>分别对应哪些常用标签？<br>块级元素：<code>&lt;div&gt; &lt;p&gt; &lt;dl&gt; &lt;ol&gt; &lt;ul&gt; &lt;li&gt; &lt;h1&gt;~&lt;h6&gt; &lt;table&gt;</code>等<br>行内元素:<code>&lt;a&gt; &lt;span&gt; &lt;input&gt; &lt;img&gt; &lt;br&gt;</code>等</li>
-</ul>
-<h3 id="display-block、display-inline、display-inline-block分别有什么作用"><a href="#display-block、display-inline、display-inline-block分别有什么作用" class="headerlink" title="display: block、display: inline、display: inline-block分别有什么作用?"></a><code>display: block</code>、<code>display: inline</code>、<code>display: inline-block</code>分别有什么作用?</h3><p><code>display:block</code>:将元素设置为块级元素<br><code>display:inline</code>:将元素设置为行内元素<br><code>display:inline-block</code>:将对象呈递为内联元素，但是对象的内容作为块对象呈递。也就是说可以使元素在一行内呈现，并且可以设置宽高。</p>
-<h3 id="下面代码是做什么的？抄写一遍下面的代码，注意class和id的使用及命名方式"><a href="#下面代码是做什么的？抄写一遍下面的代码，注意class和id的使用及命名方式" class="headerlink" title="下面代码是做什么的？抄写一遍下面的代码，注意class和id的使用及命名方式"></a>下面代码是做什么的？抄写一遍下面的代码，注意class和id的使用及命名方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">  &lt;style&gt;</div><div class="line">    .wrap&#123;</div><div class="line">      width: 900px;</div><div class="line">      margin: 0 auto;</div><div class="line">    &#125;</div><div class="line">  &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">  &lt;div id=&quot;header&quot;&gt;</div><div class="line">    &lt;div class=&quot;wrap&quot;&gt;</div><div class="line">      &lt;a id=&quot;logo&quot; href=&quot;#&quot;&gt;&lt;img src=&quot;&quot;&gt;&lt;/a&gt;</div><div class="line">      &lt;ul class=&quot;nav&quot;&gt;</div><div class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;导航1&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;导航2&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;导航3&lt;/a&gt;&lt;/li&gt;</div><div class="line">      &lt;/ul&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line"> &lt;/div&gt;</div><div class="line">  &lt;div id=&quot;content&quot;&gt;</div><div class="line">    &lt;div class=&quot;wrap&quot;&gt;</div><div class="line">      &lt;div class=&quot;aside&quot;&gt;侧边栏&lt;/div&gt;</div><div class="line">      &lt;div class=&quot;main&quot;&gt;中心区块&lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;div id=&quot;footer&quot;&gt;</div><div class="line">  &lt;div class=&quot;wrap&quot;&gt;这里是 footer&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<p>把页面分成了头部，内容，底部三个部分，内容也分为了侧边栏和中心块区两部分。根据了区域的唯一性由id命名。在内部结构中，又因为样式相同并且要注意语义化，命名风格保持统一，用class设置了<code>wrap</code>类，设置了统一的宽度和边距。</p>
-<h3 id="如何理解-HTML-CSS-语义化-在平时写代码的过程中要注意哪些细节"><a href="#如何理解-HTML-CSS-语义化-在平时写代码的过程中要注意哪些细节" class="headerlink" title="如何理解 HTML CSS 语义化? 在平时写代码的过程中要注意哪些细节"></a>如何理解 HTML CSS 语义化? 在平时写代码的过程中要注意哪些细节</h3><p>语义化是根据情况选择正确的标签，命名有含义并且保持统一的风格，便于阅读和维护</p>
-<h3 id="form表单有什么作用？有哪些常用的input-标签，分别有什么作用？"><a href="#form表单有什么作用？有哪些常用的input-标签，分别有什么作用？" class="headerlink" title="form表单有什么作用？有哪些常用的input 标签，分别有什么作用？"></a>form表单有什么作用？有哪些常用的input 标签，分别有什么作用？</h3><p>form表单用于把用户数据提交到后台。<br><code>&lt;input type=&quot;text&quot; name=&quot;user&quot; placeholder=&quot;用户名&quot; maxlength=10/&gt;</code>用于输入文本<br><code>&lt;input type=&quot;textarea&quot;&gt;</code>文本域，用于文本框输入<br><code>&lt;input type=&quot;password&quot;&gt;</code>密码域，用于输入密码，内部文本以*显示<br><code>&lt;input type=&quot;radio&quot;&gt;</code>单选框<br><code>&lt;input type=&quot;checkbox&quot;&gt;</code>复选框<br><code>&lt;input type=&quot;hidden&quot;&gt;</code>隐藏域，用于暂存数据，安全校验<br><code>&lt;input type=&quot;submit&quot;&gt;</code>提交表单数据</p>
-<h3 id="post-和-get-方式的区别？"><a href="#post-和-get-方式的区别？" class="headerlink" title="post 和 get 方式的区别？"></a>post 和 get 方式的区别？</h3><ol>
-<li>数据提交方式不同，get会把提交的数据组织成url可以看到，post则在后台运行看不到。</li>
-<li>get一般用于提交少量数据并获得大量数据，post一般提交大量数据得到少量信息。</li>
-<li>get最多提交1k数据，post理论上不会有限制，受服务器限制。</li>
-<li>get提交的数据会存在历史记录当中，安全性不好</li>
+<p>在一些复杂的情况下，我们会依靠权重计算。<br>id选择器的权值为1000，class选择器为100，标签选择器为10，如果两个选择器权值相同则后面的样式覆盖前面的样式。</p>
+<h3 id="class-和-id-的使用场景"><a href="#class-和-id-的使用场景" class="headerlink" title="class 和 id 的使用场景?"></a>class 和 id 的使用场景?</h3><p>class使用场景：默写需要特定样式的标签放在同一个class中，需要这一样式的标签则可以在标签上添加此类。<br>id使用场景：根据提供的唯一id号，快速获取标签对象，用于充当label标签for属性的值。</p>
+<h3 id="使用CSS选择器时为什么要划定适当的命名空间？"><a href="#使用CSS选择器时为什么要划定适当的命名空间？" class="headerlink" title="使用CSS选择器时为什么要划定适当的命名空间？"></a>使用CSS选择器时为什么要划定适当的命名空间？</h3><ol>
+<li>提高代码的可读性</li>
+<li>便于管理维护</li>
+<li>保持代码的拓展性</li>
 </ol>
-<h3 id="在input里，name-有什么作用？"><a href="#在input里，name-有什么作用？" class="headerlink" title="在input里，name 有什么作用？"></a>在input里，name 有什么作用？</h3><p>name是表单提交时的名称，在提交时，后台会给对应的变量输入数据，<code>&lt;input&gt;</code>必须有那么属性。</p>
+<h3 id="以下选择器分别是什么意思"><a href="#以下选择器分别是什么意思" class="headerlink" title="以下选择器分别是什么意思?"></a>以下选择器分别是什么意思?</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#header&#123;</div><div class="line">  /*id选择器*/</div><div class="line">&#125;</div><div class="line">.header&#123;</div><div class="line"> /*类选择器*/</div><div class="line">&#125;</div><div class="line">.header .logo&#123;</div><div class="line">  /*类选择器.header的后类.logo*/</div><div class="line">&#125;</div><div class="line">.header.mobile&#123;</div><div class="line">  /*同时满足.header和.mobile类*/</div><div class="line">&#125;</div><div class="line">.header p, .header h3&#123;</div><div class="line">  /*.header中的标签p和.header中的标签h3*/</div><div class="line">&#125;</div><div class="line">#header .nav&gt;li&#123;</div><div class="line">  /*id选择器header的后类选择器nav的直接子元素li*/</div><div class="line">&#125;</div><div class="line">#header a:hover&#123;</div><div class="line">  /*id选择器header的后标签a的hover伪类*/</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="列出你知道的伪类选择器"><a href="#列出你知道的伪类选择器" class="headerlink" title="列出你知道的伪类选择器"></a>列出你知道的伪类选择器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">E:hover</div><div class="line">E:active</div><div class="line">E:link</div><div class="line">E:visited</div><div class="line">E:focus</div><div class="line">E:first-child</div><div class="line">E:first-of-type</div><div class="line">E:nth-child(n)</div><div class="line">E:nth-of-type(n)</div><div class="line">E:last-child</div><div class="line">E:last-of-type</div><div class="line">E:nth-last-child(n)</div><div class="line">E:nth-last-of-type(n)</div></pre></td></tr></table></figure>
+<h3 id="first-child和-first-of-type的作用和区别"><a href="#first-child和-first-of-type的作用和区别" class="headerlink" title=":first-child和:first-of-type的作用和区别?"></a>:first-child和:first-of-type的作用和区别?</h3><p><code>E:first-child</code>和<code>E:first-of-type</code>的区别：</p>
 <ul>
-<li><p>在单选框中需要设定像同的name以保证是同一个单选框：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;man&quot;/ checked&gt;男</div><div class="line">&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;man&quot;/ checked&gt;女</div></pre></td></tr></table></figure>
-</li>
-<li><p>在复选框中也可以把name设置成一个数组：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;checkbox&quot; name=&quot;love&quot; value=&quot;运动&quot;/ checked&gt;运动</div><div class="line">&lt;input type=&quot;checkbox&quot; name=&quot;love&quot; value=&quot;吃&quot;/ checked&gt;吃</div></pre></td></tr></table></figure>
-</li>
+<li>first-child匹配的是某个父元素的第一个子元素，可以说是结构上的第一个子元素。</li>
+<li>first-of-type匹配的是某父元素相同类型子元素的第一个，比如<code>p:first-of-type</code>，就是只所有类型为p的子元素的第一个，这里不再限制是第一个子元素了，只要是该类型元素的第一个就行了。</li>
 </ul>
-<h3 id="lt-button-gt-提交-lt-button-gt-，-lt-a-class-quot-btn-quot-href-quot-quot-gt-提交-lt-a-gt-、-lt-input-type-quot-submit-quot-value-quot-提交-quot-gt-三者有什么区别？"><a href="#lt-button-gt-提交-lt-button-gt-，-lt-a-class-quot-btn-quot-href-quot-quot-gt-提交-lt-a-gt-、-lt-input-type-quot-submit-quot-value-quot-提交-quot-gt-三者有什么区别？" class="headerlink" title="&lt;button&gt;提交&lt;/button&gt;，&lt;a class=&quot;btn&quot; href=&quot;#&quot;&gt;提交&lt;/a&gt;、&lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;三者有什么区别？"></a><code>&lt;button&gt;提交&lt;/button&gt;</code>，<code>&lt;a class=&quot;btn&quot; href=&quot;#&quot;&gt;提交&lt;/a&gt;</code>、<code>&lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</code>三者有什么区别？</h3><p><code>&lt;button&gt;提交&lt;/button&gt;</code>：普通按钮需要绑定JS事件<br><code>&lt;a class=&quot;btn&quot; href=&quot;#&quot;&gt;提交&lt;/a&gt;</code>：链接，点击后会跳转到页面，但是不会提交数据<br><code>&lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</code>：用于提交表单数据</p>
-<h3 id="radio如何分组"><a href="#radio如何分组" class="headerlink" title="radio如何分组?"></a>radio如何分组?</h3><p>用设置name来分组，如果name相同则为同一组，如果name不同则为不同组。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;man&quot;/ checked&gt;男</div><div class="line">&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;man&quot;/ checked&gt;女</div></pre></td></tr></table></figure></p>
-<h3 id="placeholder-属性有什么作用"><a href="#placeholder-属性有什么作用" class="headerlink" title="placeholder 属性有什么作用?"></a>placeholder 属性有什么作用?</h3><p>用于设置提示信息<br><code>&lt;input type=&quot;text&quot; name=&quot;user&quot; placeholder=&quot;用户名&quot; maxlength=10/&gt;</code><br><img src="http://upload-images.jianshu.io/upload_images/2331805-ff0a210ec8b6098d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="placeholder.png"></p>
-<h3 id="type-hidden隐藏域有什么作用-举例说明"><a href="#type-hidden隐藏域有什么作用-举例说明" class="headerlink" title="type=hidden隐藏域有什么作用? 举例说明"></a><code>type=hidden</code>隐藏域有什么作用? 举例说明</h3><p><code>type=hidden</code>用于暂存数据，安全校验<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;form action=&quot;a.php&quot; method=&quot;post&quot;&gt;</div><div class="line">		账号：&lt;input type=&quot;text&quot; name=&quot;user&quot; placeholder=&quot;用户名&quot;/&gt;&lt;br/&gt;</div><div class="line">		密码：&lt;input type=&quot;password&quot; name=&quot;password&quot; placeholder=&quot;请输入密码&quot;/&gt;&lt;br/&gt;</div><div class="line">		&lt;input type=&quot;submit&quot; name=&quot;submit&quot;&gt;</div><div class="line">		&lt;input type=&quot;hidden&quot; name=&quot;check&quot; value=&quot;666&quot;/&gt;</div><div class="line">	&lt;/form&gt;</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2331805-60cbf07e10f0537c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hidden展示.png"><br><img src="http://upload-images.jianshu.io/upload_images/2331805-d85c78688b978184.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hidden.png"><br>在后台会看到check的数据，以此校验安全性。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><a href="https://github.com/jirengu-inc/jrg-renwu5/blob/master/%E6%9D%A8%E6%89%BF%E6%B6%A6/task7/index.html" target="_blank" rel="external">github地址</a><br><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task7/index.html" target="_blank" rel="external">在线预览</a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2331805-511c17b435aa1b42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="first-child和first-of-type.png"></p>
+<h3 id="运行如下代码，解析下输出样式的原因。"><a href="#运行如下代码，解析下输出样式的原因。" class="headerlink" title="运行如下代码，解析下输出样式的原因。"></a>运行如下代码，解析下输出样式的原因。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">.item1:first-child&#123;</div><div class="line">  color: red;</div><div class="line">&#125;</div><div class="line">.item1:first-of-type&#123;</div><div class="line">  background: blue;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div><div class="line"> &lt;div class=&quot;ct&quot;&gt;</div><div class="line">   &lt;p class=&quot;item1&quot;&gt;aa&lt;/p&gt;</div><div class="line">   &lt;h3 class=&quot;item1&quot;&gt;bb&lt;/h3&gt;</div><div class="line">   &lt;h3 class=&quot;item1&quot;&gt;ccc&lt;/h3&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2331805-003b2fdb905e720a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码示例.png"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item1:first-child&#123;</div><div class="line">  color: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这段代码的作用是<code>.item1</code>会根据父元素的伪类<code>first-child</code>选择第一个直接子元素，确定了第一个子元素<code>&lt;p&gt;</code>所以aa变成红色。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item1:first-of-type&#123;</div><div class="line">  background: blue;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这段代码<code>.item1</code>会根据父元素的伪类<code>first-of-type</code>选择相同类型的子元素，当遇见第一个标签<code>&lt;p&gt;</code>时，该标签是这一类元素的第一个子元素，所以其北京元素会编程蓝色。而遇到标签<code>&lt;h3&gt;</code>时，该标签又是该类标签的第一个子元素，所以其背景色也编程蓝色，而在往下的cc不是该组标签的第一个子元素，所以无变化。</p>
+<h3 id="text-align-center的作用是什么，作用在什么元素上？能让什么元素水平居中？"><a href="#text-align-center的作用是什么，作用在什么元素上？能让什么元素水平居中？" class="headerlink" title="text-align:center的作用是什么，作用在什么元素上？能让什么元素水平居中？"></a><code>text-align:center</code>的作用是什么，作用在什么元素上？能让什么元素水平居中？</h3><p>作用是让内联元素对象在块级元素中居中，主要是让内联元素居中。在有固定宽度的块级元素中，也可以通过设置<code>margin:0 auto</code>让块级元素居中。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2331805-38971f507027a7c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="text-align.png"></p>
+<h3 id="如果遇到一个属性想知道兼容性，在哪查看"><a href="#如果遇到一个属性想知道兼容性，在哪查看" class="headerlink" title="如果遇到一个属性想知道兼容性，在哪查看?"></a>如果遇到一个属性想知道兼容性，在哪查看?</h3><p>在<a href="http://caniuse.com/" target="_blank" rel="external">can i use</a>中查看。</p>
 
       
 

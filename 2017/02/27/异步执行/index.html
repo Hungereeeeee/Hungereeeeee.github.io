@@ -20,7 +20,7 @@
 
 回调函数回调函数是异步编程最基本的方法
   1234567function f1(callback)">
-<meta property="og:updated_time" content="2017-02-27T13:44:23.889Z">
+<meta property="og:updated_time" content="2017-02-28T11:04:00.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="异步执行">
 <meta name="twitter:description" content="JS的异步执行每一个任务分成两段，第一段代码包含对外部数据的请求，第二段代码被写成一个回调函数，包含了对外部数据的处理。第一段代码执行完，不是立刻执行第二段代码，而是将程序的执行权交给第二个任务。等到外部数据返回了，再由系统通知执行第二段代码。所以程序的执行顺序与任务的排列顺序是不一致的异步的。
@@ -200,6 +200,18 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var items = [ 1, 2, 3, 4, 5, 6 ];</div><div class="line">var results = [];</div><div class="line">var running = 0;</div><div class="line">var limit = 2;</div><div class="line">function launcher() &#123;</div><div class="line">  while(running &lt; limit &amp;&amp; items.length &gt; 0) &#123;</div><div class="line">    var item = items.shift();</div><div class="line">    async(item, function(result) &#123;</div><div class="line">      results.push(result);</div><div class="line">      running--;</div><div class="line">      if(items.length &gt; 0) &#123;</div><div class="line">        launcher();</div><div class="line">      &#125; else if(running == 0) &#123;</div><div class="line">        final();</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">    running++;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">launcher();</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><p>是一个对象，起到代理作用，充当异步操作与回调函数之间的中介。它使得异步操作具备同步操作的接口，使得程序具备正常的同步运行的流程，回调函数不必再一层层嵌套。<br>简单说，它的思想是，每一个异步任务立刻返回一个Promise对象，由于是立刻返回，所以可以采用同步操作的流程。这个Promises对象有一个then方法，允许指定回调函数，在异步任务完成后调用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(new Promise(f1)).then(f2);</div></pre></td></tr></table></figure></p>
+<h2 id="Promise接口"><a href="#Promise接口" class="headerlink" title="Promise接口"></a>Promise接口</h2><p>Promise三种状态：<br>异步操作“未完成”（pending）<br>异步操作“已完成”（resolved，又称fulfilled）<br>异步操作“失败”（rejected）</p>
+<p>异步操作成功，Promise对象传回一个值，状态变为resolved<br>异步操作失败，Promise对象抛出一个错误，状态变为rejected</p>
+<ul>
+<li><p>.then<br>Promise对象使用then方法添加回调函数。then方法可以接受两个回调函数，第一个是异步操作成功时（变为resolved状态）时的回调函数，第二个是异步操作失败（变为rejected）时的回调函数（可以省略）。一旦状态改变，就调用相应的回调函数。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// po是一个Promise对象</div><div class="line">po.then(</div><div class="line">  console.log,</div><div class="line">  console.error</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>  <code>then</code>方法可以链式使用</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">po</div><div class="line">  .then(step1)</div><div class="line">  .then(step2)</div><div class="line">  .then(step3)</div><div class="line">  .then(</div><div class="line">    console.log,</div><div class="line">    console.error</div><div class="line">  );</div></pre></td></tr></table></figure>
+<p>  <code>console.log</code>只显示回调函数<code>step3</code>的返回值，而<code>console.error</code>可以显示步骤中的任意一个错误，也就是说前面步骤发生错误后面步骤都不会执行。这也就是说，Promises对象的错误有传递性</p>
+</li>
+</ul>
+<h1 id="Promise对象的生成"><a href="#Promise对象的生成" class="headerlink" title="Promise对象的生成"></a>Promise对象的生成</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var promise = new Promise(function(resolve, reject) &#123;</div><div class="line">  // 异步操作的代码</div><div class="line"></div><div class="line">  if (/* 异步操作成功 */)&#123;</div><div class="line">    resolve(value);</div><div class="line">  &#125; else &#123;</div><div class="line">    reject(error);</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 
       
 
