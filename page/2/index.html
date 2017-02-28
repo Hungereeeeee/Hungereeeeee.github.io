@@ -144,6 +144,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-CMD、AMD、CommonJS规范" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/11/CMD、AMD、CommonJS规范/">CMD、AMD、CommonJS规范</a>
+    </h1>
+  
+
+        
+        <a href="/2016/10/11/CMD、AMD、CommonJS规范/" class="archive-article-date">
+  	<time datetime="2016-10-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="为什么要使用模块化？"><a href="#为什么要使用模块化？" class="headerlink" title="为什么要使用模块化？"></a>为什么要使用模块化？</h3><p>最主要的目的：</p>
+<ul>
+<li>解决命名冲突</li>
+<li>依赖管理</li>
+</ul>
+<p>其他价值：</p>
+<ul>
+<li>提高代码可读性</li>
+<li>代码解耦，提高复用性</li>
+</ul>
+<h3 id="CMD、AMD、CommonJS-规范分别指什么？有哪些应用"><a href="#CMD、AMD、CommonJS-规范分别指什么？有哪些应用" class="headerlink" title="CMD、AMD、CommonJS 规范分别指什么？有哪些应用"></a>CMD、AMD、CommonJS 规范分别指什么？有哪些应用</h3><p>模块的规范：<br>定义一个统一的前提，大家必须以同样的方式编写模块。</p>
+<ul>
+<li>CommonJS：<br>CommonJS是服务器端模块的规范。<ol>
+<li>在一个模块中，存在一个自由的变量<code>require</code>，他是一个函数<ul>
+<li>这个<code>require</code>函数接受一个模块标识符</li>
+<li><code>require</code>返回外部模块所输出的API</li>
+<li>如果出现依赖闭环，那么外部模块在被他的传递一台所<code>require</code>的时候可能并没有执行完成；在这种情况下，<code>require</code>返回的对象必须至少包含此外部模块在调用<code>require</code>函数之前就已经准备完毕输出</li>
+<li>如果请求的模块不能返回，那么<code>require</code>必须抛出一个错误</li>
+</ul>
+</li>
+<li>在一个模块中，会存在一个名为exports的自由变量，它是一个对象，模块可以在执行的时候把自身的API加入其中</li>
+<li>模块必须使用exports对象做唯一表示</li>
+</ol>
+</li>
+<li><p>CMD：<br>是SeaJS推广过程中诞生的，在CMD规范中，一个模块就是一个文件，代码的书写格式如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">define(factory)</div></pre></td></tr></table></figure>
+</li>
+<li><p>AMD：<br>AMD（异步模块定义）指定一种机智，在该机制下模块和依赖可以异步加载。这对浏览器端尤其适用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">define(id?,dependencies?,factory);</div></pre></td></tr></table></figure>
+<ul>
+<li>id:定义中模块的名字，可选：如果没提供该参数，模块的名字应该默认为模块加载器请求的指定的脚本的名字。</li>
+<li>dependencies：是一个当前模块依赖的，已被模块定义的模块标识的数组字面量。依赖参数是可选的。如果忽略次参数它应该默认为[“require”, “exports”, “module”]。然而，如果工厂方法的长度属性小于3，加载器会选择以函数的长度属性指定的参数个数调用工厂方法。</li>
+<li>工厂方法，模块初始化要执行的函数或对象。如果为函数，他应该只被执行一次。如果是对象，此对象应该为模块的输出值。<br>示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">define(&apos;modal&apos;, [&apos;jQuery&apos;, &apos;dialog&apos;], function($, Dialog)&#123;</div><div class="line">    $(&apos;.modal&apos;).show();</div><div class="line">    Dialog.open();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/10/11/CMD、AMD、CommonJS规范/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-继承" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -343,105 +429,6 @@
 
 
   
-    <article id="post-this" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/27/this/">this</a>
-    </h1>
-  
-
-        
-        <a href="/2016/09/27/this/" class="archive-article-date">
-  	<time datetime="2016-09-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="apply、call-有什么作用，什么区别"><a href="#apply、call-有什么作用，什么区别" class="headerlink" title="apply、call 有什么作用，什么区别"></a>apply、call 有什么作用，什么区别</h3><ul>
-<li>首先要引入<code>this</code>这个概念<br>由于运行期绑定的特性，<code>this</code>的含义非常多，既可以是全局对性爱那个，当前对象或任意对象，这取决于函数的调用方式，但总有一个原则，那就是<code>this</code>指的是调用函数的那个对象。</li>
-</ul>
-<ol>
-<li>作为函数调用：在函数直接调用时<code>this</code>绑定到全局对象，在浏览器中，<code>window</code>就是该全局对象。</li>
-<li>内部函数：函数嵌套产生的内部函数的<code>this</code>不是其父函数，仍是<strong>全局变量</strong>。</li>
-<li><code>setTimeout、setinterval</code>：这两个方法执行的函数<code>this</code>也是全局对象</li>
-<li>作为构造函数调用：所谓构造函数，就是通过这个函数生成一个新对象。这时，<code>this</code>就指这个新对象。<br> new 运算符接受一个函数 F 及其参数：new F(arguments…)。这一过程分为三步：<ol>
-<li>创建类的实例。这步是把一个空的对象的 <strong>proto</strong> 属性设置为 F.prototype 。</li>
-<li>初始化实例。函数 F 被传入参数并调用，关键字 this 被设定为该实例。</li>
-<li>返回实例。</li>
-</ol>
-</li>
-<li>作为对象方法调用：在JS中，函数也是对象，因此函数可以作为一个对象的属性，此时该函数被称为该对象的方法，在使用这种调用方法时，<code>this</code>被自然绑定到该对象。</li>
-<li>DOM对象绑定事件：在事件处理程序中<code>this</code>代表事件源DOM对象（低版本IE被指向了<code>window</code>）</li>
-</ol>
-<ul>
-<li><code>apply、call</code>的作用<br><code>apply、call</code>的作用是相同的，都是指定函数的this和参数来调用函数，使用<code>call</code>和<code>apply</code>可以使this的指向变得清晰。</li>
-<li><code>apply、call</code>的区别<br><code>apply</code>接受的是数组形式的参数，<code>call</code>接受的是多个参数。</li>
-</ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ol>
-<li>以下代码输出什么？<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;</div><div class="line">&#125;</div><div class="line">function func() &#123;</div><div class="line">  alert(this.firstName + &quot;: hi!&quot;)</div><div class="line">&#125;</div><div class="line">john.sayHi = func</div><div class="line">john.sayHi()</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>输出<strong>john：hi！</strong></p>
-<ol>
-<li>下面代码输出什么，为什么<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">func()</div><div class="line">function func() &#123;</div><div class="line">  alert(this)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>输出<strong>window</strong>，因为函数是全局作用域下调用的</p>
-<ol>
-<li><p>下面代码输出什么</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function fn0()&#123;</div><div class="line">    function fn()&#123;</div><div class="line">        console.log(this);</div><div class="line">    &#125;</div><div class="line">    fn();</div><div class="line">&#125;</div><div class="line">fn0(); //输出window</div><div class="line">document.addEventListener(&apos;click&apos;, function(e)&#123;</div><div class="line">    console.log(this); //输出document节点</div><div class="line">    setTimeout(function()&#123;</div><div class="line">        console.log(this); //输出window</div><div class="line">    &#125;, 200);</div><div class="line">&#125;, false);</div></pre></td></tr></table></figure>
-</li>
-<li><p>下面代码输出什么，why</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;</div><div class="line">&#125;</div><div class="line">function func() &#123;</div><div class="line">  alert( this.firstName )</div><div class="line">&#125;</div><div class="line">func.call(john)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>输出<strong>John</strong>，因为通过call把this指为了john对象</p>
-<ol>
-<li>代码输出？<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;,</div><div class="line">  surname: &quot;Smith&quot;</div><div class="line">&#125;</div><div class="line">function func(a, b) &#123;</div><div class="line">  alert( this[a] + &apos; &apos; + this[b] )</div><div class="line">&#125;</div><div class="line">func.call(john, &apos;firstName&apos;, &apos;surname&apos;)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>输出<strong>John Smith</strong></p>
-<ol>
-<li>以下代码有什么问题，如何修改<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var module= &#123;</div><div class="line">    bind: function()&#123;</div><div class="line">      var cur=this; //添加</div><div class="line">      $btn.on(&apos;click&apos;, function()&#123;</div><div class="line">        console.log(this) //this指什么</div><div class="line">        cur.showMsg();//改</div><div class="line">      &#125;)</div><div class="line">    &#125;,</div><div class="line">    showMsg: function()&#123;</div><div class="line">     console.log(&apos;饥人谷&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>在DOM绑定事件中this被指向了事件源DOM对象，所以<code>this.showMsg()</code>无法正常调用</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/27/this/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
     <article id="post-HTTP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -552,6 +539,105 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/09/27/HTTP/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-this" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/27/this/">this</a>
+    </h1>
+  
+
+        
+        <a href="/2016/09/27/this/" class="archive-article-date">
+  	<time datetime="2016-09-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="apply、call-有什么作用，什么区别"><a href="#apply、call-有什么作用，什么区别" class="headerlink" title="apply、call 有什么作用，什么区别"></a>apply、call 有什么作用，什么区别</h3><ul>
+<li>首先要引入<code>this</code>这个概念<br>由于运行期绑定的特性，<code>this</code>的含义非常多，既可以是全局对性爱那个，当前对象或任意对象，这取决于函数的调用方式，但总有一个原则，那就是<code>this</code>指的是调用函数的那个对象。</li>
+</ul>
+<ol>
+<li>作为函数调用：在函数直接调用时<code>this</code>绑定到全局对象，在浏览器中，<code>window</code>就是该全局对象。</li>
+<li>内部函数：函数嵌套产生的内部函数的<code>this</code>不是其父函数，仍是<strong>全局变量</strong>。</li>
+<li><code>setTimeout、setinterval</code>：这两个方法执行的函数<code>this</code>也是全局对象</li>
+<li>作为构造函数调用：所谓构造函数，就是通过这个函数生成一个新对象。这时，<code>this</code>就指这个新对象。<br> new 运算符接受一个函数 F 及其参数：new F(arguments…)。这一过程分为三步：<ol>
+<li>创建类的实例。这步是把一个空的对象的 <strong>proto</strong> 属性设置为 F.prototype 。</li>
+<li>初始化实例。函数 F 被传入参数并调用，关键字 this 被设定为该实例。</li>
+<li>返回实例。</li>
+</ol>
+</li>
+<li>作为对象方法调用：在JS中，函数也是对象，因此函数可以作为一个对象的属性，此时该函数被称为该对象的方法，在使用这种调用方法时，<code>this</code>被自然绑定到该对象。</li>
+<li>DOM对象绑定事件：在事件处理程序中<code>this</code>代表事件源DOM对象（低版本IE被指向了<code>window</code>）</li>
+</ol>
+<ul>
+<li><code>apply、call</code>的作用<br><code>apply、call</code>的作用是相同的，都是指定函数的this和参数来调用函数，使用<code>call</code>和<code>apply</code>可以使this的指向变得清晰。</li>
+<li><code>apply、call</code>的区别<br><code>apply</code>接受的是数组形式的参数，<code>call</code>接受的是多个参数。</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ol>
+<li>以下代码输出什么？<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;</div><div class="line">&#125;</div><div class="line">function func() &#123;</div><div class="line">  alert(this.firstName + &quot;: hi!&quot;)</div><div class="line">&#125;</div><div class="line">john.sayHi = func</div><div class="line">john.sayHi()</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出<strong>john：hi！</strong></p>
+<ol>
+<li>下面代码输出什么，为什么<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">func()</div><div class="line">function func() &#123;</div><div class="line">  alert(this)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出<strong>window</strong>，因为函数是全局作用域下调用的</p>
+<ol>
+<li><p>下面代码输出什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function fn0()&#123;</div><div class="line">    function fn()&#123;</div><div class="line">        console.log(this);</div><div class="line">    &#125;</div><div class="line">    fn();</div><div class="line">&#125;</div><div class="line">fn0(); //输出window</div><div class="line">document.addEventListener(&apos;click&apos;, function(e)&#123;</div><div class="line">    console.log(this); //输出document节点</div><div class="line">    setTimeout(function()&#123;</div><div class="line">        console.log(this); //输出window</div><div class="line">    &#125;, 200);</div><div class="line">&#125;, false);</div></pre></td></tr></table></figure>
+</li>
+<li><p>下面代码输出什么，why</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;</div><div class="line">&#125;</div><div class="line">function func() &#123;</div><div class="line">  alert( this.firstName )</div><div class="line">&#125;</div><div class="line">func.call(john)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出<strong>John</strong>，因为通过call把this指为了john对象</p>
+<ol>
+<li>代码输出？<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var john = &#123;</div><div class="line">  firstName: &quot;John&quot;,</div><div class="line">  surname: &quot;Smith&quot;</div><div class="line">&#125;</div><div class="line">function func(a, b) &#123;</div><div class="line">  alert( this[a] + &apos; &apos; + this[b] )</div><div class="line">&#125;</div><div class="line">func.call(john, &apos;firstName&apos;, &apos;surname&apos;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出<strong>John Smith</strong></p>
+<ol>
+<li>以下代码有什么问题，如何修改<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var module= &#123;</div><div class="line">    bind: function()&#123;</div><div class="line">      var cur=this; //添加</div><div class="line">      $btn.on(&apos;click&apos;, function()&#123;</div><div class="line">        console.log(this) //this指什么</div><div class="line">        cur.showMsg();//改</div><div class="line">      &#125;)</div><div class="line">    &#125;,</div><div class="line">    showMsg: function()&#123;</div><div class="line">     console.log(&apos;饥人谷&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>在DOM绑定事件中this被指向了事件源DOM对象，所以<code>this.showMsg()</code>无法正常调用</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/09/27/this/">展开全文 >></a>
         </p>
       
 
@@ -810,127 +896,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/09/11/jQuery常用方法及ajax/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-jquery" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/06/jquery/">jquery</a>
-    </h1>
-  
-
-        
-        <a href="/2016/09/06/jquery/" class="archive-article-date">
-  	<time datetime="2016-09-05T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="说说库和框架的区别？"><a href="#说说库和框架的区别？" class="headerlink" title="说说库和框架的区别？"></a>说说库和框架的区别？</h3><p>库是将代码集合成的一个产品，供程序员调用。面向对象的代码组织形式而成的库也叫类库。面向过程的代码组织形式形成的也叫函数库。再函数库中可直接使用的函数叫库函数。开发者在使用库的时候，只需要使用库的一部分类或函数，然后继续实现自己的功能。<br>框架则是为解决一个（一类）问题而开发的产品，框架用户一般只需要使用框架提供的类或函数，即可实现全部功能。也就是说框架是库的升级版。开发者使用框架的时候，必须使用这个框架的全部代码。</p>
-<h3 id="jquery-能做什么？"><a href="#jquery-能做什么？" class="headerlink" title="jquery 能做什么？"></a>jquery 能做什么？</h3><p>jquery是个轻量级的“写的少，做的多”的js库。<br>jQuery的功能：</p>
-<ul>
-<li>HTML元素选取</li>
-<li>HTML元素操作</li>
-<li>CSS操作</li>
-<li>HTML事件函数</li>
-<li>JavaScript特效和动画</li>
-<li>HTML DOM遍历和修改</li>
-<li>AJAX</li>
-</ul>
-<h3 id="jquery-对象和-DOM-原生对象有什么区别？如何转化？"><a href="#jquery-对象和-DOM-原生对象有什么区别？如何转化？" class="headerlink" title="jquery 对象和 DOM 原生对象有什么区别？如何转化？"></a>jquery 对象和 DOM 原生对象有什么区别？如何转化？</h3><ul>
-<li>jQeury对象是通过jQuery的API构造的jQuery对象（类数组），拥有自己的属性和方法。</li>
-<li>DOM原生对象是通过DOM的API构造的DOM对象（DOM节点），也拥有自己的属性和方法。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var $jquery=$(&apos;#jquery&apos;);</div><div class="line">var dom=document.getElementById(&apos;dom&apos;);</div><div class="line">//dom对象转化为jquery对像</div><div class="line">var $dom=$(dom);</div><div class="line">//jquery对象转化为dom对象</div><div class="line">var jquery=$jquery[0];</div><div class="line">//对于一个特定的结果集，获取指定index的jQuery对象</div><div class="line">$jquery.eq(0);</div></pre></td></tr></table></figure>
-<h3 id="jquery中如何绑定事件？bind、unbind、delegate、live、on、off都有什么作用？推荐使用哪种？使用on绑定事件使用事件代理的写法？"><a href="#jquery中如何绑定事件？bind、unbind、delegate、live、on、off都有什么作用？推荐使用哪种？使用on绑定事件使用事件代理的写法？" class="headerlink" title="jquery中如何绑定事件？bind、unbind、delegate、live、on、off都有什么作用？推荐使用哪种？使用on绑定事件使用事件代理的写法？"></a>jquery中如何绑定事件？bind、unbind、delegate、live、on、off都有什么作用？推荐使用哪种？使用on绑定事件使用事件代理的写法？</h3><p>可以像原生dom一样绑定事件<code>$(selector).click()</code><br>jQuery也可以使用bind()/delegate()/live()/on绑定事件，unbind()和off()为对应bind()和on()解绑事件</p>
-<ul>
-<li><p><code>bind()</code><br>为一个元素绑定一个事件处理程序，再jQuery1.7以前使用。对于早期版本，<code>.bind()</code>方法用于直接附加一个事件处理程序到元素上。处理程序附加到jQuery对象当前选中的元素、所以在绑定的时候这些元素必须已经存在。<br>基本用法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&apos;#foo&apos;).bind(&apos;click&apos;, function() &#123;</div><div class="line">  alert(&apos;User clicked on &quot;foo.&quot;&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>.delegate()</code><br>为所有匹配选择器的元素绑定一个或多个事件处理函数，基于一个指定的根元素的子集，匹配的元素包括那些目前已经匹配到的元素，也包括那些今后可能匹配到的元素。从1.7版本开始已被取代。<br>使用方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&quot;table&quot;).on(&quot;click&quot;, &quot;td&quot;, function() &#123;</div><div class="line">  $(this).toggleClass(&quot;chosen&quot;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>.live()</code><br>附加一个事件处理程序到匹配目前选择器的所有元素，现在和未来<br>从jQuery1.7开始，  .live()方法已经过时了。<br>基本用法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;a&quot;).live(&quot;click&quot;, function() &#123; return false; &#125;)</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>.on( events [,selector ] [,data ], handler(eventObject) )</code><strong>推荐</strong><br>在选定的元素上绑定一个或多个事件处理函数<br>从1.7版本之后，<code>.on()</code>方法提供了绑定事件的所有功能。</p>
-</li>
-</ul>
-<p>各个参数的意义：</p>
-<ol>
-<li>events：一个或多个空格分割的事件类型和可选择的命名空间，或仅仅是命名空间。</li>
-<li>selector：一个选择器字符串，用于过滤出被选中的元素中能触发事件的后代元素。若果选择器是null或忽略了该选择器，那么被选中的元素总是能触发事件。</li>
-<li>data：当一个事件被触发时，要传递给事件处理函数event.data</li>
-<li>handler(eventObject)：事件被触发时，执行的函数。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//普通绑定事件</div><div class="line">$(&apos;div&apos;).on(&apos;click&apos;,function(e)&#123;</div><div class="line">  console.log(this);</div><div class="line">  console.log(e);</div><div class="line">&#125;)</div><div class="line">//事件委托或者事件代理，想让div 下面所有的span绑定事件，可以把事件绑定到div上</div><div class="line">$(&apos;div&apos;).on(&apos;click&apos;, &apos;span&apos;, function(e)&#123;</div><div class="line">    console.log(this);</div><div class="line">    console.log(e);</div><div class="line">&#125;);</div><div class="line">// 可以在绑定的时候给事件处理程序传递一些参数</div><div class="line">$(&apos;div&apos;).on(&apos;click&apos;, &#123;name: &apos;Byron&apos;, age: 24&#125;, function(e)&#123;</div><div class="line">    console.log(e.data);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="jquery-如何展示-隐藏元素？"><a href="#jquery-如何展示-隐藏元素？" class="headerlink" title="jquery 如何展示/隐藏元素？"></a>jquery 如何展示/隐藏元素？</h3><ul>
-<li>隐藏元素：<code>.hide([duration][,easing][,complete])</code></li>
-</ul>
-<p>用于隐藏元素，没有参数的时候等同于直接设置display属性。<br><code>.css(&#39;display&#39;,&#39;none&#39;)</code></p>
-<ol>
-<li>duration：动画持续多久</li>
-<li>easing：表示过渡时使用那种缓冲函数，jquery自身提供<code>linear</code>和<code>swing</code></li>
-<li>complete：动画完成时执行的函数</li>
-</ol>
-<p><a href="http://www.css88.com/jqapi-1.9/hide/" target="_blank" rel="external">参考</a></p>
-<ul>
-<li>显示元素：<code>.show( [duration ] [, easing ] [, complete ] )</code><br>用法类似于hide。</li>
-</ul>
-<p><a href="http://www.css88.com/jqapi-1.9/show/" target="_blank" rel="external">参考</a><br><a href="http://js.jirengu.com/kutonadame/2/edit" target="_blank" rel="external">Jsbin</a></p>
-<h3 id="jquery-动画如何使用？"><a href="#jquery-动画如何使用？" class="headerlink" title="jquery 动画如何使用？"></a>jquery 动画如何使用？</h3><p>jQuery animate() 方法用于创建自定义动画。<br><code>$(selector).animate({params},speed,callback);</code><br><strong>参数：</strong></p>
-<ul>
-<li>必需的 params 参数定义形成动画的 CSS 属性。</li>
-<li>可选的 speed 参数规定效果的时长。它可以取以下值：”slow”、”fast” 或毫秒。</li>
-<li>可选的 callback 参数是动画完成后所执行的函数名称。</li>
-</ul>
-<h3 id="如何设置和获取元素内部-HTML-内容？如何设置和获取元素内部文本？"><a href="#如何设置和获取元素内部-HTML-内容？如何设置和获取元素内部文本？" class="headerlink" title="如何设置和获取元素内部 HTML 内容？如何设置和获取元素内部文本？"></a>如何设置和获取元素内部 HTML 内容？如何设置和获取元素内部文本？</h3><ul>
-<li><code>text()</code>：设置或返回所选元素的文本内容</li>
-<li><code>html()</code>：设置或返回所选元素的内容(包括HTML标记)</li>
-</ul>
-<h3 id="如何设置和获取表单用户输入或者选择的内容？如何设置和获取元素属性？"><a href="#如何设置和获取表单用户输入或者选择的内容？如何设置和获取元素属性？" class="headerlink" title="如何设置和获取表单用户输入或者选择的内容？如何设置和获取元素属性？"></a>如何设置和获取表单用户输入或者选择的内容？如何设置和获取元素属性？</h3><ul>
-<li><code>val()</code> ：设置或返回表单字段的值</li>
-<li><code>attr()</code>：设置或返回元素的属性</li>
-</ul>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="使用-jquery实现如下效果"><a href="#使用-jquery实现如下效果" class="headerlink" title="使用 jquery实现如下效果"></a>使用 jquery实现如下效果</h3><p><img src="http://upload-images.jianshu.io/upload_images/2331805-4712cc721ab2fd10.gif?imageMogr2/auto-orient/strip" alt="Paste_Image.png"><br><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task25/01.html" target="_blank" rel="external">在线预览</a></p>
-<h3 id="使用-jquery-实现如下效果"><a href="#使用-jquery-实现如下效果" class="headerlink" title="使用 jquery 实现如下效果"></a>使用 jquery 实现如下效果</h3><p><img src="http://upload-images.jianshu.io/upload_images/2331805-7d89b093b888735c.gif?imageMogr2/auto-orient/strip" alt="Paste_Image.png"><br><strong>问题</strong>： 点奢侈品2的时候页面跳到了顶部，可能是什么原因？如何解决<br>原因是在<code>href</code>属性中使用了<code>#</code>做页面跳转，可以使用<code>javascript:void(0)</code><br><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task25/02.html" target="_blank" rel="external">在线预览</a></p>
-<h3 id="实现如下效果"><a href="#实现如下效果" class="headerlink" title="实现如下效果"></a>实现如下效果</h3><p><img src="http://upload-images.jianshu.io/upload_images/2331805-bb62b7d503e462aa.gif?imageMogr2/auto-orient/strip" alt="Paste_Image.png"><br><strong>提示</strong><br>1.使用代理<br>2.当点击按钮时使用如下数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var products = [</div><div class="line">    &#123;</div><div class="line">        img: &apos;http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg&apos;,</div><div class="line">        name: &apos;珂兰 黄金手 猴哥款&apos;,</div><div class="line">        price: &apos;￥405.00&apos;</div><div class="line">    &#125;,&#123;</div><div class="line">        img: &apos;http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg&apos;,</div><div class="line">        name: &apos;珂兰 黄金转运珠 猴哥款&apos;,</div><div class="line">        price: &apos;￥100.00&apos;</div><div class="line">    &#125;,&#123;</div><div class="line">        img: &apos;http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg&apos;,</div><div class="line">        name: &apos;珂兰 黄金手链 3D猴哥款&apos;,</div><div class="line">        price: &apos;￥45.00&apos;</div><div class="line">    &#125;</div><div class="line">];</div></pre></td></tr></table></figure>
-<p><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task25/03.html" target="_blank" rel="external">在线预览</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/06/jquery/">展开全文 >></a>
         </p>
       
 

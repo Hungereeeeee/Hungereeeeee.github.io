@@ -6,17 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 块垒的博客</title>
+  <title>数据类型转换 | 块垒的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="持续学习中">
-<meta property="og:type" content="website">
-<meta property="og:title" content="块垒的博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/3/index.html">
+  <meta name="description" content="一直没太在意数据类型转换，所以今天记录一下所看到的数据类型转换的知识。
+由于JavaScript是一种动态类型语言，变量没有类型限制，所以可以随时赋予任意值。而在某些情况下，变量就会自动进行类型转换例如：1&amp;apos;5&amp;apos;-&amp;apos;2&amp;apos;//3
+虽然是字符串相减但是也会因为自动转换的原因得到数值
+强制类型转换Number()函数可以将任意类型转换成数值
+
+原始类型转换规则：原">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据类型转换">
+<meta property="og:url" content="http://yoursite.com/2017/02/28/数据类型转换/index.html">
 <meta property="og:site_name" content="块垒的博客">
-<meta property="og:description" content="持续学习中">
+<meta property="og:description" content="一直没太在意数据类型转换，所以今天记录一下所看到的数据类型转换的知识。
+由于JavaScript是一种动态类型语言，变量没有类型限制，所以可以随时赋予任意值。而在某些情况下，变量就会自动进行类型转换例如：1&amp;apos;5&amp;apos;-&amp;apos;2&amp;apos;//3
+虽然是字符串相减但是也会因为自动转换的原因得到数值
+强制类型转换Number()函数可以将任意类型转换成数值
+
+原始类型转换规则：原">
+<meta property="og:updated_time" content="2017-02-28T12:21:38.172Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="块垒的博客">
-<meta name="twitter:description" content="持续学习中">
+<meta name="twitter:title" content="数据类型转换">
+<meta name="twitter:description" content="一直没太在意数据类型转换，所以今天记录一下所看到的数据类型转换的知识。
+由于JavaScript是一种动态类型语言，变量没有类型限制，所以可以随时赋予任意值。而在某些情况下，变量就会自动进行类型转换例如：1&amp;apos;5&amp;apos;-&amp;apos;2&amp;apos;//3
+虽然是字符串相减但是也会因为自动转换的原因得到数值
+强制类型转换Number()函数可以将任意类型转换成数值
+
+原始类型转换规则：原">
   
     <link rel="alternative" href="/atom.xml" title="块垒的博客" type="application/atom+xml">
   
@@ -142,296 +158,143 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-数据类型转换" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数据类型转换
+    </h1>
+  
+
+        
+        <a href="/2017/02/28/数据类型转换/" class="archive-article-date">
+  	<time datetime="2017-02-28T11:10:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一直没太在意数据类型转换，所以今天记录一下所看到的数据类型转换的知识。</p>
+<p>由于JavaScript是一种动态类型语言，变量没有类型限制，所以可以随时赋予任意值。而在某些情况下，变量就会自动进行类型转换例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;5&apos;-&apos;2&apos;//3</div></pre></td></tr></table></figure></p>
+<p>虽然是字符串相减但是也会因为自动转换的原因得到数值</p>
+<h1 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h1><h2 id="Number-函数"><a href="#Number-函数" class="headerlink" title="Number()函数"></a>Number()函数</h2><p>可以将任意类型转换成数值</p>
+<ol>
+<li>原始类型转换规则：<br>原始类型的值主要是字符串、布尔值、<code>undefined</code>和<code>null</code>，它们都能被<code>Number</code>转成数值或<code>NaN</code>。<br>其中空字符串转换为0</li>
+<li>对象的转换规则<br>简单规则是对象会转换为0</li>
+</ol>
+<h2 id="String"><a href="#String" class="headerlink" title="String()"></a>String()</h2><p>转换规则如下：</p>
+<ol>
+<li><p>原始类型值的转换：</p>
+<p> 数值：转化为相应内存</p>
+<p> 字符串：转换后还是原值</p>
+<p> 布尔值：true转为”true”，false转换为”false”</p>
+<p> undefined：转为”undefined”</p>
+<p> null：转为”null”</p>
+</li>
+<li>对象转换规则：<br>如果是对象，返回一个类型字符串，如果是数组，返回该数组的字符串形式</li>
+</ol>
+<h2 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean()"></a>Boolean()</h2><p>转换规则相对简单：除了以下六个值的转换结果为false，其他全部为true<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">undefined</div><div class="line">null</div><div class="line">-0</div><div class="line">0或+0</div><div class="line">NaN</div><div class="line">&apos;&apos;</div></pre></td></tr></table></figure></p>
+<p><strong>接下来是重头戏，自动转换</strong></p>
+<h1 id="自动转换"><a href="#自动转换" class="headerlink" title="自动转换"></a>自动转换</h1><p>遇到一下三种情况时，JavaScript会自动转换数据类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//1. 不同类型的数据相互运算</div><div class="line">1 + &apos;a&apos; //1a</div><div class="line"></div><div class="line">//2. 对非布尔值类型的数据求布尔值</div><div class="line">if(&apos;a&apos;)&#123;</div><div class="line">    console.log(&apos;hello world&apos;)</div><div class="line">&#125;//hello world</div><div class="line"></div><div class="line">//3. 对非数值类型的数据使用一元运算符（即“+”和“-”）</div><div class="line">+&#123;a:&apos;hello&apos;&#125;//NaN</div><div class="line">-[1,2,3]//NaN</div></pre></td></tr></table></figure></p>
+<h2 id="自动转换为布尔值"><a href="#自动转换为布尔值" class="headerlink" title="自动转换为布尔值"></a>自动转换为布尔值</h2><p>当JavaScript遇到预期为布尔值的地方（if、三元运算符等），就会将非布尔值的参数转换为布尔值，系统自动调用<code>Boolean()</code>函数</p>
+<h2 id="自动转换为字符串"><a href="#自动转换为字符串" class="headerlink" title="自动转换为字符串"></a>自动转换为字符串</h2><p>当JavaScript遇到预期为字符串的地方，就会将非字符串的数据自动转为字符串。系统内部会自动调用<code>String()</code>函数。<br>字符串的自动转换，只要发生在加法运算时。当一个值为字符串，另一个值为非字符串，则后者转为字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&apos;1&apos;+2 // &apos;12&apos;</div><div class="line">&apos;1&apos;+true // &apos;1true&apos;</div><div class="line">&apos;1&apos; + undefined //&apos;1undefined&apos;</div></pre></td></tr></table></figure></p>
+<p>所以要小心类似以下情况引起的问题<br><a href="http://js.jirengu.com/piwurezudu/2/edit" target="_blank" rel="external">JSBin</a></p>
+<h2 id="自动转换为数值"><a href="#自动转换为数值" class="headerlink" title="自动转换为数值"></a>自动转换为数值</h2><p>当JavaScript遇到预期为数值的地方，就会将参数值自动转换为数值。系统内部会自动调用Number函数。<br>除了加法运算符有可能把运算子转为字符串，其他运算符都会把运算子自动转成数值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1+&apos;1&apos;//11</div><div class="line">2-&apos;1&apos;//1</div><div class="line">&apos;1&apos; * [] //0</div><div class="line">&apos;abc&apos; - 1//NaN</div></pre></td></tr></table></figure></p>
+<p>一元预算福也会把运算子转成数值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">+&apos;abc&apos; // NaN</div><div class="line">-&apos;abc&apos; // NaN</div><div class="line">+true // 1</div><div class="line">-false // 0</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/09/06/jquery/" class="archive-article-date">
-  	<time datetime="2016-09-05T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/06/jquery/">jquery</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/28/数据类型转换/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/31/AJAX/" class="archive-article-date">
-  	<time datetime="2016-08-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-31</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/31/AJAX/">AJAX</a>
-    </h1>
+  
+    <a href="/2017/02/27/异步执行/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">异步执行</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/29/熟悉后端语言/" class="archive-article-date">
-  	<time datetime="2016-08-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/29/熟悉后端语言/">熟悉后端语言</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/26/DOM、事件/" class="archive-article-date">
-  	<time datetime="2016-08-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/26/DOM、事件/">DOM、事件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/26/浏览器兼容-1/" class="archive-article-date">
-  	<time datetime="2016-08-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/26/浏览器兼容-1/">浏览器兼容</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/24/正则表达式/" class="archive-article-date">
-  	<time datetime="2016-08-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/24/正则表达式/">正则表达式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/21/闭包、定时器/" class="archive-article-date">
-  	<time datetime="2016-08-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/21/闭包、定时器/">闭包、定时器</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/16/时间对象、引用类型/" class="archive-article-date">
-  	<time datetime="2016-08-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/16/时间对象、引用类型/">时间对象、引用类型</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/16/数组、字符串、数学函数/" class="archive-article-date">
-  	<time datetime="2016-08-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/16/数组、字符串、数学函数/">数组、字符串、数学函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/12/函数/" class="archive-article-date">
-  	<time datetime="2016-08-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/12/函数/">函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/4/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -454,8 +317,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

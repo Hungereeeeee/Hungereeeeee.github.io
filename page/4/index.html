@@ -144,6 +144,155 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JS语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/10/JS语法/">JS语法</a>
+    </h1>
+  
+
+        
+        <a href="/2016/08/10/JS语法/" class="archive-article-date">
+  	<time datetime="2016-08-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="CSS和JS在网页中的放置顺序是怎样的？"><a href="#CSS和JS在网页中的放置顺序是怎样的？" class="headerlink" title="CSS和JS在网页中的放置顺序是怎样的？"></a>CSS和JS在网页中的放置顺序是怎样的？</h3><ol>
+<li><p>对于CSS，应该使用<code>&lt;link&gt;</code>标签放在<code>&lt;head&gt;</code>标签内，当直接写在html文档中时应该在<code>&lt;head&gt;</code>标签内写一个<code>&lt;style&gt;</code>标签然后放在<code>&lt;style&gt;</code>标签内。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> /*CSS外部引用*/</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles/index.css&quot;&gt;</div><div class="line">&lt;/head&gt;</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> /*内部样式表*/</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;style&gt;</div><div class="line">      body&#123;</div><div class="line">        margin:0;</div><div class="line">    &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>对于JS通常放在<code>&lt;body&gt;</code>的内容的最后面，但是个别特殊JS内容应该尽量放在最前面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">    /*外部引用*/</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;index.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">    /*内部引用*/</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">        alert(1);</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
+<h3 id="解释白屏和FOUC"><a href="#解释白屏和FOUC" class="headerlink" title="解释白屏和FOUC"></a>解释白屏和FOUC</h3><ol>
+<li>白屏问题：如果把样式放在底部，对于IE浏览器，在某些场景下页面会出现白屏，而不是内容逐步展现，如果使用<code>@import</code>标签，即使CSS放入<code>&lt;link&gt;</code>并且放在头部也可能出现白屏。<br>在加载JS文件时，会警用并发，并阻止其他内容的下载，所以把JS放入页面顶部也会导致白屏现象。</li>
+<li>FOUC无样式内容闪烁<br>如果把样式放在底部,对于IE浏览器,在某些场景下(点击链接,输入URL,使用书签进入等),会出现 FOUC 现象(逐步加载无样式的内容,等CSS加载后页面突然展现样式).对于 Firefox 会一直表现出 FOUC .<blockquote>
+<p>将JS放在底部</p>
+<ul>
+<li>脚本会阻塞后面内容的呈现</li>
+<li>脚本会阻塞其后组建的下载</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h3 id="async和defer的作用是什么？有什么区别"><a href="#async和defer的作用是什么？有什么区别" class="headerlink" title="async和defer的作用是什么？有什么区别"></a><code>async</code>和<code>defer</code>的作用是什么？有什么区别</h3><p><code>async</code>和<code>defer</code>都时异步加载。<br>没有<code>defer</code>或<code>async</code>，浏览器会立即加载并执行指定的脚本，立即指的是在渲染该<code>&lt;script&gt;</code>之下的文档元素之前，也就时说不等待后续载入的元素，读到就加载并执行。</p>
+<ol>
+<li><p>有<code>async</code>，加载和渲染后续文档元素的过程将和script.js的加载与执行并行进行（异步）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script async type=&quot;text/javascript&quot; src=&quot;index.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>有<code>defer</code>，加载后续文档元素的过程将和script.js的加载并行进行，但 script.js 的执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。</p>
+</li>
+</ol>
+<p><code>defer</code>和<code>async</code>的区别：</p>
+<ol>
+<li><code>defer</code>：脚本延迟到文档解析和显示后执行，有顺序</li>
+<li><code>async</code>：不保证顺序</li>
+</ol>
+<h3 id="简述网页的渲染机制"><a href="#简述网页的渲染机制" class="headerlink" title="简述网页的渲染机制"></a>简述网页的渲染机制</h3><ol>
+<li>浏览器打开页面时，先加载HTML的内容，然后解析HTML文件解析成DOM树。</li>
+<li>解析CSS构建CSSOM树</li>
+<li>把DOM和CSSOM组合成渲染树</li>
+<li>在渲染树的基础上进行布局，计算每个节点的几何结构</li>
+<li>把每个节点绘制到屏幕上</li>
+</ol>
+<h3 id="JavaScript-定义了几种数据类型-哪些是简单类型-哪些是复杂类型"><a href="#JavaScript-定义了几种数据类型-哪些是简单类型-哪些是复杂类型" class="headerlink" title="JavaScript 定义了几种数据类型? 哪些是简单类型?哪些是复杂类型?"></a>JavaScript 定义了几种数据类型? 哪些是简单类型?哪些是复杂类型?</h3><ul>
+<li>简单类型<ol>
+<li>Number类型：整数和小数</li>
+<li>String类型：字符组成的文本</li>
+<li>Boolean类型：true和false的两个特定值</li>
+<li>Null：表示已经定义了一个变量，但是目前没有赋值，即为空</li>
+<li>Undefined类型：表示未定义或不存在</li>
+</ol>
+</li>
+<li>复杂类型<br>Object类型</li>
+</ul>
+<h3 id="NaN、undefined、null分别代表什么"><a href="#NaN、undefined、null分别代表什么" class="headerlink" title="NaN、undefined、null分别代表什么?"></a><code>NaN</code>、<code>undefined</code>、<code>null</code>分别代表什么?</h3><ol>
+<li><code>NaN</code>表示非数字，但是属于Number类型。<code>NaN</code>和任何数值都不相等，包括它自己</li>
+<li><code>undefined</code>表示不存在值，就是此处目前不存在任何值。典型用法：<ul>
+<li>变量被声明了，但没有赋值时，就等于<code>undefined</code></li>
+<li>调用函数时，应该提供的参数没有提供，该参数等于<code>undefined</code></li>
+<li>对象没有复制的属性，该属性的值为<code>undefined</code></li>
+<li>函数没有返回值时，默认返回<code>undefined</code></li>
+</ul>
+</li>
+<li><code>null</code>表示空值，即该处现在为空，用法：<ul>
+<li>作为函数的参数，表示该函数的参数是一个没有任何内容的对象</li>
+<li>作为对象原型链的终点</li>
+</ul>
+</li>
+</ol>
+<h3 id="typeof和instanceof的作用和区别"><a href="#typeof和instanceof的作用和区别" class="headerlink" title="typeof和instanceof的作用和区别?"></a><code>typeof</code>和<code>instanceof</code>的作用和区别?</h3><p><code>typeof</code>和<code>instanceof</code>都能用来判断变量的类型或者是否为空。</p>
+<blockquote>
+<ul>
+<li><code>typeof</code>用以获取一个变量的类型，一半只能返回<code>number,boolean,string,function,object,undefined</code>类型。</li>
+<li>而<code>instaceof</code>用来判断一个变量是否是某个对象的实例，返回值是布尔类型，已确定该变量是否为指定类型。</li>
+</ul>
+</blockquote>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ol>
+<li>完成如下代码判断一个变量是否是数字、字符串、布尔、函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function isNumber(el)&#123;</div><div class="line">&#125;</div><div class="line">function isString(el)&#123;</div><div class="line">&#125;</div><div class="line">function isBoolean(el)&#123;</div><div class="line">&#125;</div><div class="line">function isFunction(el)&#123;</div><div class="line">&#125;</div><div class="line">var a = 2,</div><div class="line">b = &apos;jirengu&apos;,</div><div class="line">c = false;</div><div class="line">alert( isNumber(a) );  //true</div><div class="line">alert( isString(a) );  //false</div><div class="line">alert( isString(b) );  //true</div><div class="line">alert( isBoolean(c) ); //true</div><div class="line">alert( isFunction(a)); //false</div><div class="line">alert( isFunction( isNumber ) ); //true</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task16/one.html" target="_blank" rel="external">代码预览</a></p>
+<ol>
+<li><p>以下代码的输出结果是?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">console.log(1+1);         //2</div><div class="line">console.log(&quot;2&quot;+&quot;4&quot;);     //24</div><div class="line">console.log(2+&quot;4&quot;);       //24</div><div class="line">console.log(+new Date());  //1470814913028</div><div class="line">console.log(+&quot;4&quot;);            //4</div></pre></td></tr></table></figure>
+</li>
+<li><p>以下代码的输出结果是?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a = 1;</div><div class="line">a+++a;    //3</div><div class="line">typeof a+2;    //number2</div></pre></td></tr></table></figure>
+</li>
+<li><p>遍历数组，把数组里的打印数组每一项的平方</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var arr = [3,4,5]</div><div class="line">// todo..</div><div class="line">// 输出 9, 16, 25</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task16/four.html" target="_blank" rel="external">代码预览</a></p>
+<ol>
+<li>遍历 JSON, 打印里面的值<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;</div><div class="line">  name: &apos;hunger&apos;,</div><div class="line">  sex: &apos;male&apos;,</div><div class="line">  age: 28</div><div class="line">&#125;</div><div class="line">//todo ...</div><div class="line">// 输出 name: hunger, sex: male, age:28</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task16/five.html" target="_blank" rel="external">代码预览</a></p>
+<ol>
+<li>下面代码的输出是? 为什么<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">console.log(a);//undefined 变量提升 a未赋值</div><div class="line">var a = 1;</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //b is undefined,未声明b</div></pre></td></tr></table></figure></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/08/10/JS语法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-浏览器兼容" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1009,76 +1158,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/07/01/HTML（3）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-HTML（2）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/30/HTML（2）/">HTML2</a>
-    </h1>
-  
-
-        
-        <a href="/2016/06/30/HTML（2）/" class="archive-article-date">
-  	<time datetime="2016-06-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="样式有几种引入方式-link和-import有什么区别"><a href="#样式有几种引入方式-link和-import有什么区别" class="headerlink" title="样式有几种引入方式? link和 @import有什么区别?"></a>样式有几种引入方式? link和 @import有什么区别?</h3><p>样式引入方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//外部样式表</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;index.css&quot;&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">//内部样式表</div><div class="line">&lt;style type=&quot;text/css&quot;&gt;</div><div class="line">  p&#123;</div><div class="line">      color:red;</div><div class="line"> &#125;</div><div class="line">&lt;/style&gt;</div><div class="line">//内联样式</div><div class="line">&lt;p style=&quot;color:red;&quot;&gt;测试&lt;/p&gt;</div></pre></td></tr></table></figure></p>
-<p>两种都是外部引用CSS的方式，差别在：<br>1.link是XHTML标签，除了引用CSS外还可以定义rel链接属性等，而@import是CSS提供的一种方式，只能引用CSS。<br>2.link引用CSS时，会在页面载入同时加载，而@import则会在页面完全载入完毕再加载。<br>3.link是CSS2.1提出的，老版本的浏览器会有兼容问题。<br>4.当用JavaScript改变DOM样式时，只有link支持。</p>
-<h3 id="文件路径-main-css、-main-css、main-css有什么区别？"><a href="#文件路径-main-css、-main-css、main-css有什么区别？" class="headerlink" title="文件路径../main.css、./main.css、main.css有什么区别？"></a>文件路径../main.css、./main.css、main.css有什么区别？</h3><p>../main.css：在目录上一级寻找main.css。<br>./main.css,main.css：在当前目录下寻找main.css。</p>
-<h3 id="console-log是做什么用的？"><a href="#console-log是做什么用的？" class="headerlink" title="console.log是做什么用的？"></a>console.log是做什么用的？</h3><p>console.log主要是用来调试JavaScript用的。可以看到对象中的内容，并且不会弹出窗口打断操作。</p>
-<h3 id="text-align有几个值，分别有什么作用？"><a href="#text-align有几个值，分别有什么作用？" class="headerlink" title="text-align有几个值，分别有什么作用？"></a>text-align有几个值，分别有什么作用？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">text-align:left;//文本左对齐</div><div class="line">text-align:right;//文本右对齐</div><div class="line">text-align:center;//文本居中</div><div class="line">text-align:justify;//文本两端对齐</div><div class="line">text-align:inherit;//从父元素继承文本属性的值</div></pre></td></tr></table></figure>
-<h3 id="px、em、rem分别是什么？有什么区别？如何使用？"><a href="#px、em、rem分别是什么？有什么区别？如何使用？" class="headerlink" title="px、em、rem分别是什么？有什么区别？如何使用？"></a>px、em、rem分别是什么？有什么区别？如何使用？</h3><p>px：固定大小像素；<br>em：相对于父元素的像素大小，如果父元素没有设置则逐级向上查找；<br>rem：相对于根节点<code>&lt;html&gt;</code>的像素大小。</p>
-<h3 id="对chrome-审查元素的功能做个简单的截图介绍"><a href="#对chrome-审查元素的功能做个简单的截图介绍" class="headerlink" title="对chrome 审查元素的功能做个简单的截图介绍"></a>对chrome 审查元素的功能做个简单的截图介绍</h3><p><img src="http://upload-images.jianshu.io/upload_images/2331805-dc8391436fc632ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><img src="http://upload-images.jianshu.io/upload_images/2331805-6bea22ea67653f9e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<h3 id="如下代码，设置-p为几-rem，让h1和p的字体大小相等"><a href="#如下代码，设置-p为几-rem，让h1和p的字体大小相等" class="headerlink" title="如下代码，设置 p为几 rem，让h1和p的字体大小相等?"></a>如下代码，设置 p为几 rem，让h1和p的字体大小相等?</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;h1&gt;饥人谷&lt;/h1&gt;</div><div class="line">&lt;p&gt;饥人谷&lt;/p&gt;</div><div class="line">&lt;style&gt;</div><div class="line"> html&#123;</div><div class="line">   font-size: 62.5%;</div><div class="line"> &#125;</div><div class="line"> p&#123;</div><div class="line">   font-size: 6rem;</div><div class="line"> &#125;</div><div class="line"> h1&#123;</div><div class="line">   font-size: 60px;</div><div class="line"> &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
-<p>浏览器的默认字体大小为16px,而根节点<code>&lt;html&gt;</code>的<code>font-size</code>设置为62.5%，所以<code>&lt;html&gt;</code>字体大小为10px,所以应设为6rem。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">html简介</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/06/30/HTML（2）/">展开全文 >></a>
         </p>
       
 

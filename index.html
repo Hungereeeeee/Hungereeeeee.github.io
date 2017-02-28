@@ -144,6 +144,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数据类型转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/28/数据类型转换/">数据类型转换</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/28/数据类型转换/" class="archive-article-date">
+  	<time datetime="2017-02-28T11:10:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一直没太在意数据类型转换，所以今天记录一下所看到的数据类型转换的知识。</p>
+<p>由于JavaScript是一种动态类型语言，变量没有类型限制，所以可以随时赋予任意值。而在某些情况下，变量就会自动进行类型转换例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;5&apos;-&apos;2&apos;//3</div></pre></td></tr></table></figure></p>
+<p>虽然是字符串相减但是也会因为自动转换的原因得到数值</p>
+<h1 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h1><h2 id="Number-函数"><a href="#Number-函数" class="headerlink" title="Number()函数"></a>Number()函数</h2><p>可以将任意类型转换成数值</p>
+<ol>
+<li>原始类型转换规则：<br>原始类型的值主要是字符串、布尔值、<code>undefined</code>和<code>null</code>，它们都能被<code>Number</code>转成数值或<code>NaN</code>。<br>其中空字符串转换为0</li>
+<li>对象的转换规则<br>简单规则是对象会转换为0</li>
+</ol>
+<h2 id="String"><a href="#String" class="headerlink" title="String()"></a>String()</h2><p>转换规则如下：</p>
+<ol>
+<li><p>原始类型值的转换：</p>
+<p> 数值：转化为相应内存</p>
+<p> 字符串：转换后还是原值</p>
+<p> 布尔值：true转为”true”，false转换为”false”</p>
+<p> undefined：转为”undefined”</p>
+<p> null：转为”null”</p>
+</li>
+<li>对象转换规则：<br>如果是对象，返回一个类型字符串，如果是数组，返回该数组的字符串形式</li>
+</ol>
+<h2 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean()"></a>Boolean()</h2><p>转换规则相对简单：除了以下六个值的转换结果为false，其他全部为true<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">undefined</div><div class="line">null</div><div class="line">-0</div><div class="line">0或+0</div><div class="line">NaN</div><div class="line">&apos;&apos;</div></pre></td></tr></table></figure></p>
+<p><strong>接下来是重头戏，自动转换</strong></p>
+<h1 id="自动转换"><a href="#自动转换" class="headerlink" title="自动转换"></a>自动转换</h1><p>遇到一下三种情况时，JavaScript会自动转换数据类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//1. 不同类型的数据相互运算</div><div class="line">1 + &apos;a&apos; //1a</div><div class="line"></div><div class="line">//2. 对非布尔值类型的数据求布尔值</div><div class="line">if(&apos;a&apos;)&#123;</div><div class="line">    console.log(&apos;hello world&apos;)</div><div class="line">&#125;//hello world</div><div class="line"></div><div class="line">//3. 对非数值类型的数据使用一元运算符（即“+”和“-”）</div><div class="line">+&#123;a:&apos;hello&apos;&#125;//NaN</div><div class="line">-[1,2,3]//NaN</div></pre></td></tr></table></figure></p>
+<h2 id="自动转换为布尔值"><a href="#自动转换为布尔值" class="headerlink" title="自动转换为布尔值"></a>自动转换为布尔值</h2><p>当JavaScript遇到预期为布尔值的地方（if、三元运算符等），就会将非布尔值的参数转换为布尔值，系统自动调用<code>Boolean()</code>函数</p>
+<h2 id="自动转换为字符串"><a href="#自动转换为字符串" class="headerlink" title="自动转换为字符串"></a>自动转换为字符串</h2><p>当JavaScript遇到预期为字符串的地方，就会将非字符串的数据自动转为字符串。系统内部会自动调用<code>String()</code>函数。<br>字符串的自动转换，只要发生在加法运算时。当一个值为字符串，另一个值为非字符串，则后者转为字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&apos;1&apos;+2 // &apos;12&apos;</div><div class="line">&apos;1&apos;+true // &apos;1true&apos;</div><div class="line">&apos;1&apos; + undefined //&apos;1undefined&apos;</div></pre></td></tr></table></figure></p>
+<p>所以要小心类似以下情况引起的问题<br><a href="http://js.jirengu.com/piwurezudu/2/edit" target="_blank" rel="external">JSBin</a></p>
+<h2 id="自动转换为数值"><a href="#自动转换为数值" class="headerlink" title="自动转换为数值"></a>自动转换为数值</h2><p>当JavaScript遇到预期为数值的地方，就会将参数值自动转换为数值。系统内部会自动调用Number函数。<br>除了加法运算符有可能把运算子转为字符串，其他运算符都会把运算子自动转成数值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1+&apos;1&apos;//11</div><div class="line">2-&apos;1&apos;//1</div><div class="line">&apos;1&apos; * [] //0</div><div class="line">&apos;abc&apos; - 1//NaN</div></pre></td></tr></table></figure></p>
+<p>一元预算福也会把运算子转成数值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">+&apos;abc&apos; // NaN</div><div class="line">-&apos;abc&apos; // NaN</div><div class="line">+true // 1</div><div class="line">-false // 0</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/28/数据类型转换/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-异步执行" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -878,92 +955,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/11/02/requireJS、r-js/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-CMD、AMD、CommonJS规范" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/11/CMD、AMD、CommonJS规范/">CMD、AMD、CommonJS规范</a>
-    </h1>
-  
-
-        
-        <a href="/2016/10/11/CMD、AMD、CommonJS规范/" class="archive-article-date">
-  	<time datetime="2016-10-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="为什么要使用模块化？"><a href="#为什么要使用模块化？" class="headerlink" title="为什么要使用模块化？"></a>为什么要使用模块化？</h3><p>最主要的目的：</p>
-<ul>
-<li>解决命名冲突</li>
-<li>依赖管理</li>
-</ul>
-<p>其他价值：</p>
-<ul>
-<li>提高代码可读性</li>
-<li>代码解耦，提高复用性</li>
-</ul>
-<h3 id="CMD、AMD、CommonJS-规范分别指什么？有哪些应用"><a href="#CMD、AMD、CommonJS-规范分别指什么？有哪些应用" class="headerlink" title="CMD、AMD、CommonJS 规范分别指什么？有哪些应用"></a>CMD、AMD、CommonJS 规范分别指什么？有哪些应用</h3><p>模块的规范：<br>定义一个统一的前提，大家必须以同样的方式编写模块。</p>
-<ul>
-<li>CommonJS：<br>CommonJS是服务器端模块的规范。<ol>
-<li>在一个模块中，存在一个自由的变量<code>require</code>，他是一个函数<ul>
-<li>这个<code>require</code>函数接受一个模块标识符</li>
-<li><code>require</code>返回外部模块所输出的API</li>
-<li>如果出现依赖闭环，那么外部模块在被他的传递一台所<code>require</code>的时候可能并没有执行完成；在这种情况下，<code>require</code>返回的对象必须至少包含此外部模块在调用<code>require</code>函数之前就已经准备完毕输出</li>
-<li>如果请求的模块不能返回，那么<code>require</code>必须抛出一个错误</li>
-</ul>
-</li>
-<li>在一个模块中，会存在一个名为exports的自由变量，它是一个对象，模块可以在执行的时候把自身的API加入其中</li>
-<li>模块必须使用exports对象做唯一表示</li>
-</ol>
-</li>
-<li><p>CMD：<br>是SeaJS推广过程中诞生的，在CMD规范中，一个模块就是一个文件，代码的书写格式如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">define(factory)</div></pre></td></tr></table></figure>
-</li>
-<li><p>AMD：<br>AMD（异步模块定义）指定一种机智，在该机制下模块和依赖可以异步加载。这对浏览器端尤其适用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">define(id?,dependencies?,factory);</div></pre></td></tr></table></figure>
-<ul>
-<li>id:定义中模块的名字，可选：如果没提供该参数，模块的名字应该默认为模块加载器请求的指定的脚本的名字。</li>
-<li>dependencies：是一个当前模块依赖的，已被模块定义的模块标识的数组字面量。依赖参数是可选的。如果忽略次参数它应该默认为[“require”, “exports”, “module”]。然而，如果工厂方法的长度属性小于3，加载器会选择以函数的长度属性指定的参数个数调用工厂方法。</li>
-<li>工厂方法，模块初始化要执行的函数或对象。如果为函数，他应该只被执行一次。如果是对象，此对象应该为模块的输出值。<br>示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">define(&apos;modal&apos;, [&apos;jQuery&apos;, &apos;dialog&apos;], function($, Dialog)&#123;</div><div class="line">    $(&apos;.modal&apos;).show();</div><div class="line">    Dialog.open();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/10/11/CMD、AMD、CommonJS规范/">展开全文 >></a>
         </p>
       
 

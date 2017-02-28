@@ -144,6 +144,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-HTML（2）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/30/HTML（2）/">HTML2</a>
+    </h1>
+  
+
+        
+        <a href="/2016/06/30/HTML（2）/" class="archive-article-date">
+  	<time datetime="2016-06-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="样式有几种引入方式-link和-import有什么区别"><a href="#样式有几种引入方式-link和-import有什么区别" class="headerlink" title="样式有几种引入方式? link和 @import有什么区别?"></a>样式有几种引入方式? link和 @import有什么区别?</h3><p>样式引入方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//外部样式表</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;index.css&quot;&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">//内部样式表</div><div class="line">&lt;style type=&quot;text/css&quot;&gt;</div><div class="line">  p&#123;</div><div class="line">      color:red;</div><div class="line"> &#125;</div><div class="line">&lt;/style&gt;</div><div class="line">//内联样式</div><div class="line">&lt;p style=&quot;color:red;&quot;&gt;测试&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>两种都是外部引用CSS的方式，差别在：<br>1.link是XHTML标签，除了引用CSS外还可以定义rel链接属性等，而@import是CSS提供的一种方式，只能引用CSS。<br>2.link引用CSS时，会在页面载入同时加载，而@import则会在页面完全载入完毕再加载。<br>3.link是CSS2.1提出的，老版本的浏览器会有兼容问题。<br>4.当用JavaScript改变DOM样式时，只有link支持。</p>
+<h3 id="文件路径-main-css、-main-css、main-css有什么区别？"><a href="#文件路径-main-css、-main-css、main-css有什么区别？" class="headerlink" title="文件路径../main.css、./main.css、main.css有什么区别？"></a>文件路径../main.css、./main.css、main.css有什么区别？</h3><p>../main.css：在目录上一级寻找main.css。<br>./main.css,main.css：在当前目录下寻找main.css。</p>
+<h3 id="console-log是做什么用的？"><a href="#console-log是做什么用的？" class="headerlink" title="console.log是做什么用的？"></a>console.log是做什么用的？</h3><p>console.log主要是用来调试JavaScript用的。可以看到对象中的内容，并且不会弹出窗口打断操作。</p>
+<h3 id="text-align有几个值，分别有什么作用？"><a href="#text-align有几个值，分别有什么作用？" class="headerlink" title="text-align有几个值，分别有什么作用？"></a>text-align有几个值，分别有什么作用？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">text-align:left;//文本左对齐</div><div class="line">text-align:right;//文本右对齐</div><div class="line">text-align:center;//文本居中</div><div class="line">text-align:justify;//文本两端对齐</div><div class="line">text-align:inherit;//从父元素继承文本属性的值</div></pre></td></tr></table></figure>
+<h3 id="px、em、rem分别是什么？有什么区别？如何使用？"><a href="#px、em、rem分别是什么？有什么区别？如何使用？" class="headerlink" title="px、em、rem分别是什么？有什么区别？如何使用？"></a>px、em、rem分别是什么？有什么区别？如何使用？</h3><p>px：固定大小像素；<br>em：相对于父元素的像素大小，如果父元素没有设置则逐级向上查找；<br>rem：相对于根节点<code>&lt;html&gt;</code>的像素大小。</p>
+<h3 id="对chrome-审查元素的功能做个简单的截图介绍"><a href="#对chrome-审查元素的功能做个简单的截图介绍" class="headerlink" title="对chrome 审查元素的功能做个简单的截图介绍"></a>对chrome 审查元素的功能做个简单的截图介绍</h3><p><img src="http://upload-images.jianshu.io/upload_images/2331805-dc8391436fc632ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><img src="http://upload-images.jianshu.io/upload_images/2331805-6bea22ea67653f9e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<h3 id="如下代码，设置-p为几-rem，让h1和p的字体大小相等"><a href="#如下代码，设置-p为几-rem，让h1和p的字体大小相等" class="headerlink" title="如下代码，设置 p为几 rem，让h1和p的字体大小相等?"></a>如下代码，设置 p为几 rem，让h1和p的字体大小相等?</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;h1&gt;饥人谷&lt;/h1&gt;</div><div class="line">&lt;p&gt;饥人谷&lt;/p&gt;</div><div class="line">&lt;style&gt;</div><div class="line"> html&#123;</div><div class="line">   font-size: 62.5%;</div><div class="line"> &#125;</div><div class="line"> p&#123;</div><div class="line">   font-size: 6rem;</div><div class="line"> &#125;</div><div class="line"> h1&#123;</div><div class="line">   font-size: 60px;</div><div class="line"> &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<p>浏览器的默认字体大小为16px,而根节点<code>&lt;html&gt;</code>的<code>font-size</code>设置为62.5%，所以<code>&lt;html&gt;</code>字体大小为10px,所以应设为6rem。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">html简介</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/06/30/HTML（2）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-HTML（1）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

@@ -144,6 +144,127 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-jquery" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/06/jquery/">jquery</a>
+    </h1>
+  
+
+        
+        <a href="/2016/09/06/jquery/" class="archive-article-date">
+  	<time datetime="2016-09-05T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="说说库和框架的区别？"><a href="#说说库和框架的区别？" class="headerlink" title="说说库和框架的区别？"></a>说说库和框架的区别？</h3><p>库是将代码集合成的一个产品，供程序员调用。面向对象的代码组织形式而成的库也叫类库。面向过程的代码组织形式形成的也叫函数库。再函数库中可直接使用的函数叫库函数。开发者在使用库的时候，只需要使用库的一部分类或函数，然后继续实现自己的功能。<br>框架则是为解决一个（一类）问题而开发的产品，框架用户一般只需要使用框架提供的类或函数，即可实现全部功能。也就是说框架是库的升级版。开发者使用框架的时候，必须使用这个框架的全部代码。</p>
+<h3 id="jquery-能做什么？"><a href="#jquery-能做什么？" class="headerlink" title="jquery 能做什么？"></a>jquery 能做什么？</h3><p>jquery是个轻量级的“写的少，做的多”的js库。<br>jQuery的功能：</p>
+<ul>
+<li>HTML元素选取</li>
+<li>HTML元素操作</li>
+<li>CSS操作</li>
+<li>HTML事件函数</li>
+<li>JavaScript特效和动画</li>
+<li>HTML DOM遍历和修改</li>
+<li>AJAX</li>
+</ul>
+<h3 id="jquery-对象和-DOM-原生对象有什么区别？如何转化？"><a href="#jquery-对象和-DOM-原生对象有什么区别？如何转化？" class="headerlink" title="jquery 对象和 DOM 原生对象有什么区别？如何转化？"></a>jquery 对象和 DOM 原生对象有什么区别？如何转化？</h3><ul>
+<li>jQeury对象是通过jQuery的API构造的jQuery对象（类数组），拥有自己的属性和方法。</li>
+<li>DOM原生对象是通过DOM的API构造的DOM对象（DOM节点），也拥有自己的属性和方法。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var $jquery=$(&apos;#jquery&apos;);</div><div class="line">var dom=document.getElementById(&apos;dom&apos;);</div><div class="line">//dom对象转化为jquery对像</div><div class="line">var $dom=$(dom);</div><div class="line">//jquery对象转化为dom对象</div><div class="line">var jquery=$jquery[0];</div><div class="line">//对于一个特定的结果集，获取指定index的jQuery对象</div><div class="line">$jquery.eq(0);</div></pre></td></tr></table></figure>
+<h3 id="jquery中如何绑定事件？bind、unbind、delegate、live、on、off都有什么作用？推荐使用哪种？使用on绑定事件使用事件代理的写法？"><a href="#jquery中如何绑定事件？bind、unbind、delegate、live、on、off都有什么作用？推荐使用哪种？使用on绑定事件使用事件代理的写法？" class="headerlink" title="jquery中如何绑定事件？bind、unbind、delegate、live、on、off都有什么作用？推荐使用哪种？使用on绑定事件使用事件代理的写法？"></a>jquery中如何绑定事件？bind、unbind、delegate、live、on、off都有什么作用？推荐使用哪种？使用on绑定事件使用事件代理的写法？</h3><p>可以像原生dom一样绑定事件<code>$(selector).click()</code><br>jQuery也可以使用bind()/delegate()/live()/on绑定事件，unbind()和off()为对应bind()和on()解绑事件</p>
+<ul>
+<li><p><code>bind()</code><br>为一个元素绑定一个事件处理程序，再jQuery1.7以前使用。对于早期版本，<code>.bind()</code>方法用于直接附加一个事件处理程序到元素上。处理程序附加到jQuery对象当前选中的元素、所以在绑定的时候这些元素必须已经存在。<br>基本用法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&apos;#foo&apos;).bind(&apos;click&apos;, function() &#123;</div><div class="line">  alert(&apos;User clicked on &quot;foo.&quot;&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>.delegate()</code><br>为所有匹配选择器的元素绑定一个或多个事件处理函数，基于一个指定的根元素的子集，匹配的元素包括那些目前已经匹配到的元素，也包括那些今后可能匹配到的元素。从1.7版本开始已被取代。<br>使用方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&quot;table&quot;).on(&quot;click&quot;, &quot;td&quot;, function() &#123;</div><div class="line">  $(this).toggleClass(&quot;chosen&quot;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>.live()</code><br>附加一个事件处理程序到匹配目前选择器的所有元素，现在和未来<br>从jQuery1.7开始，  .live()方法已经过时了。<br>基本用法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;a&quot;).live(&quot;click&quot;, function() &#123; return false; &#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>.on( events [,selector ] [,data ], handler(eventObject) )</code><strong>推荐</strong><br>在选定的元素上绑定一个或多个事件处理函数<br>从1.7版本之后，<code>.on()</code>方法提供了绑定事件的所有功能。</p>
+</li>
+</ul>
+<p>各个参数的意义：</p>
+<ol>
+<li>events：一个或多个空格分割的事件类型和可选择的命名空间，或仅仅是命名空间。</li>
+<li>selector：一个选择器字符串，用于过滤出被选中的元素中能触发事件的后代元素。若果选择器是null或忽略了该选择器，那么被选中的元素总是能触发事件。</li>
+<li>data：当一个事件被触发时，要传递给事件处理函数event.data</li>
+<li>handler(eventObject)：事件被触发时，执行的函数。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//普通绑定事件</div><div class="line">$(&apos;div&apos;).on(&apos;click&apos;,function(e)&#123;</div><div class="line">  console.log(this);</div><div class="line">  console.log(e);</div><div class="line">&#125;)</div><div class="line">//事件委托或者事件代理，想让div 下面所有的span绑定事件，可以把事件绑定到div上</div><div class="line">$(&apos;div&apos;).on(&apos;click&apos;, &apos;span&apos;, function(e)&#123;</div><div class="line">    console.log(this);</div><div class="line">    console.log(e);</div><div class="line">&#125;);</div><div class="line">// 可以在绑定的时候给事件处理程序传递一些参数</div><div class="line">$(&apos;div&apos;).on(&apos;click&apos;, &#123;name: &apos;Byron&apos;, age: 24&#125;, function(e)&#123;</div><div class="line">    console.log(e.data);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="jquery-如何展示-隐藏元素？"><a href="#jquery-如何展示-隐藏元素？" class="headerlink" title="jquery 如何展示/隐藏元素？"></a>jquery 如何展示/隐藏元素？</h3><ul>
+<li>隐藏元素：<code>.hide([duration][,easing][,complete])</code></li>
+</ul>
+<p>用于隐藏元素，没有参数的时候等同于直接设置display属性。<br><code>.css(&#39;display&#39;,&#39;none&#39;)</code></p>
+<ol>
+<li>duration：动画持续多久</li>
+<li>easing：表示过渡时使用那种缓冲函数，jquery自身提供<code>linear</code>和<code>swing</code></li>
+<li>complete：动画完成时执行的函数</li>
+</ol>
+<p><a href="http://www.css88.com/jqapi-1.9/hide/" target="_blank" rel="external">参考</a></p>
+<ul>
+<li>显示元素：<code>.show( [duration ] [, easing ] [, complete ] )</code><br>用法类似于hide。</li>
+</ul>
+<p><a href="http://www.css88.com/jqapi-1.9/show/" target="_blank" rel="external">参考</a><br><a href="http://js.jirengu.com/kutonadame/2/edit" target="_blank" rel="external">Jsbin</a></p>
+<h3 id="jquery-动画如何使用？"><a href="#jquery-动画如何使用？" class="headerlink" title="jquery 动画如何使用？"></a>jquery 动画如何使用？</h3><p>jQuery animate() 方法用于创建自定义动画。<br><code>$(selector).animate({params},speed,callback);</code><br><strong>参数：</strong></p>
+<ul>
+<li>必需的 params 参数定义形成动画的 CSS 属性。</li>
+<li>可选的 speed 参数规定效果的时长。它可以取以下值：”slow”、”fast” 或毫秒。</li>
+<li>可选的 callback 参数是动画完成后所执行的函数名称。</li>
+</ul>
+<h3 id="如何设置和获取元素内部-HTML-内容？如何设置和获取元素内部文本？"><a href="#如何设置和获取元素内部-HTML-内容？如何设置和获取元素内部文本？" class="headerlink" title="如何设置和获取元素内部 HTML 内容？如何设置和获取元素内部文本？"></a>如何设置和获取元素内部 HTML 内容？如何设置和获取元素内部文本？</h3><ul>
+<li><code>text()</code>：设置或返回所选元素的文本内容</li>
+<li><code>html()</code>：设置或返回所选元素的内容(包括HTML标记)</li>
+</ul>
+<h3 id="如何设置和获取表单用户输入或者选择的内容？如何设置和获取元素属性？"><a href="#如何设置和获取表单用户输入或者选择的内容？如何设置和获取元素属性？" class="headerlink" title="如何设置和获取表单用户输入或者选择的内容？如何设置和获取元素属性？"></a>如何设置和获取表单用户输入或者选择的内容？如何设置和获取元素属性？</h3><ul>
+<li><code>val()</code> ：设置或返回表单字段的值</li>
+<li><code>attr()</code>：设置或返回元素的属性</li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="使用-jquery实现如下效果"><a href="#使用-jquery实现如下效果" class="headerlink" title="使用 jquery实现如下效果"></a>使用 jquery实现如下效果</h3><p><img src="http://upload-images.jianshu.io/upload_images/2331805-4712cc721ab2fd10.gif?imageMogr2/auto-orient/strip" alt="Paste_Image.png"><br><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task25/01.html" target="_blank" rel="external">在线预览</a></p>
+<h3 id="使用-jquery-实现如下效果"><a href="#使用-jquery-实现如下效果" class="headerlink" title="使用 jquery 实现如下效果"></a>使用 jquery 实现如下效果</h3><p><img src="http://upload-images.jianshu.io/upload_images/2331805-7d89b093b888735c.gif?imageMogr2/auto-orient/strip" alt="Paste_Image.png"><br><strong>问题</strong>： 点奢侈品2的时候页面跳到了顶部，可能是什么原因？如何解决<br>原因是在<code>href</code>属性中使用了<code>#</code>做页面跳转，可以使用<code>javascript:void(0)</code><br><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task25/02.html" target="_blank" rel="external">在线预览</a></p>
+<h3 id="实现如下效果"><a href="#实现如下效果" class="headerlink" title="实现如下效果"></a>实现如下效果</h3><p><img src="http://upload-images.jianshu.io/upload_images/2331805-bb62b7d503e462aa.gif?imageMogr2/auto-orient/strip" alt="Paste_Image.png"><br><strong>提示</strong><br>1.使用代理<br>2.当点击按钮时使用如下数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var products = [</div><div class="line">    &#123;</div><div class="line">        img: &apos;http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg&apos;,</div><div class="line">        name: &apos;珂兰 黄金手 猴哥款&apos;,</div><div class="line">        price: &apos;￥405.00&apos;</div><div class="line">    &#125;,&#123;</div><div class="line">        img: &apos;http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg&apos;,</div><div class="line">        name: &apos;珂兰 黄金转运珠 猴哥款&apos;,</div><div class="line">        price: &apos;￥100.00&apos;</div><div class="line">    &#125;,&#123;</div><div class="line">        img: &apos;http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg&apos;,</div><div class="line">        name: &apos;珂兰 黄金手链 3D猴哥款&apos;,</div><div class="line">        price: &apos;￥45.00&apos;</div><div class="line">    &#125;</div><div class="line">];</div></pre></td></tr></table></figure>
+<p><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task25/03.html" target="_blank" rel="external">在线预览</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/09/06/jquery/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-AJAX" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -305,72 +426,6 @@
 
 
   
-    <article id="post-浏览器兼容-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/26/浏览器兼容-1/">浏览器兼容</a>
-    </h1>
-  
-
-        
-        <a href="/2016/08/26/浏览器兼容-1/" class="archive-article-date">
-  	<time datetime="2016-08-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前面内容我们可以看到，在不同的浏览器下，添加和移除事件处理程序方式不相同，要想写出跨浏览器的事件处理程序，首先我们要了解不同的浏览器下处理事件处理程序的区别</p>
-<p>在添加事件处理程序事addEventListener和attachEvent主要有几个区别</p>
-<ol>
-<li>参数个数不相同，这个最直观，addEventListener有三个参数，attachEvent只有两个，attachEvent添加的事件处理程序只能发生在冒泡阶段，addEventListener第三个参数可以决定添加的事件处理程序是在捕获阶段还是冒泡阶段处理（我们一般为了浏览器兼容性都设置为冒泡阶段）</li>
-<li>第一个参数意义不同，addEventListener第一个参数是事件类型（比如click，load），而attachEvent第一个参数指明的是事件处理函数名称（onclick，onload）</li>
-<li>事件处理程序的作用域不相同，addEventListener的作用域是元素本身，this是指的触发元素，而attachEvent事件处理程序会在全局变量内运行，this是window，所以刚才例子才会返回undefined，而不是元素id</li>
-<li>为一个事件添加多个事件处理程序时，执行顺序不同，addEventListener添加会按照添加顺序执行，而attachEvent添加多个事件处理程序时顺序无规律(添加的方法少的时候大多是按添加顺序的反顺序执行的，但是添加的多了就无规律了)，所以添加多个的时候，不依赖执行顺序的还好，若是依赖于函数执行顺序，最好自己处理，不要指望浏览器</li>
-</ol>
-<p>了解了这四点区别后我们可以尝试写一个浏览器兼容性比较好的添加事件处理程序方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function addEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.addEventListener) &#123;</div><div class="line">        node.addEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.attachEvent) &#123;</div><div class="line">        node.attachEvent(&apos;on&apos; + type, handler, );</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这样，首先我们解决了第一个问题参数个数不同，现在三个参数，采用事件冒泡阶段触发</p>
-<p>第二个问题也得以解决，如果是IE，我们给type添加上on</p>
-<p>第四个问题目前还没有解决方案，需要用户自己注意，一般情况下，大家也不会添加很多事件处理程序</p>
-<p>试试这个方法感觉很不错，但是我们没有解决第三个问题，由于处理程序作用域不同，如果handler内有this之类操作，那么就会出错。在IE下，实际上大多数函数都会有this操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function addEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.addEventListener) &#123;</div><div class="line">        node.addEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.attachEvent) &#123;</div><div class="line">        node.attachEvent(&apos;on&apos; + type, function() &#123; handler.apply(node); &#125;);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这样处理就可以解决this的问题了，但是新的问题又来了，我们这样等于添加了一个匿名的事件处理程序，无法用detachEvent取消事件处理程序，有很多解决方案，我们可以借鉴大师的处理方式，jQuery创始人John Resig是这样做的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function addEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.addEventListener) &#123;</div><div class="line">        node.addEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.attachEvent) &#123;</div><div class="line">        node[&apos;e&apos; + type + handler] = handler;</div><div class="line">        node[type + handler] = function() &#123;</div><div class="line">            node[&apos;e&apos; + type + handler](window.event);</div><div class="line">        &#125;;</div><div class="line">        node.attachEvent(&apos;on&apos; + type, node[type + handler]);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在取消事件处理程序的时候<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function removeEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.removeEventListener) &#123;</div><div class="line">        node.removeEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.detachEvent) &#123;</div><div class="line">        node.detachEvent(&apos;on&apos; + type, node[type + handler]);</div><div class="line">        node[type + handler] = null;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>John Resig很巧妙地利用了闭包，看起来很不错。</p>
-<h3 id="完整兼容封装"><a href="#完整兼容封装" class="headerlink" title="完整兼容封装"></a>完整兼容封装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">function $$(el)&#123;</div><div class="line">	if(el.length &lt; 1)&#123;</div><div class="line">		return;</div><div class="line">	&#125;</div><div class="line">	var sub = el.substring(1);</div><div class="line">	if( el[0] === &apos;#&apos;)&#123;</div><div class="line">		return document.getElementById(sub);</div><div class="line">	&#125;else if(el[0] === &apos;.&apos;)&#123;</div><div class="line">		return document.getElementsByClassName(sub);</div><div class="line">	&#125;else&#123;</div><div class="line">		return document.getElementsByTagName(el);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">function addEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.addEventListener) &#123;</div><div class="line">        node.addEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.attachEvent) &#123;</div><div class="line">        node[&apos;e&apos; + type + handler] = handler;</div><div class="line">        node[type + handler] = function() &#123;</div><div class="line">            node[&apos;e&apos; + type + handler](window.event);</div><div class="line">        &#125;;</div><div class="line">        node.attachEvent(&apos;on&apos; + type, node[type + handler]);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function removeEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.removeEventListener) &#123;</div><div class="line">        node.removeEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.detachEvent) &#123;</div><div class="line">        node.detachEvent(&apos;on&apos; + type, node[type + handler]);</div><div class="line">        node[type + handler] = null;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function getEvent(e) &#123;</div><div class="line">    return e || window.event;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function getTarget(e) &#123;</div><div class="line">    return e.target || e.scrElement;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function preventDefault(e) &#123;</div><div class="line">    if (e.preventDefault)</div><div class="line">        e.preventDefault();</div><div class="line">    else</div><div class="line">        e.returnValue = false;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function stopPropagation(e) &#123;</div><div class="line">    if (e.stopPropagation)</div><div class="line">        e.stopPropagation();</div><div class="line">    else</div><div class="line">        e.cancelBubble = true;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/26/浏览器兼容-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
     <article id="post-DOM、事件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -484,6 +539,72 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/08/26/DOM、事件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-浏览器兼容-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/26/浏览器兼容-1/">浏览器兼容</a>
+    </h1>
+  
+
+        
+        <a href="/2016/08/26/浏览器兼容-1/" class="archive-article-date">
+  	<time datetime="2016-08-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前面内容我们可以看到，在不同的浏览器下，添加和移除事件处理程序方式不相同，要想写出跨浏览器的事件处理程序，首先我们要了解不同的浏览器下处理事件处理程序的区别</p>
+<p>在添加事件处理程序事addEventListener和attachEvent主要有几个区别</p>
+<ol>
+<li>参数个数不相同，这个最直观，addEventListener有三个参数，attachEvent只有两个，attachEvent添加的事件处理程序只能发生在冒泡阶段，addEventListener第三个参数可以决定添加的事件处理程序是在捕获阶段还是冒泡阶段处理（我们一般为了浏览器兼容性都设置为冒泡阶段）</li>
+<li>第一个参数意义不同，addEventListener第一个参数是事件类型（比如click，load），而attachEvent第一个参数指明的是事件处理函数名称（onclick，onload）</li>
+<li>事件处理程序的作用域不相同，addEventListener的作用域是元素本身，this是指的触发元素，而attachEvent事件处理程序会在全局变量内运行，this是window，所以刚才例子才会返回undefined，而不是元素id</li>
+<li>为一个事件添加多个事件处理程序时，执行顺序不同，addEventListener添加会按照添加顺序执行，而attachEvent添加多个事件处理程序时顺序无规律(添加的方法少的时候大多是按添加顺序的反顺序执行的，但是添加的多了就无规律了)，所以添加多个的时候，不依赖执行顺序的还好，若是依赖于函数执行顺序，最好自己处理，不要指望浏览器</li>
+</ol>
+<p>了解了这四点区别后我们可以尝试写一个浏览器兼容性比较好的添加事件处理程序方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function addEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.addEventListener) &#123;</div><div class="line">        node.addEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.attachEvent) &#123;</div><div class="line">        node.attachEvent(&apos;on&apos; + type, handler, );</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样，首先我们解决了第一个问题参数个数不同，现在三个参数，采用事件冒泡阶段触发</p>
+<p>第二个问题也得以解决，如果是IE，我们给type添加上on</p>
+<p>第四个问题目前还没有解决方案，需要用户自己注意，一般情况下，大家也不会添加很多事件处理程序</p>
+<p>试试这个方法感觉很不错，但是我们没有解决第三个问题，由于处理程序作用域不同，如果handler内有this之类操作，那么就会出错。在IE下，实际上大多数函数都会有this操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function addEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.addEventListener) &#123;</div><div class="line">        node.addEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.attachEvent) &#123;</div><div class="line">        node.attachEvent(&apos;on&apos; + type, function() &#123; handler.apply(node); &#125;);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样处理就可以解决this的问题了，但是新的问题又来了，我们这样等于添加了一个匿名的事件处理程序，无法用detachEvent取消事件处理程序，有很多解决方案，我们可以借鉴大师的处理方式，jQuery创始人John Resig是这样做的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function addEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.addEventListener) &#123;</div><div class="line">        node.addEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.attachEvent) &#123;</div><div class="line">        node[&apos;e&apos; + type + handler] = handler;</div><div class="line">        node[type + handler] = function() &#123;</div><div class="line">            node[&apos;e&apos; + type + handler](window.event);</div><div class="line">        &#125;;</div><div class="line">        node.attachEvent(&apos;on&apos; + type, node[type + handler]);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在取消事件处理程序的时候<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function removeEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.removeEventListener) &#123;</div><div class="line">        node.removeEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.detachEvent) &#123;</div><div class="line">        node.detachEvent(&apos;on&apos; + type, node[type + handler]);</div><div class="line">        node[type + handler] = null;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>John Resig很巧妙地利用了闭包，看起来很不错。</p>
+<h3 id="完整兼容封装"><a href="#完整兼容封装" class="headerlink" title="完整兼容封装"></a>完整兼容封装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">function $$(el)&#123;</div><div class="line">	if(el.length &lt; 1)&#123;</div><div class="line">		return;</div><div class="line">	&#125;</div><div class="line">	var sub = el.substring(1);</div><div class="line">	if( el[0] === &apos;#&apos;)&#123;</div><div class="line">		return document.getElementById(sub);</div><div class="line">	&#125;else if(el[0] === &apos;.&apos;)&#123;</div><div class="line">		return document.getElementsByClassName(sub);</div><div class="line">	&#125;else&#123;</div><div class="line">		return document.getElementsByTagName(el);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">function addEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.addEventListener) &#123;</div><div class="line">        node.addEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.attachEvent) &#123;</div><div class="line">        node[&apos;e&apos; + type + handler] = handler;</div><div class="line">        node[type + handler] = function() &#123;</div><div class="line">            node[&apos;e&apos; + type + handler](window.event);</div><div class="line">        &#125;;</div><div class="line">        node.attachEvent(&apos;on&apos; + type, node[type + handler]);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function removeEvent(node, type, handler) &#123;</div><div class="line">    if (!node) return false;</div><div class="line">    if (node.removeEventListener) &#123;</div><div class="line">        node.removeEventListener(type, handler, false);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    else if (node.detachEvent) &#123;</div><div class="line">        node.detachEvent(&apos;on&apos; + type, node[type + handler]);</div><div class="line">        node[type + handler] = null;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function getEvent(e) &#123;</div><div class="line">    return e || window.event;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function getTarget(e) &#123;</div><div class="line">    return e.target || e.scrElement;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function preventDefault(e) &#123;</div><div class="line">    if (e.preventDefault)</div><div class="line">        e.preventDefault();</div><div class="line">    else</div><div class="line">        e.returnValue = false;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function stopPropagation(e) &#123;</div><div class="line">    if (e.stopPropagation)</div><div class="line">        e.stopPropagation();</div><div class="line">    else</div><div class="line">        e.cancelBubble = true;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/08/26/浏览器兼容-1/">展开全文 >></a>
         </p>
       
 
@@ -687,58 +808,6 @@
 
 
   
-    <article id="post-数组、字符串、数学函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/16/数组、字符串、数学函数/">数组、字符串、数学函数</a>
-    </h1>
-  
-
-        
-        <a href="/2016/08/16/数组、字符串、数学函数/" class="archive-article-date">
-  	<time datetime="2016-08-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="数组方法里push、pop、shift、unshift、join、split分别是什么作用。"><a href="#数组方法里push、pop、shift、unshift、join、split分别是什么作用。" class="headerlink" title="数组方法里push、pop、shift、unshift、join、split分别是什么作用。"></a>数组方法里push、pop、shift、unshift、join、split分别是什么作用。</h3><p><code>push</code>：从数组队尾添加元素，返回数组长度<br><img src="http://upload-images.jianshu.io/upload_images/2331805-fde20ece2d1fda2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="push"><br><code>pop</code>：从数组队尾弹出元素，返回被弹出的值<br><img src="http://upload-images.jianshu.io/upload_images/2331805-0006ed9481516a26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="pop"><br><code>shift</code>：从数组的队头弹出元素，返回被弹出的值<br><img src="http://upload-images.jianshu.io/upload_images/2331805-1f5c4e66e41e7c2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="shift"><br><code>unshift</code>：从数组的队头添加元素，返回数组长度<br><img src="http://upload-images.jianshu.io/upload_images/2331805-507846b6ac392cfc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="unshift"><br><code>join</code>：把数组内容拼接成字符串，返回一个新的数组<br><img src="http://upload-images.jianshu.io/upload_images/2331805-5c8c51204b853f50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="join"><br><code>split</code>：把字符串分割成数组,返回一个数组<br><img src="http://upload-images.jianshu.io/upload_images/2331805-0a006b0769b2c6fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="split"></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task18/index.html" target="_blank" rel="external">在线预览</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/16/数组、字符串、数学函数/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
     <article id="post-时间对象、引用类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -778,6 +847,58 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/08/16/时间对象、引用类型/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-数组、字符串、数学函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/16/数组、字符串、数学函数/">数组、字符串、数学函数</a>
+    </h1>
+  
+
+        
+        <a href="/2016/08/16/数组、字符串、数学函数/" class="archive-article-date">
+  	<time datetime="2016-08-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="数组方法里push、pop、shift、unshift、join、split分别是什么作用。"><a href="#数组方法里push、pop、shift、unshift、join、split分别是什么作用。" class="headerlink" title="数组方法里push、pop、shift、unshift、join、split分别是什么作用。"></a>数组方法里push、pop、shift、unshift、join、split分别是什么作用。</h3><p><code>push</code>：从数组队尾添加元素，返回数组长度<br><img src="http://upload-images.jianshu.io/upload_images/2331805-fde20ece2d1fda2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="push"><br><code>pop</code>：从数组队尾弹出元素，返回被弹出的值<br><img src="http://upload-images.jianshu.io/upload_images/2331805-0006ed9481516a26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="pop"><br><code>shift</code>：从数组的队头弹出元素，返回被弹出的值<br><img src="http://upload-images.jianshu.io/upload_images/2331805-1f5c4e66e41e7c2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="shift"><br><code>unshift</code>：从数组的队头添加元素，返回数组长度<br><img src="http://upload-images.jianshu.io/upload_images/2331805-507846b6ac392cfc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="unshift"><br><code>join</code>：把数组内容拼接成字符串，返回一个新的数组<br><img src="http://upload-images.jianshu.io/upload_images/2331805-5c8c51204b853f50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="join"><br><code>split</code>：把字符串分割成数组,返回一个数组<br><img src="http://upload-images.jianshu.io/upload_images/2331805-0a006b0769b2c6fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="split"></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task18/index.html" target="_blank" rel="external">在线预览</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/08/16/数组、字符串、数学函数/">展开全文 >></a>
         </p>
       
 
@@ -904,155 +1025,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/08/12/函数/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-JS语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/10/JS语法/">JS语法</a>
-    </h1>
-  
-
-        
-        <a href="/2016/08/10/JS语法/" class="archive-article-date">
-  	<time datetime="2016-08-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="CSS和JS在网页中的放置顺序是怎样的？"><a href="#CSS和JS在网页中的放置顺序是怎样的？" class="headerlink" title="CSS和JS在网页中的放置顺序是怎样的？"></a>CSS和JS在网页中的放置顺序是怎样的？</h3><ol>
-<li><p>对于CSS，应该使用<code>&lt;link&gt;</code>标签放在<code>&lt;head&gt;</code>标签内，当直接写在html文档中时应该在<code>&lt;head&gt;</code>标签内写一个<code>&lt;style&gt;</code>标签然后放在<code>&lt;style&gt;</code>标签内。</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> /*CSS外部引用*/</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles/index.css&quot;&gt;</div><div class="line">&lt;/head&gt;</div></pre></td></tr></table></figure>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> /*内部样式表*/</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;style&gt;</div><div class="line">      body&#123;</div><div class="line">        margin:0;</div><div class="line">    &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>对于JS通常放在<code>&lt;body&gt;</code>的内容的最后面，但是个别特殊JS内容应该尽量放在最前面。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">    /*外部引用*/</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;index.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">    /*内部引用*/</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">        alert(1);</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
-<h3 id="解释白屏和FOUC"><a href="#解释白屏和FOUC" class="headerlink" title="解释白屏和FOUC"></a>解释白屏和FOUC</h3><ol>
-<li>白屏问题：如果把样式放在底部，对于IE浏览器，在某些场景下页面会出现白屏，而不是内容逐步展现，如果使用<code>@import</code>标签，即使CSS放入<code>&lt;link&gt;</code>并且放在头部也可能出现白屏。<br>在加载JS文件时，会警用并发，并阻止其他内容的下载，所以把JS放入页面顶部也会导致白屏现象。</li>
-<li>FOUC无样式内容闪烁<br>如果把样式放在底部,对于IE浏览器,在某些场景下(点击链接,输入URL,使用书签进入等),会出现 FOUC 现象(逐步加载无样式的内容,等CSS加载后页面突然展现样式).对于 Firefox 会一直表现出 FOUC .<blockquote>
-<p>将JS放在底部</p>
-<ul>
-<li>脚本会阻塞后面内容的呈现</li>
-<li>脚本会阻塞其后组建的下载</li>
-</ul>
-</blockquote>
-</li>
-</ol>
-<h3 id="async和defer的作用是什么？有什么区别"><a href="#async和defer的作用是什么？有什么区别" class="headerlink" title="async和defer的作用是什么？有什么区别"></a><code>async</code>和<code>defer</code>的作用是什么？有什么区别</h3><p><code>async</code>和<code>defer</code>都时异步加载。<br>没有<code>defer</code>或<code>async</code>，浏览器会立即加载并执行指定的脚本，立即指的是在渲染该<code>&lt;script&gt;</code>之下的文档元素之前，也就时说不等待后续载入的元素，读到就加载并执行。</p>
-<ol>
-<li><p>有<code>async</code>，加载和渲染后续文档元素的过程将和script.js的加载与执行并行进行（异步）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script async type=&quot;text/javascript&quot; src=&quot;index.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>有<code>defer</code>，加载后续文档元素的过程将和script.js的加载并行进行，但 script.js 的执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。</p>
-</li>
-</ol>
-<p><code>defer</code>和<code>async</code>的区别：</p>
-<ol>
-<li><code>defer</code>：脚本延迟到文档解析和显示后执行，有顺序</li>
-<li><code>async</code>：不保证顺序</li>
-</ol>
-<h3 id="简述网页的渲染机制"><a href="#简述网页的渲染机制" class="headerlink" title="简述网页的渲染机制"></a>简述网页的渲染机制</h3><ol>
-<li>浏览器打开页面时，先加载HTML的内容，然后解析HTML文件解析成DOM树。</li>
-<li>解析CSS构建CSSOM树</li>
-<li>把DOM和CSSOM组合成渲染树</li>
-<li>在渲染树的基础上进行布局，计算每个节点的几何结构</li>
-<li>把每个节点绘制到屏幕上</li>
-</ol>
-<h3 id="JavaScript-定义了几种数据类型-哪些是简单类型-哪些是复杂类型"><a href="#JavaScript-定义了几种数据类型-哪些是简单类型-哪些是复杂类型" class="headerlink" title="JavaScript 定义了几种数据类型? 哪些是简单类型?哪些是复杂类型?"></a>JavaScript 定义了几种数据类型? 哪些是简单类型?哪些是复杂类型?</h3><ul>
-<li>简单类型<ol>
-<li>Number类型：整数和小数</li>
-<li>String类型：字符组成的文本</li>
-<li>Boolean类型：true和false的两个特定值</li>
-<li>Null：表示已经定义了一个变量，但是目前没有赋值，即为空</li>
-<li>Undefined类型：表示未定义或不存在</li>
-</ol>
-</li>
-<li>复杂类型<br>Object类型</li>
-</ul>
-<h3 id="NaN、undefined、null分别代表什么"><a href="#NaN、undefined、null分别代表什么" class="headerlink" title="NaN、undefined、null分别代表什么?"></a><code>NaN</code>、<code>undefined</code>、<code>null</code>分别代表什么?</h3><ol>
-<li><code>NaN</code>表示非数字，但是属于Number类型。<code>NaN</code>和任何数值都不相等，包括它自己</li>
-<li><code>undefined</code>表示不存在值，就是此处目前不存在任何值。典型用法：<ul>
-<li>变量被声明了，但没有赋值时，就等于<code>undefined</code></li>
-<li>调用函数时，应该提供的参数没有提供，该参数等于<code>undefined</code></li>
-<li>对象没有复制的属性，该属性的值为<code>undefined</code></li>
-<li>函数没有返回值时，默认返回<code>undefined</code></li>
-</ul>
-</li>
-<li><code>null</code>表示空值，即该处现在为空，用法：<ul>
-<li>作为函数的参数，表示该函数的参数是一个没有任何内容的对象</li>
-<li>作为对象原型链的终点</li>
-</ul>
-</li>
-</ol>
-<h3 id="typeof和instanceof的作用和区别"><a href="#typeof和instanceof的作用和区别" class="headerlink" title="typeof和instanceof的作用和区别?"></a><code>typeof</code>和<code>instanceof</code>的作用和区别?</h3><p><code>typeof</code>和<code>instanceof</code>都能用来判断变量的类型或者是否为空。</p>
-<blockquote>
-<ul>
-<li><code>typeof</code>用以获取一个变量的类型，一半只能返回<code>number,boolean,string,function,object,undefined</code>类型。</li>
-<li>而<code>instaceof</code>用来判断一个变量是否是某个对象的实例，返回值是布尔类型，已确定该变量是否为指定类型。</li>
-</ul>
-</blockquote>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ol>
-<li>完成如下代码判断一个变量是否是数字、字符串、布尔、函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function isNumber(el)&#123;</div><div class="line">&#125;</div><div class="line">function isString(el)&#123;</div><div class="line">&#125;</div><div class="line">function isBoolean(el)&#123;</div><div class="line">&#125;</div><div class="line">function isFunction(el)&#123;</div><div class="line">&#125;</div><div class="line">var a = 2,</div><div class="line">b = &apos;jirengu&apos;,</div><div class="line">c = false;</div><div class="line">alert( isNumber(a) );  //true</div><div class="line">alert( isString(a) );  //false</div><div class="line">alert( isString(b) );  //true</div><div class="line">alert( isBoolean(c) ); //true</div><div class="line">alert( isFunction(a)); //false</div><div class="line">alert( isFunction( isNumber ) ); //true</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task16/one.html" target="_blank" rel="external">代码预览</a></p>
-<ol>
-<li><p>以下代码的输出结果是?</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">console.log(1+1);         //2</div><div class="line">console.log(&quot;2&quot;+&quot;4&quot;);     //24</div><div class="line">console.log(2+&quot;4&quot;);       //24</div><div class="line">console.log(+new Date());  //1470814913028</div><div class="line">console.log(+&quot;4&quot;);            //4</div></pre></td></tr></table></figure>
-</li>
-<li><p>以下代码的输出结果是?</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a = 1;</div><div class="line">a+++a;    //3</div><div class="line">typeof a+2;    //number2</div></pre></td></tr></table></figure>
-</li>
-<li><p>遍历数组，把数组里的打印数组每一项的平方</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var arr = [3,4,5]</div><div class="line">// todo..</div><div class="line">// 输出 9, 16, 25</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task16/four.html" target="_blank" rel="external">代码预览</a></p>
-<ol>
-<li>遍历 JSON, 打印里面的值<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;</div><div class="line">  name: &apos;hunger&apos;,</div><div class="line">  sex: &apos;male&apos;,</div><div class="line">  age: 28</div><div class="line">&#125;</div><div class="line">//todo ...</div><div class="line">// 输出 name: hunger, sex: male, age:28</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task16/five.html" target="_blank" rel="external">代码预览</a></p>
-<ol>
-<li>下面代码的输出是? 为什么<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">console.log(a);//undefined 变量提升 a未赋值</div><div class="line">var a = 1;</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //b is undefined,未声明b</div></pre></td></tr></table></figure></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/10/JS语法/">展开全文 >></a>
         </p>
       
 
