@@ -144,6 +144,132 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/12/函数/">函数</a>
+    </h1>
+  
+
+        
+        <a href="/2016/08/12/函数/" class="archive-article-date">
+  	<time datetime="2016-08-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="函数声明和函数表达式有什么区别"><a href="#函数声明和函数表达式有什么区别" class="headerlink" title="函数声明和函数表达式有什么区别"></a>函数声明和函数表达式有什么区别</h3><ul>
+<li><p>函数声明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function add(num1,num2)&#123;</div><div class="line">  var sum = 0;</div><div class="line">  sum = num1+num2;</div><div class="line">  return sum;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>函数表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var add= function (num1,num2)&#123;</div><div class="line">  var sum = 0;</div><div class="line">  sum = num1+num2;</div><div class="line">  return sum;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>函数声明和函数表达式的区别：</p>
+<ol>
+<li>函数声明必须给定函数名称，函数表达式则可以忽略名称；</li>
+<li>函数声明是整体的声明提前，而函数表达式则是函数变量的声明提前；<br><img src="http://upload-images.jianshu.io/upload_images/2331805-fb5b521eb9f77487.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="函数声明提前"></li>
+</ol>
+<h3 id="什么是变量的声明前置？什么是函数的声明前置？"><a href="#什么是变量的声明前置？什么是函数的声明前置？" class="headerlink" title="什么是变量的声明前置？什么是函数的声明前置？"></a>什么是变量的声明前置？什么是函数的声明前置？</h3><p>变量的声明前置就是把变量的声明提升到当前作用域的最前面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">console.log(a);</div><div class="line">var a = 1;</div><div class="line">/*</div><div class="line">等价于</div><div class="line">var a;</div><div class="line">console.log(a);</div><div class="line">a = 1;</div><div class="line">*/</div></pre></td></tr></table></figure></p>
+<p>函数声明前置就是把函数声明提升到当前作用域的前面，位于变量声明前置之后。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">add(1,2);</div><div class="line">function add(num1,num2)&#123;</div><div class="line">  var sum = 0;</div><div class="line">  sum = num1+num2;</div><div class="line">  return sum;</div><div class="line">&#125;</div><div class="line">var a = 1;</div><div class="line">/*</div><div class="line">等价于</div><div class="line">var a;</div><div class="line">function add(num1,num2)&#123;</div><div class="line">  var sum = 0;</div><div class="line">  sum = num1+num2;</div><div class="line">  return sum;</div><div class="line">&#125;</div><div class="line">add(1,2);</div><div class="line">a = 1;</div><div class="line">*/</div></pre></td></tr></table></figure></p>
+<p>这里需要注意函数声明前置和函数表达式声明前置的区别。</p>
+<h3 id="arguments-是什么"><a href="#arguments-是什么" class="headerlink" title="arguments 是什么"></a>arguments 是什么</h3><p><code>arguments</code>是一个函数自带的存储参数的类数组对象。<code>arguments</code>的值由函数的传入参数有关，与函数定义参数无关。</p>
+<h3 id="函数的重载怎样实现"><a href="#函数的重载怎样实现" class="headerlink" title="函数的重载怎样实现"></a>函数的重载怎样实现</h3><p>函数的重载：声明几个相同名称的函数，通过传入不同的形参，以达到用同一操作符进行不同运算的功能。重载函数通常用来实现功能类似而所处理的数据类型不同的问题。<br>而在JavaScript中定义同名的函数只会达到覆盖的效果，没法利用函数的形参不同而达到函数重载的目的，这时候可以利用<code>arguments</code>来达到函数重载的目的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">fouction add()&#123;</div><div class="line">  var sum = 0;</div><div class="line">  for(var i = 0;i&lt;arguments.length;i++)&#123;</div><div class="line">    sum += arguments[i];</div><div class="line">    console.log(sum);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="立即执行函数表达式是什么？有什么作用"><a href="#立即执行函数表达式是什么？有什么作用" class="headerlink" title="立即执行函数表达式是什么？有什么作用"></a>立即执行函数表达式是什么？有什么作用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(function () &#123;  </div><div class="line">    alert(&apos;watch out!&apos;);  </div><div class="line">&#125;());</div></pre></td></tr></table></figure>
+<p>立即执行函数是为了达到立即调用函数的效果。<br>立即执行函数表达式的作用：</p>
+<ol>
+<li>可以创建匿名函数，避免污染全局变量</li>
+<li>形成一个单独的作用域，可以达到进行封装的效果。</li>
+</ol>
+<h3 id="什么是函数的作用域链"><a href="#什么是函数的作用域链" class="headerlink" title="什么是函数的作用域链"></a>什么是函数的作用域链</h3><p>作用域：变量和函数的可访问范围，控制变量的可见性和声明周期。分为全局作用域和局部作用域。</p>
+<ul>
+<li>全局作用域：变量没有用<code>var</code>声明时即为全局变量，拥有全局作用域，在代码任何地方都可以访问。</li>
+<li>局部作用域：函数内部用var声明的变量就是局部变量，只能在函数体内使用，函数的参数也是局部变量。</li>
+</ul>
+<p>作用域链：<br>当代码在一个环境中执行时，会创建变量对象的一个作用域链来保证对执行环境有权访问的变量和函数的有序访问。作用域第一个对象始终是当前执行代码所在环境的变量对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function a(x,y)&#123;</div><div class="line">            var b=x+y;</div><div class="line">            return b;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2331805-6567cc47a68b27c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="函数初创建"><br>而当函数执行时，那么函数对象则会创建一个活动对象作为函数作用域链的第一个对象，第二个环境是上一层的包含环境，一直到全局作用域为止。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2331805-3f4787cb4316e554.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="函数执行作用域"></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ol>
+<li><p>以下代码输出什么？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">    function getInfo(name, age, sex)&#123;</div><div class="line">        console.log(&apos;name:&apos;,name);</div><div class="line">        console.log(&apos;age:&apos;, age);</div><div class="line">        console.log(&apos;sex:&apos;, sex);</div><div class="line">        console.log(arguments);</div><div class="line">        arguments[0] = &apos;valley&apos;;</div><div class="line">        console.log(&apos;name:&apos;, name);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    getInfo(&apos;hunger&apos;, 28, &apos;男&apos;);</div><div class="line">/*</div><div class="line">  name:hunger</div><div class="line">  age:28</div><div class="line">  sex:男</div><div class="line">  [&apos;hunger&apos;,&apos;28&apos;,&apos;男&apos;]</div><div class="line">  name:valley</div><div class="line">*/</div><div class="line">    getInfo(&apos;hunger&apos;, 28);</div><div class="line">/*</div><div class="line">  name:hunger</div><div class="line">  age:28</div><div class="line">  sex:undefined</div><div class="line">  [&apos;hunger&apos;,&apos;28&apos;]</div><div class="line">  name:valley</div><div class="line">*/</div><div class="line">    getInfo(&apos;男&apos;);</div><div class="line">/*</div><div class="line">  name:男</div><div class="line">  age:undefined</div><div class="line">  sex:undefined</div><div class="line">  [&apos;男&apos;]</div><div class="line">  name:valley</div><div class="line">*/</div></pre></td></tr></table></figure>
+</li>
+<li><p>写一个函数，返回参数的平方和？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function sumOfSquares()&#123;</div><div class="line"> &#125;</div><div class="line"> sumOfSquares(2,3,4);   // 29</div><div class="line"> sumOfSquares(1,3);   // 10</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function sumOfSquares()&#123;</div><div class="line">  var sum=0;</div><div class="line">  for(var i=0;i &lt; arguments.length;i++)&#123;</div><div class="line">    sum += arguments[i]*arguments[i];</div><div class="line">  &#125;</div><div class="line">  document.write(sum+&quot; &quot;);</div><div class="line">&#125;</div><div class="line">sumOfSquares(2,3,4);   // 29</div><div class="line">sumOfSquares(1,3);   // 10</div></pre></td></tr></table></figure>
+<p><a href="http://js.jirengu.com/vilotedexa/2/edit" target="_blank" rel="external">JsBin</a></p>
+<ol>
+<li><p>如下代码的输出？为什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(a);  //undefined   声明提前  var a; 被提到最前面</div><div class="line">var a = 1;</div><div class="line">console.log(b); // 报错，因为变量b没有声明</div></pre></td></tr></table></figure>
+</li>
+<li><p>如下代码的输出？为什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">sayName(&apos;world&apos;); //hello world;函数声明整体提前</div><div class="line"> sayAge(10);//报错  sayAge不是函数类型；因为函数变量提前而不会整体提前</div><div class="line"> function sayName(name)&#123;</div><div class="line">     console.log(&apos;hello &apos;, name);</div><div class="line"> &#125;</div><div class="line"> var sayAge = function(age)&#123;</div><div class="line">     console.log(age);</div><div class="line"> &#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>如下代码的输出？为什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">   function fn()&#123;&#125;</div><div class="line">    var fn = 3;</div><div class="line">    console.log(fn); //3</div><div class="line">/*</div><div class="line">等价于</div><div class="line">var fn;</div><div class="line">function fn()&#123;&#125;;</div><div class="line">fn = 3;</div><div class="line">console.log(fn);</div><div class="line">*/</div></pre></td></tr></table></figure>
+</li>
+<li><p>如下代码的输出？为什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">    function fn(fn2)&#123;</div><div class="line">       console.log(fn2);</div><div class="line">       var fn2 = 3;</div><div class="line">       console.log(fn2);</div><div class="line">       console.log(fn);</div><div class="line">       function fn2()&#123;</div><div class="line">            console.log(&apos;fnnn2&apos;);</div><div class="line">        &#125;</div><div class="line">     &#125;</div><div class="line">    fn(10);</div><div class="line">//function</div><div class="line">//3</div><div class="line">//function</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">等价于</div><div class="line">function fn(fn2)&#123;</div><div class="line">  var fn2;</div><div class="line">  function fn2()&#123;</div><div class="line">    console.log(&apos;fnnn2&apos;);</div><div class="line">  &#125;</div><div class="line">  console.log(fn2);</div><div class="line">  fn2 = 3;</div><div class="line">  console.long(fn2);</div><div class="line">  console.log(fn);</div><div class="line">&#125;</div><div class="line">fn(10);</div></pre></td></tr></table></figure>
+<ol>
+<li>如下代码的输出？为什么 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var fn = 1;</div><div class="line"> function fn(fn)&#123;</div><div class="line">      console.log(fn);</div><div class="line"> &#125;</div><div class="line"> console.log(fn(fn));  //报错 fn现在被赋值为1   不是函数类型</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>等价于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var fn;</div><div class="line">function fn(fn)&#123;</div><div class="line">     console.log(fn);</div><div class="line">&#125;</div><div class="line">fn = 1;</div><div class="line">console.log(fn(fn));</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>如下代码的输出？为什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">声明提前</div><div class="line">var i;</div><div class="line">var j</div><div class="line">*/</div><div class="line">    console.log(j);  //undefined</div><div class="line">    console.log(i);  //undefined</div><div class="line">    for(var i=0; i&lt;10; i++)&#123;</div><div class="line">        var j = 100;</div><div class="line">    &#125;</div><div class="line">    console.log(i);  //10</div><div class="line">    console.log(j); //100</div></pre></td></tr></table></figure>
+</li>
+<li><p>如下代码的输出？为什么 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">    fn();</div><div class="line">    var i = 10;</div><div class="line">    var fn = 20;</div><div class="line">    console.log(i);</div><div class="line">    function fn()&#123;</div><div class="line">        console.log(i);</div><div class="line">        var i = 99;</div><div class="line">        fn2();</div><div class="line">        console.log(i);</div><div class="line">        function fn2()&#123;</div><div class="line">            i = 100;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">/*</div><div class="line">输出</div><div class="line">undefined</div><div class="line">100</div><div class="line">10</div><div class="line">*/</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>等价于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var i;</div><div class="line">var fn;</div><div class="line"> function fn()&#123;</div><div class="line">        var i;</div><div class="line">        function fn2()&#123;</div><div class="line">            i = 100;</div><div class="line">        &#125;</div><div class="line">        console.log(i);</div><div class="line">        i = 99;</div><div class="line">        fn2();</div><div class="line">        console.log(i);</div><div class="line">&#125;</div><div class="line">fn();</div><div class="line">i = 10;</div><div class="line">fn = 20;</div><div class="line">console.log(i);</div></pre></td></tr></table></figure></p>
+<ol>
+<li>如下代码的输出？为什么 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var say = 0;</div><div class="line">(function say(n)&#123;</div><div class="line">    console.log(n);</div><div class="line">    if(n&lt;3) return;</div><div class="line">    say(n-1);    //递归函数</div><div class="line">&#125;( 10 ));//立即执行函数  执行完后销毁</div><div class="line">console.log(say); //say 为全局变量</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出 10 9 8 7 6 5 4 3 2 0</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/08/12/函数/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-JS语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1090,74 +1216,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/07/05/HTML（4）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-HTML（3）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/01/HTML（3）/">HTML3</a>
-    </h1>
-  
-
-        
-        <a href="/2016/07/01/HTML（3）/" class="archive-article-date">
-  	<time datetime="2016-06-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一-line-height有什么作用"><a href="#一-line-height有什么作用" class="headerlink" title="一.line-height有什么作用?"></a>一.line-height有什么作用?</h3><p>line-height是用于设置行高。<br>并且在CSS中，有最底层的inline boxes起到检查行高度的作用，它会在行内元素中检查出高度最高的元素，并且把该高度作为整个行的高度。而<code>line-height</code>和<code>height</code>都起到高度作用，而在<code>height</code>没设置时，<code>line-height</code>则起到了高度设置的作用。<br><code>line-height</code>一个主要的作用就是设置文本垂直居中<br>1.<code>height</code>和<code>line-height</code>都设置时：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-a9fc6b37f13a453f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>2.单独设置<code>line-height</code>时，则也会取到设置行高的作用：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-679e8518ddd53753.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><a href="http://www.zhangxinxu.com/wordpress/2009/11/css%E8%A1%8C%E9%AB%98line-height%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%8F%8A%E5%BA%94%E7%94%A8/" target="_blank" rel="external">参考文档</a></p>
-<h3 id="二-如何去查CSS属性的兼容性？比如inline-block哪些浏览器支持？"><a href="#二-如何去查CSS属性的兼容性？比如inline-block哪些浏览器支持？" class="headerlink" title="二.如何去查CSS属性的兼容性？比如inline-block哪些浏览器支持？"></a>二.如何去查CSS属性的兼容性？比如<code>inline-block</code>哪些浏览器支持？</h3><p>可以用<a href="http://caniuse.com/" target="_blank" rel="external">Can I Use</a>进行查询。<br>inline-block所适用的浏览器：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-87d16c9c93e7f10a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<h3 id="三-lt-a-gt-的href-title-target是什么？title和alt有什么区别？如何新窗口打开链接"><a href="#三-lt-a-gt-的href-title-target是什么？title和alt有什么区别？如何新窗口打开链接" class="headerlink" title="三.&lt;a&gt;的href,title,target是什么？title和alt有什么区别？如何新窗口打开链接?"></a>三.<code>&lt;a&gt;</code>的<code>href</code>,<code>title</code>,<code>target</code>是什么？<code>title</code>和<code>alt</code>有什么区别？如何新窗口打开链接?</h3><p>1.<code>&lt;a&gt;</code>的<code>href</code>,<code>title</code>,<code>target</code>是什么？<br><code>href</code>规定链接的目标，<code>&lt;a&gt;</code>一定要设置该属性，否则鼠标移动到该链接只会以普通文本方式显示;<br><code>title</code>鼠标放在链接上时显示提示信息；<br><code>target</code>用来定义被链接的文档在何处显示；<br>2.<code>title</code>和<code>alt</code>有什么区别？<br><code>alt</code>主要是为不能显示的图像，窗体提供文字信息，只能运用在<code>&lt;img&gt;</code>,<code>&lt;area&gt;</code>和<code>&lt;input&gt;</code>元素中。<code>title</code>可以提供非本质的额外信息，并且可以为链接添加描述性文字，可以用在除了<code>&lt;base&gt;</code>，<code>&lt;basefont&gt;</code>，<code>&lt;head&gt;</code>，<code>&lt;html&gt;</code>，<code>&lt;meta&gt;</code>，<code>&lt;param&gt;</code>，<code>&lt;script&gt;</code>和<code>&lt;title&gt;</code>之外的所有标签。<br>3.如何新窗口打开链接?<br>设置<code>target=&quot;_blank&quot;</code></p>
-<h3 id="四-display-none-visibility-hidden-opacity-0有什么作用？有什么区别？"><a href="#四-display-none-visibility-hidden-opacity-0有什么作用？有什么区别？" class="headerlink" title="四.display: none, visibility: hidden, opacity:0有什么作用？有什么区别？"></a>四.<code>display: none</code>, <code>visibility: hidden</code>, <code>opacity:0</code>有什么作用？有什么区别？</h3><p><code>display:none</code>：会让元素消失，并且脱离文档流，但仍然存在在DOM树当中；<br><code>visibility:hidden</code>：让元素隐藏，不会脱离文档流；<br><code>opacity:0</code>：和<code>visibility:hidden</code>效果相同，不过可以设置透明度</p>
-<h3 id="五-如何去除-a-链接的默认样式？直接在-a-链接父容器添加颜色，能否继承到当前-a-链接上？"><a href="#五-如何去除-a-链接的默认样式？直接在-a-链接父容器添加颜色，能否继承到当前-a-链接上？" class="headerlink" title="五.如何去除 a 链接的默认样式？直接在 a 链接父容器添加颜色，能否继承到当前 a 链接上？"></a>五.如何去除 a 链接的默认样式？直接在 a 链接父容器添加颜色，能否继承到当前 a 链接上？</h3><p>可以通过设置<code>text-decoration</code>对链接样式进行设置。a链接不会继承父容器添加的颜色。</p>
-<p>下面代码有什么作用？手抄一遍如下代码，改变浏览器宽度看看效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">  &lt;style&gt;</div><div class="line">    .wrap&#123;</div><div class="line">      width: 900px;</div><div class="line">      margin: 0 auto;</div><div class="line">    &#125;</div><div class="line">  &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"> &lt;div id=&quot;header&quot;&gt;</div><div class="line">   &lt;div class=&quot;wrap&quot;&gt;这里是标题&lt;/div&gt;</div><div class="line"> &lt;/div&gt;</div><div class="line">  &lt;div id=&quot;content&quot;&gt;</div><div class="line">    &lt;div class=&quot;wrap&quot;&gt;这里是内容&lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;div id=&quot;footer&quot;&gt;</div><div class="line">  &lt;div class=&quot;wrap&quot;&gt;这里是 footer&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-<p>对wrap设置了固定的宽度，并且设置左右外边距为自动，所以无论浏览器页面大小，wrap始终居中。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">html简介</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/07/01/HTML（3）/">展开全文 >></a>
         </p>
       
 

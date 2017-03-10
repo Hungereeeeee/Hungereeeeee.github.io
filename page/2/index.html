@@ -144,6 +144,60 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-requireJS、r-js" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/02/requireJS、r-js/">requireJS、r.js</a>
+    </h1>
+  
+
+        
+        <a href="/2016/11/02/requireJS、r-js/" class="archive-article-date">
+  	<time datetime="2016-11-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="如下requirejs配置中-baseUrl-有什么作用？以什么作为基准-paths-的作用和用法是什么"><a href="#如下requirejs配置中-baseUrl-有什么作用？以什么作为基准-paths-的作用和用法是什么" class="headerlink" title="如下requirejs配置中, baseUrl 有什么作用？以什么作为基准? paths 的作用和用法是什么?"></a>如下requirejs配置中, baseUrl 有什么作用？以什么作为基准? paths 的作用和用法是什么?</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">requirejs.config(&#123;</div><div class="line">  baseUrl: &quot;src/js&quot;,</div><div class="line">  paths: &#123;</div><div class="line">    &apos;jquery&apos;: &apos;lib/bower_components/jquery/dist/jquery.min&apos;</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>baseUrl定义了根路径，当多个js文件放入一个文件夹中，再调用不同的模块的时候就可以忽略跟路径，以html文件所在目录为基准；paths指相对路径，如果有特殊的模块需要调用而路径名很长就可以当度将其路径写出来</p>
+<h3 id="如下-r-js-的打包配置中-baseUrl-是什么-name-是什么"><a href="#如下-r-js-的打包配置中-baseUrl-是什么-name-是什么" class="headerlink" title="如下 r.js 的打包配置中 baseUrl 是什么? name 是什么"></a>如下 r.js 的打包配置中 baseUrl 是什么? name 是什么</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">(&#123;</div><div class="line">    baseUrl: &quot;./src/js&quot;,</div><div class="line">    paths: &#123;</div><div class="line">        &apos;jquery&apos;: &apos;lib/bower_components/jquery/dist/jquery.min&apos;</div><div class="line">    &#125;,</div><div class="line">    name: &quot;main&quot;,</div><div class="line">    out: &quot;dist/js/merge.js&quot;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>baseUrl是指相对于require.js中的baseUrl的路径；name指入口模块名字；out为输出路径<br><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task39/index.html" target="_blank" rel="external">在线预览</a><br><img src="http://upload-images.jianshu.io/upload_images/2331805-5212549e564c88bc.gif?imageMogr2/auto-orient/strip" alt="add"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/11/02/requireJS、r-js/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-CMD、AMD、CommonJS规范" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -830,72 +884,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/09/19/瀑布流布局/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-jQuery常用方法及ajax" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/11/jQuery常用方法及ajax/">jQuery常用方法及ajax</a>
-    </h1>
-  
-
-        
-        <a href="/2016/09/11/jQuery常用方法及ajax/" class="archive-article-date">
-  	<time datetime="2016-09-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="jquery-中，-document-ready-是什么意思？和window-onload-的区别？-还有其他什么写法或者替代方法？"><a href="#jquery-中，-document-ready-是什么意思？和window-onload-的区别？-还有其他什么写法或者替代方法？" class="headerlink" title="jquery 中， $(document).ready()是什么意思？和window.onload 的区别？ 还有其他什么写法或者替代方法？"></a>jquery 中， $(document).ready()是什么意思？和window.onload 的区别？ 还有其他什么写法或者替代方法？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> $(document).ready(function()&#123;&#125;)</div><div class="line">简写方式</div><div class="line">$(function()&#123;&#125;)</div></pre></td></tr></table></figure>
-<p>作用是放置文档在完全加载之前运行就运行代码，有可能导致部分操作失败<br>区别：</p>
-<ol>
-<li><code>$(document).ready()</code>表示DOM加载完成之后就可以对DOM进行操作</li>
-<li><code>window.onload</code>表示在文档加载完成之后就可以对DOM进行操作，包含图片加载信息</li>
-</ol>
-<h3 id="node-html-和-node-text-的区别"><a href="#node-html-和-node-text-的区别" class="headerlink" title="$node.html()和$node.text()的区别?"></a>$node.html()和$node.text()的区别?</h3><p><code>$node.html()</code>：设置或返回所选元素内容（包括元素标记）<br><code>$node.text()</code>：设置或返回所选元素的文本内容</p>
-<h3 id="extend-的作用和用法"><a href="#extend-的作用和用法" class="headerlink" title="$.extend 的作用和用法?"></a>$.extend 的作用和用法?</h3><p><code>$.extend</code>：将两个或更多对象的内容合并到第一个对象。<br>用法</p>
-<ol>
-<li><code>jQuery.extend( target [, object1 ] [, objectN ] )</code><br>当我们提供两个或多个对象给$.extend()，对象的所有属性都添加到目标对象（target参数）。<br>目标的第一个参数将被修改，并且通过<code>$.extend()</code>返回，如果想保留原对象则：<br><code>$.extend({},obj1,obj2)</code><br>如果后面提供的对象中有属性相同，则后面属性的值会覆盖前面的属性的值。</li>
-<li><code>jQuery.extend( [deep ], target, object1 [, objectN ] )</code><br>如果deep的值为<code>true</code>,则会发生深拷贝</li>
-</ol>
-<h3 id="JQuery-的链式调用是什么？"><a href="#JQuery-的链式调用是什么？" class="headerlink" title="JQuery 的链式调用是什么？"></a>JQuery 的链式调用是什么？</h3><p>当jQuery的方法的返回值仍为当前对象时可以继续调用该对象的方法，这样就形成一种链式调用</p>
-<h3 id="JQuery-ajax-中缓存怎样控制"><a href="#JQuery-ajax-中缓存怎样控制" class="headerlink" title="JQuery ajax 中缓存怎样控制?"></a>JQuery ajax 中缓存怎样控制?</h3><p>通过<code>cache</code>属性来控制缓存，当设置为false的时候则不会缓存当前页面</p>
-<h3 id="jquery-中-data-函数的作用"><a href="#jquery-中-data-函数的作用" class="headerlink" title="jquery 中 data 函数的作用"></a>jquery 中 data 函数的作用</h3><p>在匹配元素上存储任意相关数据或返回匹配的元素集合中的第一个元素的给定名称的数据存储的值<br><code>$.data( key, value )</code><br><code>.data()</code>方法允许我们在DOM元素上绑定任意类型的数据,避免了循环引用的内存泄漏风险。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu5/%E6%9D%A8%E6%89%BF%E6%B6%A6/task26/task26.html" target="_blank" rel="external">代码一、二</a><br><a href="http://ycrtask.applinzi.com/ajax/getMore.html" target="_blank" rel="external">代码三</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/11/jQuery常用方法及ajax/">展开全文 >></a>
         </p>
       
 

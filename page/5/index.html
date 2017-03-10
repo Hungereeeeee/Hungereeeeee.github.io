@@ -144,6 +144,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-HTML（3）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/01/HTML（3）/">HTML3</a>
+    </h1>
+  
+
+        
+        <a href="/2016/07/01/HTML（3）/" class="archive-article-date">
+  	<time datetime="2016-06-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一-line-height有什么作用"><a href="#一-line-height有什么作用" class="headerlink" title="一.line-height有什么作用?"></a>一.line-height有什么作用?</h3><p>line-height是用于设置行高。<br>并且在CSS中，有最底层的inline boxes起到检查行高度的作用，它会在行内元素中检查出高度最高的元素，并且把该高度作为整个行的高度。而<code>line-height</code>和<code>height</code>都起到高度作用，而在<code>height</code>没设置时，<code>line-height</code>则起到了高度设置的作用。<br><code>line-height</code>一个主要的作用就是设置文本垂直居中<br>1.<code>height</code>和<code>line-height</code>都设置时：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-a9fc6b37f13a453f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>2.单独设置<code>line-height</code>时，则也会取到设置行高的作用：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-679e8518ddd53753.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br><a href="http://www.zhangxinxu.com/wordpress/2009/11/css%E8%A1%8C%E9%AB%98line-height%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%8F%8A%E5%BA%94%E7%94%A8/" target="_blank" rel="external">参考文档</a></p>
+<h3 id="二-如何去查CSS属性的兼容性？比如inline-block哪些浏览器支持？"><a href="#二-如何去查CSS属性的兼容性？比如inline-block哪些浏览器支持？" class="headerlink" title="二.如何去查CSS属性的兼容性？比如inline-block哪些浏览器支持？"></a>二.如何去查CSS属性的兼容性？比如<code>inline-block</code>哪些浏览器支持？</h3><p>可以用<a href="http://caniuse.com/" target="_blank" rel="external">Can I Use</a>进行查询。<br>inline-block所适用的浏览器：<br><img src="http://upload-images.jianshu.io/upload_images/2331805-87d16c9c93e7f10a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<h3 id="三-lt-a-gt-的href-title-target是什么？title和alt有什么区别？如何新窗口打开链接"><a href="#三-lt-a-gt-的href-title-target是什么？title和alt有什么区别？如何新窗口打开链接" class="headerlink" title="三.&lt;a&gt;的href,title,target是什么？title和alt有什么区别？如何新窗口打开链接?"></a>三.<code>&lt;a&gt;</code>的<code>href</code>,<code>title</code>,<code>target</code>是什么？<code>title</code>和<code>alt</code>有什么区别？如何新窗口打开链接?</h3><p>1.<code>&lt;a&gt;</code>的<code>href</code>,<code>title</code>,<code>target</code>是什么？<br><code>href</code>规定链接的目标，<code>&lt;a&gt;</code>一定要设置该属性，否则鼠标移动到该链接只会以普通文本方式显示;<br><code>title</code>鼠标放在链接上时显示提示信息；<br><code>target</code>用来定义被链接的文档在何处显示；<br>2.<code>title</code>和<code>alt</code>有什么区别？<br><code>alt</code>主要是为不能显示的图像，窗体提供文字信息，只能运用在<code>&lt;img&gt;</code>,<code>&lt;area&gt;</code>和<code>&lt;input&gt;</code>元素中。<code>title</code>可以提供非本质的额外信息，并且可以为链接添加描述性文字，可以用在除了<code>&lt;base&gt;</code>，<code>&lt;basefont&gt;</code>，<code>&lt;head&gt;</code>，<code>&lt;html&gt;</code>，<code>&lt;meta&gt;</code>，<code>&lt;param&gt;</code>，<code>&lt;script&gt;</code>和<code>&lt;title&gt;</code>之外的所有标签。<br>3.如何新窗口打开链接?<br>设置<code>target=&quot;_blank&quot;</code></p>
+<h3 id="四-display-none-visibility-hidden-opacity-0有什么作用？有什么区别？"><a href="#四-display-none-visibility-hidden-opacity-0有什么作用？有什么区别？" class="headerlink" title="四.display: none, visibility: hidden, opacity:0有什么作用？有什么区别？"></a>四.<code>display: none</code>, <code>visibility: hidden</code>, <code>opacity:0</code>有什么作用？有什么区别？</h3><p><code>display:none</code>：会让元素消失，并且脱离文档流，但仍然存在在DOM树当中；<br><code>visibility:hidden</code>：让元素隐藏，不会脱离文档流；<br><code>opacity:0</code>：和<code>visibility:hidden</code>效果相同，不过可以设置透明度</p>
+<h3 id="五-如何去除-a-链接的默认样式？直接在-a-链接父容器添加颜色，能否继承到当前-a-链接上？"><a href="#五-如何去除-a-链接的默认样式？直接在-a-链接父容器添加颜色，能否继承到当前-a-链接上？" class="headerlink" title="五.如何去除 a 链接的默认样式？直接在 a 链接父容器添加颜色，能否继承到当前 a 链接上？"></a>五.如何去除 a 链接的默认样式？直接在 a 链接父容器添加颜色，能否继承到当前 a 链接上？</h3><p>可以通过设置<code>text-decoration</code>对链接样式进行设置。a链接不会继承父容器添加的颜色。</p>
+<p>下面代码有什么作用？手抄一遍如下代码，改变浏览器宽度看看效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">  &lt;style&gt;</div><div class="line">    .wrap&#123;</div><div class="line">      width: 900px;</div><div class="line">      margin: 0 auto;</div><div class="line">    &#125;</div><div class="line">  &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"> &lt;div id=&quot;header&quot;&gt;</div><div class="line">   &lt;div class=&quot;wrap&quot;&gt;这里是标题&lt;/div&gt;</div><div class="line"> &lt;/div&gt;</div><div class="line">  &lt;div id=&quot;content&quot;&gt;</div><div class="line">    &lt;div class=&quot;wrap&quot;&gt;这里是内容&lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;div id=&quot;footer&quot;&gt;</div><div class="line">  &lt;div class=&quot;wrap&quot;&gt;这里是 footer&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>对wrap设置了固定的宽度，并且设置左右外边距为自动，所以无论浏览器页面大小，wrap始终居中。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">html简介</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/07/01/HTML（3）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-HTML（2）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
